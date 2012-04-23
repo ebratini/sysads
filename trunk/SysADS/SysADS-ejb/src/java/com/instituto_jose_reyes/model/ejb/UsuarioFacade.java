@@ -52,7 +52,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
 
     @Override
     public void create(Usuario entity) {
-        String encryptedPassword = securityServiceEJB.encrypt(entity.getUsrPassword(), SecurityServiceEJB.EncriptionMethod.SHA);
+        String encryptedPassword = securityServiceEJB.encrypt(entity.getUsrPassword(), SecurityServiceEJB.EncryptionMethod.SHA);
 
         if (encryptedPassword != null) {
             entity.setUsrPassword(encryptedPassword);
