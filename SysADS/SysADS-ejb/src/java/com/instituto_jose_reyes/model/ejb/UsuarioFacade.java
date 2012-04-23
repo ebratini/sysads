@@ -21,10 +21,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.instituto_jose_reyes.model.ejb;
 
 import com.instituto_jose_reyes.model.entities.Usuario;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -35,16 +35,24 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class UsuarioFacade extends AbstractFacade<Usuario> {
+    
+    @EJB
+    private SecurityServiceEJB securityServiceEJB;
     @PersistenceContext(unitName = "SysADS-ejbPU")
     private EntityManager em;
-
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
-
+    
     public UsuarioFacade() {
         super(Usuario.class);
     }
-
+    
+    @Override
+    public void create(Usuario entity) {
+        entity.setUsrPassword(securityServiceEJB.encrypt(entity.getUsrPassword(), SecurityServiceEJB.EncriptionMethod.SHA));
+        super.create(entity);
+    }
 }
