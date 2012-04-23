@@ -42,14 +42,14 @@ public class SecurityServiceEJB {
 
     private static final String CHARSET = "UTF-8";
 
-    public enum EncriptionMethod {
+    public enum EncryptionMethod {
 
         SHA
     }
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-    public synchronized String encrypt(String plaintext, EncriptionMethod encMethod) {
+    public synchronized String encrypt(String plaintext, EncryptionMethod encMethod) {
         try {
             MessageDigest md = MessageDigest.getInstance(encMethod.toString());
             md.update(plaintext.getBytes(CHARSET));
