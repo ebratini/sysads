@@ -44,7 +44,52 @@ public class SecurityServiceEJB {
 
     public enum EncryptionMethod {
 
-        SHA
+        SHA, SHA_512, SHA1, MD2, SHA_IMPLEMENTEDIN, SHA_256, MD5_IMPLEMENTEDIN, SHA_1, MD5, SHA_384;
+        private String encryptionMethod;
+
+        EncryptionMethod() {
+            switch (ordinal()) {
+                case 0:
+                    encryptionMethod = super.toString();
+                    break;
+                case 1:
+                    encryptionMethod = "SHA-512";
+                    break;
+                case 2:
+                    encryptionMethod = super.toString();
+                    break;
+                case 3:
+                    encryptionMethod = super.toString();
+                    break;
+                case 4:
+                    encryptionMethod = "SHA ImplementedIn";
+                    break;
+                case 5:
+                    encryptionMethod = "SHA-256";
+                    break;
+                case 6:
+                    encryptionMethod = "MD5 ImplementedIn";
+                    break;
+                case 7:
+                    encryptionMethod = "SHA-1";
+                    break;
+                case 8:
+                    encryptionMethod = super.toString();
+                    break;
+                case 9:
+                    encryptionMethod = "SHA-384";
+                    break;
+                default:
+                    encryptionMethod = super.toString();
+                    break;
+
+            }
+        }
+
+        @Override
+        public String toString() {
+            return encryptionMethod;
+        }
     }
 
     // Add business logic below. (Right-click in editor and choose
