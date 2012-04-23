@@ -35,24 +35,28 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class UsuarioFacade extends AbstractFacade<Usuario> {
-    
+
     @EJB
     private SecurityServiceEJB securityServiceEJB;
     @PersistenceContext(unitName = "SysADS-ejbPU")
     private EntityManager em;
-    
+
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
-    
+
     public UsuarioFacade() {
         super(Usuario.class);
     }
-    
+
     @Override
     public void create(Usuario entity) {
-        entity.setUsrPassword(securityServiceEJB.encrypt(entity.getUsrPassword(), SecurityServiceEJB.EncriptionMethod.SHA));
+        String encryptedPassword = securityServiceEJB.encrypt(entity.getUsrPassword(), SecurityServiceEJB.EncriptionMethod.SHA);
+
+        if (encryptedPassword != null) {
+            entity.setUsrPassword(encryptedPassword);
+        }
         super.create(entity);
     }
 }
