@@ -40,34 +40,29 @@ import sun.misc.BASE64Encoder;
 @LocalBean
 public class SecurityServiceEJB {
 
+    private static final String CHARSET = "UTF-8";
+
     public enum EncriptionMethod {
+
         SHA
     }
-    
+
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
-    
     public synchronized String encrypt(String plaintext, EncriptionMethod encMethod) {
-        MessageDigest md = null;
-        
-        String strEncMethod = null;
-        if (encMethod.equals(EncriptionMethod.SHA)) {
-            strEncMethod = "SHA";
-        }
-        
         try {
-            md = MessageDigest.getInstance(strEncMethod);
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(SecurityServiceEJB.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-            md.update(plaintext.getBytes("UTF-8"));
+            MessageDigest md = MessageDigest.getInstance(encMethod.toString());
+            md.update(plaintext.getBytes(CHARSET));
+
+            byte raw[] = md.digest();
+            String hash = (new BASE64Encoder()).encode(raw);
+            return hash;
         } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(SecurityServiceEJB.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        } catch (NoSuchAlgorithmException ex) {
+            Logger.getLogger(SecurityServiceEJB.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
-
-        byte raw[] = md.digest();
-        String hash = (new BASE64Encoder()).encode(raw);
-        return hash;
     }
 }
