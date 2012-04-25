@@ -58,4 +58,17 @@
   text-decoration : underline;
 }
 
+#container {
+	width: 80%;  /* this will create a container 80% of the browser width */
+	background-color:#CCC;
+	margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
+	border: 1px solid #000000;
+	text-align: left; /* this overrides the text-align: center on the body element. */
+}
+#mainContent {
+	padding: 0 20px; /* remember that padding is the space inside the div box and margin is the space outside the div box */
+	margin: 10px;
+	background:#FFF;
+	width: 90%;
+}
 
