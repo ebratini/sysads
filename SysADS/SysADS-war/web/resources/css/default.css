@@ -6,6 +6,15 @@ body {
     margin: 10px;
 }
 
+.body-cls {
+	font: 100% Verdana, Arial, Helvetica, sans-serif;
+	background-image:url(resources/images/background-image.jpg);
+	margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
+	padding: 0;
+	text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
+	color: #000000;
+}
+
 h1 {
     font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
     border-bottom: 1px solid #AFAFAF; 
