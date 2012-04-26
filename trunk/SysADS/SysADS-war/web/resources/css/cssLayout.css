@@ -67,8 +67,26 @@
 }
 #mainContent {
     width: 98%;
-    background-image: url("resources/images/background-image.jpg");
+    background: whitesmoke url("resources/images/background-image.jpg");
     padding: 0px; /* remember that padding is the space inside the div box and margin is the space outside the div box */
     margin: 0px auto;
+}
+
+.mslbar {
+	background-color:#464646;
+        height: 35px;
+}
+
+.slbar {
+    width:20%;
+    float:left;
+}
+
+.searchbox {
+     border-radius: 10em;
+     text-decoration-color: #dddddd;
+}
+
+.logged_user_link {
 }
 

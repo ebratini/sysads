@@ -2,25 +2,7 @@
 /* CSS Document */
 
 body {
-	background-image: url(resources/images/background_image.png);
-}
-
-.mslbar {
-	background-color:#ECECEC;
-}
-
-.slbar {
-    width:20%;
-    display: block;
-    float:left;
-}
-
-.searchbox {
-     border-radius: 10em;
-     text-decoration-color: #dddddd;
-}
-
-.logged_user_link {
+	background-image: url(resources/images/background-image.png);
 }
 
 .newsbar {
@@ -31,8 +13,11 @@ body {
 }
 
 .login_area{
-    background-color: #c2dfef;
-    border-radius: 4 em;
+    background-color: gainsboro;
+    border-radius: 2em;
+    width:40%;
+    float:left;
+    height: 400px
 }
 
 .stack_menu {
