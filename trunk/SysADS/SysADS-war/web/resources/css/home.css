@@ -1,0 +1,37 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background-image: url(resources/images/background_image.png);
+}
+
+.menubar {
+	background-color:#666666;
+	height:auto;
+	cursor:pointer;
+}
+
+.searchbox {
+     border-radius: 2 em;
+}
+
+.logged_user_link {
+}
+
+.newsbar {
+    background-color: #c2dfef;
+}
+
+.image_gallery {
+}
+
+.login_area{
+    background-color: #c2dfef;
+    border-radius: 4 em;
+}
+
+.stack_menu {
+}
+
+.valores_cursos_box {
+}
