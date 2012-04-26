@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
 
     <body class="body-cls">
 
@@ -12,16 +14,29 @@
             </ui:define>
 
             <ui:define name="menu">
-                menu
+                <p:graphicImage value="resources/images/menutitle.jpg" width="50px" height="50px"/>
             </ui:define>
 
             <ui:define name="content">
-                <div id="news">News</div>
-                <div id="ig-la">
-                    <div id="ig">Image Gallery</div>
-                    <div id="la">Login Area</div>
-                </div>
-                <div id="vc-section">Valores / Cursos Tabview</div>
+                <h:form>
+                    <hr />
+                    <div id="news" class="newsbar">News</div>
+                    <hr />
+                    <div id="ig-la">
+                        <div id="ig">Image Gallery</div>
+                        <div id="la">Login Area</div>
+                    </div>
+                    <div id="vc-section">
+                        <p:tabView effect="fade" orientation="bottom">
+                            <p:tab title="Normas/Valores">
+                                
+                            </p:tab>
+                            <p:tab title="Cursos/Carreras">
+                                
+                            </p:tab>
+                        </p:tabView>
+                    </div>
+                </h:form>
             </ui:define>
 
         </ui:composition>
