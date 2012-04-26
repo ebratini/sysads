@@ -1,5 +1,5 @@
 body {
-    background-color: #ffffff;
+    background-color: #CCC;
     font-size: 12px;
     font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
     color: #000000;  
@@ -8,7 +8,7 @@ body {
 
 .body-cls {
 	font: 100% Verdana, Arial, Helvetica, sans-serif;
-	background-image:url(resources/images/background-image.jpg);
+	background-color: #CCC;
 	margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
 	padding: 0;
 	text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */

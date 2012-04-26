@@ -5,14 +5,19 @@ body {
 	background-image: url(resources/images/background_image.png);
 }
 
-.menubar {
-	background-color:#666666;
-	height:auto;
-	cursor:pointer;
+.mslbar {
+	background-color:#ECECEC;
+}
+
+.slbar {
+    width:20%;
+    display: block;
+    float:left;
 }
 
 .searchbox {
-     border-radius: 2 em;
+     border-radius: 10em;
+     text-decoration-color: #dddddd;
 }
 
 .logged_user_link {
