@@ -14,7 +14,8 @@
             </ui:define>
 
             <ui:define name="menu">
-                <p:graphicImage value="resources/images/menutitle.jpg" width="50px" height="50px"/>
+                <!-- <p:graphicImage value="resources/images/menutitle.jpg" width="50px" height="50px"/> -->
+                <h:link id="menuLink" value="Menu" style="color: lightsalmon"/>
             </ui:define>
 
             <ui:define name="content">
@@ -22,14 +23,24 @@
                     <hr />
                     <div id="news" class="newsbar">News</div>
                     <hr />
-                    <div id="ig-la">
-                        <div id="ig">Image Gallery</div>
-                        <div id="la">Login Area</div>
+                    <div id="ig-la" style="height: 600px;">
+                        <div id="ig" style="width:60%; float:left;">
+                            <p:galleria effect="slide" effectDuration="1000">
+                                <p:graphicImage value="/resources/images/g1.jpg" panelWidth="100" title="image1" alt="image1 desc" />
+                                <p:graphicImage value="/resources/images/g2.jpg" panelWidth="100" title="image1" alt=" image2 desc" />
+                                <p:graphicImage value="/resources/images/g3.jpg" panelWidth="100" title="image1" alt=" image3 desc" />
+                                <p:graphicImage value="/resources/images/g4.jpg" panelWidth="100" title="image1" alt=" image4 desc" />
+                            </p:galleria>
+                        </div>
+                        <div id="la" class="login_area">
+                            Login Area
+                        </div>
                     </div>
                     <div id="vc-section">
+                        <br /><br />
                         <p:tabView effect="fade" orientation="bottom">
                             <p:tab title="Normas/Valores">
-                                
+                                <p:graphicImage value="/resources/images/normas-valores.png" />
                             </p:tab>
                             <p:tab title="Cursos/Carreras">
                                 
