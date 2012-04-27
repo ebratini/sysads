@@ -4,7 +4,11 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html">
-
+    <head>
+        <link href="./resources/css/home.css" rel="stylesheet" type="text/css" />
+        <link href="./resources/css/menuStyle.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="./resources/js/menuDynamic.js" />
+    </head>
     <body class="body-cls">
 
         <ui:composition template="./master_template.xhtml">
@@ -14,8 +18,7 @@
             </ui:define>
 
             <ui:define name="menu">
-                <!-- <p:graphicImage value="resources/images/menutitle.jpg" width="50px" height="50px"/> -->
-                <h:link id="menuLink" value="Menu" style="color: lightsalmon"/>
+                <h:link id="mnu_ttl-lnk" value="MENU" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('mnu_ttl-lnk', true)" onmouseout="turnLink('mnu_ttl-lnk', false)"/>
             </ui:define>
 
             <ui:define name="content">
@@ -26,10 +29,10 @@
                     <div id="ig-la" style="height: 600px;">
                         <div id="ig" style="width:60%; float:left;">
                             <p:galleria effect="slide" effectDuration="1000">
-                                <p:graphicImage value="/resources/images/g1.jpg" panelWidth="100" title="image1" alt="image1 desc" />
-                                <p:graphicImage value="/resources/images/g2.jpg" panelWidth="100" title="image1" alt=" image2 desc" />
-                                <p:graphicImage value="/resources/images/g3.jpg" panelWidth="100" title="image1" alt=" image3 desc" />
-                                <p:graphicImage value="/resources/images/g4.jpg" panelWidth="100" title="image1" alt=" image4 desc" />
+                                <p:graphicImage value="/resources/images/g1.jpg" title="image1" alt="image1 desc" />
+                                <p:graphicImage value="/resources/images/g2.jpg" title="image1" alt=" image2 desc" />
+                                <p:graphicImage value="/resources/images/g3.jpg" title="image1" alt=" image3 desc" />
+                                <p:graphicImage value="/resources/images/g4.jpg" title="image1" alt=" image4 desc" />
                             </p:galleria>
                         </div>
                         <div id="la" class="login_area">
@@ -49,8 +52,6 @@
                     </div>
                 </h:form>
             </ui:define>
-
         </ui:composition>
-
     </body>
 </html>
