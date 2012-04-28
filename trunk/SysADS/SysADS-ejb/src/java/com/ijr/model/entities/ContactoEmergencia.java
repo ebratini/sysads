@@ -216,7 +216,7 @@ public class ContactoEmergencia implements Serializable {
 
     @Override
     public String toString() {
-        return "com.instituto_jose_reyes.entities.ContactoEmergencia[ cemId=" + cemId + " ]";
+        return "com.ijr.model.entities.ContactoEmergencia[ cemId=" + cemId + " ]";
     }
     
 }

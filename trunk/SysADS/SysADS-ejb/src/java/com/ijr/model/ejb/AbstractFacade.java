@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2012 Edwin Bratini <edwin.bratini@gmail.com>.
+ * Copyright 2012 Edwin Bratini.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.ijr.model.ejb;
 
 import java.util.List;
@@ -29,7 +28,7 @@ import javax.persistence.EntityManager;
 
 /**
  *
- * @author Edwin Bratini <edwin.bratini@gmail.com>
+ * @author Edwin Bratini
  */
 public abstract class AbstractFacade<T> {
     private Class<T> entityClass;
@@ -78,5 +77,5 @@ public abstract class AbstractFacade<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-
+    
 }

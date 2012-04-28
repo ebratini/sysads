@@ -40,7 +40,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Horario.findAll", query = "SELECT h FROM Horario h"),
     @NamedQuery(name = "Horario.findByHroId", query = "SELECT h FROM Horario h WHERE h.hroId = :hroId"),
-    @NamedQuery(name = "Horario.findByHroDia", query = "SELECT h FROM Horario h WHERE h.hroDia = :hroDia"),
+    @NamedQuery(name = "Horario.findByHroDiaSemana", query = "SELECT h FROM Horario h WHERE h.hroDiaSemana = :hroDiaSemana"),
     @NamedQuery(name = "Horario.findByHroHoraInicio", query = "SELECT h FROM Horario h WHERE h.hroHoraInicio = :hroHoraInicio"),
     @NamedQuery(name = "Horario.findByHroHoraFin", query = "SELECT h FROM Horario h WHERE h.hroHoraFin = :hroHoraFin"),
     @NamedQuery(name = "Horario.findByHroAnio", query = "SELECT h FROM Horario h WHERE h.hroAnio = :hroAnio"),
@@ -58,9 +58,9 @@ public class Horario implements Serializable {
     private Integer hroId;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "hro_dia")
-    private String hroDia;
+    @Size(min = 1, max = 10)
+    @Column(name = "hro_dia_semana")
+    private String hroDiaSemana;
     @Basic(optional = false)
     @NotNull
     @Column(name = "hro_hora_inicio")
@@ -106,9 +106,9 @@ public class Horario implements Serializable {
         this.hroId = hroId;
     }
 
-    public Horario(Integer hroId, String hroDia, Date hroHoraInicio, Date hroHoraFin, Date hroAnio, int hroPeriodo, String hroTipoHorario, String hroAula, String hroCampus) {
+    public Horario(Integer hroId, String hroDiaSemana, Date hroHoraInicio, Date hroHoraFin, Date hroAnio, int hroPeriodo, String hroTipoHorario, String hroAula, String hroCampus) {
         this.hroId = hroId;
-        this.hroDia = hroDia;
+        this.hroDiaSemana = hroDiaSemana;
         this.hroHoraInicio = hroHoraInicio;
         this.hroHoraFin = hroHoraFin;
         this.hroAnio = hroAnio;
@@ -126,12 +126,12 @@ public class Horario implements Serializable {
         this.hroId = hroId;
     }
 
-    public String getHroDia() {
-        return hroDia;
+    public String getHroDiaSemana() {
+        return hroDiaSemana;
     }
 
-    public void setHroDia(String hroDia) {
-        this.hroDia = hroDia;
+    public void setHroDiaSemana(String hroDiaSemana) {
+        this.hroDiaSemana = hroDiaSemana;
     }
 
     public Date getHroHoraInicio() {
@@ -220,7 +220,7 @@ public class Horario implements Serializable {
 
     @Override
     public String toString() {
-        return "com.instituto_jose_reyes.entities.Horario[ hroId=" + hroId + " ]";
+        return "com.ijr.model.entities.Horario[ hroId=" + hroId + " ]";
     }
     
 }

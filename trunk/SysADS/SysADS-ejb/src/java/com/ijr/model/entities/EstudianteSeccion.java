@@ -171,7 +171,7 @@ public class EstudianteSeccion implements Serializable {
 
     @Override
     public String toString() {
-        return "com.instituto_jose_reyes.entities.EstudianteSeccion[ estudianteSeccionPK=" + estudianteSeccionPK + " ]";
+        return "com.ijr.model.entities.EstudianteSeccion[ estudianteSeccionPK=" + estudianteSeccionPK + " ]";
     }
     
 }
