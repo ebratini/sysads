@@ -52,26 +52,23 @@
                         </div>
                         <div id="la" class="login_area">
                             <p:panel  d="panel" header="Login" >
-
-
-                                <h:panelGrid columns="2" bgcolor="transparent" width="100%">
+                                <h:panelGrid columns="1" bgcolor="transparent" width="100%">
                                     <h:outputLabel for="usuario" value="Usuario:    *"  />
-                                    <h:outputText value=" "/>
-
-                                    <p:inputText id="Usuario"  required="true" label="usuario" size="25"  >
+                                    <p:inputText id="usuario"  required="true" label="usuario" size="25"  >
                                         <f:validateLength minimum="2"  />
                                     </p:inputText>
-                                    <h:outputText value=" "/>
 
                                     <h:outputLabel for="contraseña" value="Contraseña: *" />
-                                    <h:outputText value=" "/>
-
                                     <p:inputText id="contraseña" required="true" label="contraseña" size="25"/>
-                                    <h:link id="olv_contraseña" value="Olvide Contraseña"/> 
 
                                     <p:commandButton value="Aceptar" />
+                                    <br />
+                                    <br />
+                                    <h:link id="olv_contraseña" value="Olvide Contraseña"/>
                                     <h:link value="Registrarse" />
-
+                                    <br />
+                                    <br />
+                                    <br />
                                 </h:panelGrid>
                             </p:panel>
                         </div>
