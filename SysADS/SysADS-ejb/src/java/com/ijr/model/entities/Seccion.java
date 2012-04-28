@@ -69,12 +69,12 @@ public class Seccion implements Serializable {
     private Collection<Horario> horarioCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "seccion")
     private Collection<EstudianteSeccion> estudianteSeccionCollection;
-    @JoinColumn(name = "mdl_id", referencedColumnName = "mdl_id")
-    @ManyToOne(optional = false)
-    private Modulo mdlId;
     @JoinColumn(name = "prf_id", referencedColumnName = "prf_id")
     @ManyToOne(optional = false)
     private Profesor prfId;
+    @JoinColumn(name = "mdl_id", referencedColumnName = "mdl_id")
+    @ManyToOne(optional = false)
+    private Modulo mdlId;
 
     public Seccion() {
     }
@@ -140,20 +140,20 @@ public class Seccion implements Serializable {
         this.estudianteSeccionCollection = estudianteSeccionCollection;
     }
 
-    public Modulo getMdlId() {
-        return mdlId;
-    }
-
-    public void setMdlId(Modulo mdlId) {
-        this.mdlId = mdlId;
-    }
-
     public Profesor getPrfId() {
         return prfId;
     }
 
     public void setPrfId(Profesor prfId) {
         this.prfId = prfId;
+    }
+
+    public Modulo getMdlId() {
+        return mdlId;
+    }
+
+    public void setMdlId(Modulo mdlId) {
+        this.mdlId = mdlId;
     }
 
     @Override
@@ -178,7 +178,7 @@ public class Seccion implements Serializable {
 
     @Override
     public String toString() {
-        return "com.instituto_jose_reyes.entities.Seccion[ secId=" + secId + " ]";
+        return "com.ijr.model.entities.Seccion[ secId=" + secId + " ]";
     }
     
 }

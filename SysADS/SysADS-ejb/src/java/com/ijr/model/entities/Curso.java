@@ -43,6 +43,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Curso.findByCsoId", query = "SELECT c FROM Curso c WHERE c.csoId = :csoId"),
     @NamedQuery(name = "Curso.findByCsoNombre", query = "SELECT c FROM Curso c WHERE c.csoNombre = :csoNombre"),
     @NamedQuery(name = "Curso.findByCsoDescripcion", query = "SELECT c FROM Curso c WHERE c.csoDescripcion = :csoDescripcion"),
+    @NamedQuery(name = "Curso.findByCsoCategoria", query = "SELECT c FROM Curso c WHERE c.csoCategoria = :csoCategoria"),
+    @NamedQuery(name = "Curso.findByCsoSectorProductivo", query = "SELECT c FROM Curso c WHERE c.csoSectorProductivo = :csoSectorProductivo"),
     @NamedQuery(name = "Curso.findByCsoRequisitosAdmision", query = "SELECT c FROM Curso c WHERE c.csoRequisitosAdmision = :csoRequisitosAdmision"),
     @NamedQuery(name = "Curso.findByCsoStatus", query = "SELECT c FROM Curso c WHERE c.csoStatus = :csoStatus")})
 public class Curso implements Serializable {
@@ -66,6 +68,16 @@ public class Curso implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
+    @Column(name = "cso_categoria")
+    private String csoCategoria;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "cso_sector_productivo")
+    private String csoSectorProductivo;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "cso_requisitos_admision")
     private String csoRequisitosAdmision;
     @Basic(optional = false)
@@ -82,10 +94,12 @@ public class Curso implements Serializable {
         this.csoId = csoId;
     }
 
-    public Curso(Integer csoId, String csoNombre, String csoDescripcion, String csoRequisitosAdmision, char csoStatus) {
+    public Curso(Integer csoId, String csoNombre, String csoDescripcion, String csoCategoria, String csoSectorProductivo, String csoRequisitosAdmision, char csoStatus) {
         this.csoId = csoId;
         this.csoNombre = csoNombre;
         this.csoDescripcion = csoDescripcion;
+        this.csoCategoria = csoCategoria;
+        this.csoSectorProductivo = csoSectorProductivo;
         this.csoRequisitosAdmision = csoRequisitosAdmision;
         this.csoStatus = csoStatus;
     }
@@ -112,6 +126,22 @@ public class Curso implements Serializable {
 
     public void setCsoDescripcion(String csoDescripcion) {
         this.csoDescripcion = csoDescripcion;
+    }
+
+    public String getCsoCategoria() {
+        return csoCategoria;
+    }
+
+    public void setCsoCategoria(String csoCategoria) {
+        this.csoCategoria = csoCategoria;
+    }
+
+    public String getCsoSectorProductivo() {
+        return csoSectorProductivo;
+    }
+
+    public void setCsoSectorProductivo(String csoSectorProductivo) {
+        this.csoSectorProductivo = csoSectorProductivo;
     }
 
     public String getCsoRequisitosAdmision() {
@@ -161,7 +191,7 @@ public class Curso implements Serializable {
 
     @Override
     public String toString() {
-        return "com.instituto_jose_reyes.entities.Curso[ csoId=" + csoId + " ]";
+        return "com.ijr.model.entities.Curso[ csoId=" + csoId + " ]";
     }
     
 }

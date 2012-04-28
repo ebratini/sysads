@@ -328,7 +328,7 @@ public class Profesor implements Serializable {
 
     @Override
     public String toString() {
-        return "com.instituto_jose_reyes.entities.Profesor[ prfId=" + prfId + " ]";
+        return "com.ijr.model.entities.Profesor[ prfId=" + prfId + " ]";
     }
     
 }

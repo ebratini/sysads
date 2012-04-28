@@ -79,12 +79,12 @@ public class Rol implements Serializable {
     @NotNull
     @Column(name = "rol_status")
     private char rolStatus;
-    @JoinTable(name = "roles_permisos", joinColumns = {
-        @JoinColumn(name = "rol_id", referencedColumnName = "rol_id")}, inverseJoinColumns = {
-        @JoinColumn(name = "per_id", referencedColumnName = "per_id")})
-    @ManyToMany
-    private Collection<Permiso> permisoCollection;
     @ManyToMany(mappedBy = "rolCollection")
+    private Collection<Permiso> permisoCollection;
+    @JoinTable(name = "usuarios_roles", joinColumns = {
+        @JoinColumn(name = "rol_id", referencedColumnName = "rol_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "usr_id", referencedColumnName = "usr_id")})
+    @ManyToMany
     private Collection<Usuario> usuarioCollection;
 
     public Rol() {
@@ -191,7 +191,7 @@ public class Rol implements Serializable {
 
     @Override
     public String toString() {
-        return "com.instituto_jose_reyes.entities.Rol[ rolId=" + rolId + " ]";
+        return "com.ijr.model.entities.Rol[ rolId=" + rolId + " ]";
     }
     
 }

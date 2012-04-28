@@ -50,6 +50,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Estudiante.findByEstPrimerApellido", query = "SELECT e FROM Estudiante e WHERE e.estPrimerApellido = :estPrimerApellido"),
     @NamedQuery(name = "Estudiante.findByEstSegundoApellido", query = "SELECT e FROM Estudiante e WHERE e.estSegundoApellido = :estSegundoApellido"),
     @NamedQuery(name = "Estudiante.findByEstApodo", query = "SELECT e FROM Estudiante e WHERE e.estApodo = :estApodo"),
+    @NamedQuery(name = "Estudiante.findByEstImagenPerfilUrl", query = "SELECT e FROM Estudiante e WHERE e.estImagenPerfilUrl = :estImagenPerfilUrl"),
     @NamedQuery(name = "Estudiante.findByEstTelefono", query = "SELECT e FROM Estudiante e WHERE e.estTelefono = :estTelefono"),
     @NamedQuery(name = "Estudiante.findByEstDireccion", query = "SELECT e FROM Estudiante e WHERE e.estDireccion = :estDireccion"),
     @NamedQuery(name = "Estudiante.findByEstEmail", query = "SELECT e FROM Estudiante e WHERE e.estEmail = :estEmail"),
@@ -98,7 +99,10 @@ public class Estudiante implements Serializable {
     @Size(max = 45)
     @Column(name = "est_apodo")
     private String estApodo;
-    @Size(max = 45)
+    @Size(max = 60)
+    @Column(name = "est_imagen_perfil_url")
+    private String estImagenPerfilUrl;
+    @Size(max = 10)
     @Column(name = "est_telefono")
     private String estTelefono;
     @Basic(optional = false)
@@ -238,6 +242,14 @@ public class Estudiante implements Serializable {
         this.estApodo = estApodo;
     }
 
+    public String getEstImagenPerfilUrl() {
+        return estImagenPerfilUrl;
+    }
+
+    public void setEstImagenPerfilUrl(String estImagenPerfilUrl) {
+        this.estImagenPerfilUrl = estImagenPerfilUrl;
+    }
+
     public String getEstTelefono() {
         return estTelefono;
     }
@@ -359,7 +371,7 @@ public class Estudiante implements Serializable {
 
     @Override
     public String toString() {
-        return "com.instituto_jose_reyes.entities.Estudiante[ estId=" + estId + " ]";
+        return "com.ijr.model.entities.Estudiante[ estId=" + estId + " ]";
     }
     
 }

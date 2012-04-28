@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2012 Edwin Bratini <edwin.bratini@gmail.com>.
+ * Copyright 2012 Edwin Bratini.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,20 +24,16 @@
 package com.ijr.model.ejb;
 
 import com.ijr.model.entities.Usuario;
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Edwin Bratini <edwin.bratini@gmail.com>
+ * @author Edwin Bratini
  */
 @Stateless
 public class UsuarioFacade extends AbstractFacade<Usuario> {
-
-    @EJB
-    private SecurityServiceEJB securityServiceEJB;
     @PersistenceContext(unitName = "SysADS-ejbPU")
     private EntityManager em;
 
@@ -49,14 +45,5 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
     public UsuarioFacade() {
         super(Usuario.class);
     }
-
-    @Override
-    public void create(Usuario entity) {
-        String encryptedPassword = securityServiceEJB.encrypt(entity.getUsrPassword(), SecurityServiceEJB.EncryptionMethod.SHA);
-
-        if (encryptedPassword != null) {
-            entity.setUsrPassword(encryptedPassword);
-        }
-        super.create(entity);
-    }
+    
 }

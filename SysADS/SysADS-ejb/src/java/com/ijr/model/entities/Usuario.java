@@ -43,10 +43,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
     @NamedQuery(name = "Usuario.findByUsrId", query = "SELECT u FROM Usuario u WHERE u.usrId = :usrId"),
     @NamedQuery(name = "Usuario.findByUsrLogin", query = "SELECT u FROM Usuario u WHERE u.usrLogin = :usrLogin"),
+    @NamedQuery(name = "Usuario.findByUsrPassword", query = "SELECT u FROM Usuario u WHERE u.usrPassword = :usrPassword"),
     @NamedQuery(name = "Usuario.findByUsrNombre", query = "SELECT u FROM Usuario u WHERE u.usrNombre = :usrNombre"),
     @NamedQuery(name = "Usuario.findByUsrApellido", query = "SELECT u FROM Usuario u WHERE u.usrApellido = :usrApellido"),
-    @NamedQuery(name = "Usuario.findByUsrPassword", query = "SELECT u FROM Usuario u WHERE u.usrPassword = :usrPassword"),
     @NamedQuery(name = "Usuario.findByUsrEmail", query = "SELECT u FROM Usuario u WHERE u.usrEmail = :usrEmail"),
+    @NamedQuery(name = "Usuario.findByUsrPreguntaSeguridad", query = "SELECT u FROM Usuario u WHERE u.usrPreguntaSeguridad = :usrPreguntaSeguridad"),
+    @NamedQuery(name = "Usuario.findByUsrRespuestaPreguntaSeguridad", query = "SELECT u FROM Usuario u WHERE u.usrRespuestaPreguntaSeguridad = :usrRespuestaPreguntaSeguridad"),
     @NamedQuery(name = "Usuario.findByUsrUltimoAcceso", query = "SELECT u FROM Usuario u WHERE u.usrUltimoAcceso = :usrUltimoAcceso"),
     @NamedQuery(name = "Usuario.findByUsrFechaCreacion", query = "SELECT u FROM Usuario u WHERE u.usrFechaCreacion = :usrFechaCreacion"),
     @NamedQuery(name = "Usuario.findByUsrVerificado", query = "SELECT u FROM Usuario u WHERE u.usrVerificado = :usrVerificado"),
@@ -69,6 +71,11 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
+    @Column(name = "usr_password")
+    private String usrPassword;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "usr_nombre")
     private String usrNombre;
     @Basic(optional = false)
@@ -79,13 +86,18 @@ public class Usuario implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "usr_password")
-    private String usrPassword;
+    @Column(name = "usr_email")
+    private String usrEmail;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "usr_email")
-    private String usrEmail;
+    @Column(name = "usr_pregunta_seguridad")
+    private String usrPreguntaSeguridad;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 45)
+    @Column(name = "usr_respuesta_pregunta_seguridad")
+    private String usrRespuestaPreguntaSeguridad;
     @Basic(optional = false)
     @NotNull
     @Column(name = "usr_ultimo_acceso")
@@ -114,10 +126,7 @@ public class Usuario implements Serializable {
     @NotNull
     @Column(name = "usr_status")
     private char usrStatus;
-    @JoinTable(name = "usuarios_roles", joinColumns = {
-        @JoinColumn(name = "usr_id", referencedColumnName = "usr_id")}, inverseJoinColumns = {
-        @JoinColumn(name = "rol_id", referencedColumnName = "rol_id")})
-    @ManyToMany
+    @ManyToMany(mappedBy = "usuarioCollection")
     private Collection<Rol> rolCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usrId")
     private Collection<Log> logCollection;
@@ -133,13 +142,15 @@ public class Usuario implements Serializable {
         this.usrId = usrId;
     }
 
-    public Usuario(Integer usrId, String usrLogin, String usrNombre, String usrApellido, String usrPassword, String usrEmail, Date usrUltimoAcceso, Date usrFechaCreacion, char usrVerificado, String usrUpdateBy, Date usrUpdateDate, char usrStatus) {
+    public Usuario(Integer usrId, String usrLogin, String usrPassword, String usrNombre, String usrApellido, String usrEmail, String usrPreguntaSeguridad, String usrRespuestaPreguntaSeguridad, Date usrUltimoAcceso, Date usrFechaCreacion, char usrVerificado, String usrUpdateBy, Date usrUpdateDate, char usrStatus) {
         this.usrId = usrId;
         this.usrLogin = usrLogin;
+        this.usrPassword = usrPassword;
         this.usrNombre = usrNombre;
         this.usrApellido = usrApellido;
-        this.usrPassword = usrPassword;
         this.usrEmail = usrEmail;
+        this.usrPreguntaSeguridad = usrPreguntaSeguridad;
+        this.usrRespuestaPreguntaSeguridad = usrRespuestaPreguntaSeguridad;
         this.usrUltimoAcceso = usrUltimoAcceso;
         this.usrFechaCreacion = usrFechaCreacion;
         this.usrVerificado = usrVerificado;
@@ -164,6 +175,14 @@ public class Usuario implements Serializable {
         this.usrLogin = usrLogin;
     }
 
+    public String getUsrPassword() {
+        return usrPassword;
+    }
+
+    public void setUsrPassword(String usrPassword) {
+        this.usrPassword = usrPassword;
+    }
+
     public String getUsrNombre() {
         return usrNombre;
     }
@@ -180,20 +199,28 @@ public class Usuario implements Serializable {
         this.usrApellido = usrApellido;
     }
 
-    public String getUsrPassword() {
-        return usrPassword;
-    }
-
-    public void setUsrPassword(String usrPassword) {
-        this.usrPassword = usrPassword;
-    }
-
     public String getUsrEmail() {
         return usrEmail;
     }
 
     public void setUsrEmail(String usrEmail) {
         this.usrEmail = usrEmail;
+    }
+
+    public String getUsrPreguntaSeguridad() {
+        return usrPreguntaSeguridad;
+    }
+
+    public void setUsrPreguntaSeguridad(String usrPreguntaSeguridad) {
+        this.usrPreguntaSeguridad = usrPreguntaSeguridad;
+    }
+
+    public String getUsrRespuestaPreguntaSeguridad() {
+        return usrRespuestaPreguntaSeguridad;
+    }
+
+    public void setUsrRespuestaPreguntaSeguridad(String usrRespuestaPreguntaSeguridad) {
+        this.usrRespuestaPreguntaSeguridad = usrRespuestaPreguntaSeguridad;
     }
 
     public Date getUsrUltimoAcceso() {
@@ -302,7 +329,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "com.instituto_jose_reyes.entities.Usuario[ usrId=" + usrId + " ]";
+        return "com.ijr.model.entities.Usuario[ usrId=" + usrId + " ]";
     }
     
 }

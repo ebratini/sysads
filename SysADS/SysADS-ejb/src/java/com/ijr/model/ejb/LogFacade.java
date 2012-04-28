@@ -1,7 +1,7 @@
 /*
  * The MIT License
  *
- * Copyright 2012 Edwin Bratini <edwin.bratini@gmail.com>.
+ * Copyright 2012 Edwin Bratini.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,7 +21,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
 package com.ijr.model.ejb;
 
 import com.ijr.model.entities.Log;
@@ -31,7 +30,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Edwin Bratini <edwin.bratini@gmail.com>
+ * @author Edwin Bratini
  */
 @Stateless
 public class LogFacade extends AbstractFacade<Log> {
@@ -46,5 +45,5 @@ public class LogFacade extends AbstractFacade<Log> {
     public LogFacade() {
         super(Log.class);
     }
-
+    
 }

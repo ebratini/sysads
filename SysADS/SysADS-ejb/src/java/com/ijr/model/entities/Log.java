@@ -158,7 +158,7 @@ public class Log implements Serializable {
 
     @Override
     public String toString() {
-        return "com.instituto_jose_reyes.entities.Log[ logId=" + logId + " ]";
+        return "com.ijr.model.entities.Log[ logId=" + logId + " ]";
     }
     
 }

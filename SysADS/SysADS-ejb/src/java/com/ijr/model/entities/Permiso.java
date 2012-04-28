@@ -79,7 +79,10 @@ public class Permiso implements Serializable {
     @NotNull
     @Column(name = "per_status")
     private char perStatus;
-    @ManyToMany(mappedBy = "permisoCollection")
+    @JoinTable(name = "roles_permisos", joinColumns = {
+        @JoinColumn(name = "per_id", referencedColumnName = "per_id")}, inverseJoinColumns = {
+        @JoinColumn(name = "rol_id", referencedColumnName = "rol_id")})
+    @ManyToMany
     private Collection<Rol> rolCollection;
 
     public Permiso() {
@@ -177,7 +180,7 @@ public class Permiso implements Serializable {
 
     @Override
     public String toString() {
-        return "com.instituto_jose_reyes.entities.Permiso[ perId=" + perId + " ]";
+        return "com.ijr.model.entities.Permiso[ perId=" + perId + " ]";
     }
     
 }

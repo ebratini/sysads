@@ -208,7 +208,7 @@ public class Modulo implements Serializable {
 
     @Override
     public String toString() {
-        return "com.instituto_jose_reyes.entities.Modulo[ mdlId=" + mdlId + " ]";
+        return "com.ijr.model.entities.Modulo[ mdlId=" + mdlId + " ]";
     }
     
 }
