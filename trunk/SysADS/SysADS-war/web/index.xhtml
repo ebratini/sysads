@@ -3,22 +3,36 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
     <head>
-        <link href="./resources/css/home.css" rel="stylesheet" type="text/css" />
-        <link href="./resources/css/menuStyle.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="./resources/js/menuDynamic.js" />
+        <link href="/resources/css/home.css" rel="stylesheet" type="text/css" />
+        <link href="/resources/css/menuStyle.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="/resources/js/menuDynamic.js" />
     </head>
     <body class="body-cls">
 
-        <ui:composition template="./master_template.xhtml">
+        <ui:composition template="/resources/templates/master_template.xhtml">
 
             <ui:define name="title">
                 SysADS - Sistema Gestion Servicios Academicos en Linea
             </ui:define>
 
             <ui:define name="menu">
-                <h:link id="mnu_ttl-lnk" value="MENU" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('mnu_ttl-lnk', true)" onmouseout="turnLink('mnu_ttl-lnk', false)"/>
+
+                <!--<h:link id="mnu_ttl-lnk" value="MENU" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('mnu_ttl-lnk', true)" onmouseout="turnLink('mnu_ttl-lnk', false)"/>-->
+
+                <h:form id="menuForm">
+
+                    <p:commandLink id="mnu_ttl-lnk" value="Menu" style="text-decoration: none; color: #BBB; font-size: 120%" onmouseover="turnLink('mnu_ttl-lnk', true)" onmouseout="turnLink('mnu_ttl-lnk', false)"/>
+
+                    <p:overlayPanel id="MenuPanel" for="mnu_ttl-lnk" showEvent="mouseover" hideEvent="mousedown" showEffect="blind" hideEffect="explode">
+                        <h:dataTable style="width: 1000px; height: 400px;">
+                            <ui:include src="./estudiantes/menu.xhtml" />
+                        </h:dataTable>
+                    </p:overlayPanel>
+                </h:form>
+
             </ui:define>
 
             <ui:define name="content">
@@ -26,17 +40,40 @@
                     <hr />
                     <div id="news" class="newsbar">News</div>
                     <hr />
-                    <div id="ig-la" style="height: 600px;">
+                    <div id="ig-la" style="height: 270px;" >
                         <div id="ig" style="width:60%; float:left;">
-                            <p:galleria effect="slide" effectDuration="1000">
-                                <p:graphicImage value="/resources/images/g1.jpg" title="image1" alt="image1 desc" />
-                                <p:graphicImage value="/resources/images/g2.jpg" title="image1" alt=" image2 desc" />
-                                <p:graphicImage value="/resources/images/g3.jpg" title="image1" alt=" image3 desc" />
-                                <p:graphicImage value="/resources/images/g4.jpg" title="image1" alt=" image4 desc" />
+                            <p:galleria effect="slide" effectDuration="1000" panelHeight="247" panelWidth="545">
+                                <p:graphicImage value="/resources/images/g1.jpg" panelWidth="80" title="image1" alt="image1 desc" />
+                                <p:graphicImage value="/resources/images/g2.jpg" panelWidth="80" title="image1" alt=" image2 desc" />
+                                <p:graphicImage value="/resources/images/g3.jpg" panelWidth="80" title="image1" alt=" image3 desc" />
+                                <p:graphicImage value="/resources/images/g4.jpg" panelWidth="80" title="image1" alt=" image4 desc" />
                             </p:galleria>
+
                         </div>
                         <div id="la" class="login_area">
-                            Login Area
+                            <p:panel  d="panel" header="Login" >
+
+
+                                <h:panelGrid columns="2" bgcolor="transparent" width="100%">
+                                    <h:outputLabel for="usuario" value="Usuario:    *"  />
+                                    <h:outputText value=" "/>
+
+                                    <p:inputText id="Usuario"  required="true" label="usuario" size="25"  >
+                                        <f:validateLength minimum="2"  />
+                                    </p:inputText>
+                                    <h:outputText value=" "/>
+
+                                    <h:outputLabel for="contraseña" value="Contraseña: *" />
+                                    <h:outputText value=" "/>
+
+                                    <p:inputText id="contraseña" required="true" label="contraseña" size="25"/>
+                                    <h:link id="olv_contraseña" value="Olvide Contraseña"/> 
+
+                                    <p:commandButton value="Aceptar" />
+                                    <h:link value="Registrarse" />
+
+                                </h:panelGrid>
+                            </p:panel>
                         </div>
                     </div>
                     <div id="vc-section">
@@ -46,7 +83,7 @@
                                 <p:graphicImage value="/resources/images/normas-valores.png" />
                             </p:tab>
                             <p:tab title="Cursos/Carreras">
-                                
+
                             </p:tab>
                         </p:tabView>
                     </div>
