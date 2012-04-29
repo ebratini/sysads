@@ -24,13 +24,11 @@
 package com.ijr.model.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -47,6 +45,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Usuario.findByUsrNombre", query = "SELECT u FROM Usuario u WHERE u.usrNombre = :usrNombre"),
     @NamedQuery(name = "Usuario.findByUsrApellido", query = "SELECT u FROM Usuario u WHERE u.usrApellido = :usrApellido"),
     @NamedQuery(name = "Usuario.findByUsrEmail", query = "SELECT u FROM Usuario u WHERE u.usrEmail = :usrEmail"),
+    @NamedQuery(name = "Usuario.findByUsrVigenciaPassword", query = "SELECT u FROM Usuario u WHERE u.usrVigenciaPassword = :usrVigenciaPassword"),
     @NamedQuery(name = "Usuario.findByUsrPreguntaSeguridad", query = "SELECT u FROM Usuario u WHERE u.usrPreguntaSeguridad = :usrPreguntaSeguridad"),
     @NamedQuery(name = "Usuario.findByUsrRespuestaPreguntaSeguridad", query = "SELECT u FROM Usuario u WHERE u.usrRespuestaPreguntaSeguridad = :usrRespuestaPreguntaSeguridad"),
     @NamedQuery(name = "Usuario.findByUsrUltimoAcceso", query = "SELECT u FROM Usuario u WHERE u.usrUltimoAcceso = :usrUltimoAcceso"),
@@ -90,6 +89,10 @@ public class Usuario implements Serializable {
     private String usrEmail;
     @Basic(optional = false)
     @NotNull
+    @Column(name = "usr_vigencia_password")
+    private int usrVigenciaPassword;
+    @Basic(optional = false)
+    @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "usr_pregunta_seguridad")
     private String usrPreguntaSeguridad;
@@ -126,14 +129,6 @@ public class Usuario implements Serializable {
     @NotNull
     @Column(name = "usr_status")
     private char usrStatus;
-    @ManyToMany(mappedBy = "usuarioCollection")
-    private Collection<Rol> rolCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usrId")
-    private Collection<Log> logCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usrId")
-    private Collection<Estudiante> estudianteCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usrId")
-    private Collection<Profesor> profesorCollection;
 
     public Usuario() {
     }
@@ -142,13 +137,14 @@ public class Usuario implements Serializable {
         this.usrId = usrId;
     }
 
-    public Usuario(Integer usrId, String usrLogin, String usrPassword, String usrNombre, String usrApellido, String usrEmail, String usrPreguntaSeguridad, String usrRespuestaPreguntaSeguridad, Date usrUltimoAcceso, Date usrFechaCreacion, char usrVerificado, String usrUpdateBy, Date usrUpdateDate, char usrStatus) {
+    public Usuario(Integer usrId, String usrLogin, String usrPassword, String usrNombre, String usrApellido, String usrEmail, int usrVigenciaPassword, String usrPreguntaSeguridad, String usrRespuestaPreguntaSeguridad, Date usrUltimoAcceso, Date usrFechaCreacion, char usrVerificado, String usrUpdateBy, Date usrUpdateDate, char usrStatus) {
         this.usrId = usrId;
         this.usrLogin = usrLogin;
         this.usrPassword = usrPassword;
         this.usrNombre = usrNombre;
         this.usrApellido = usrApellido;
         this.usrEmail = usrEmail;
+        this.usrVigenciaPassword = usrVigenciaPassword;
         this.usrPreguntaSeguridad = usrPreguntaSeguridad;
         this.usrRespuestaPreguntaSeguridad = usrRespuestaPreguntaSeguridad;
         this.usrUltimoAcceso = usrUltimoAcceso;
@@ -205,6 +201,14 @@ public class Usuario implements Serializable {
 
     public void setUsrEmail(String usrEmail) {
         this.usrEmail = usrEmail;
+    }
+
+    public int getUsrVigenciaPassword() {
+        return usrVigenciaPassword;
+    }
+
+    public void setUsrVigenciaPassword(int usrVigenciaPassword) {
+        this.usrVigenciaPassword = usrVigenciaPassword;
     }
 
     public String getUsrPreguntaSeguridad() {
@@ -269,42 +273,6 @@ public class Usuario implements Serializable {
 
     public void setUsrStatus(char usrStatus) {
         this.usrStatus = usrStatus;
-    }
-
-    @XmlTransient
-    public Collection<Rol> getRolCollection() {
-        return rolCollection;
-    }
-
-    public void setRolCollection(Collection<Rol> rolCollection) {
-        this.rolCollection = rolCollection;
-    }
-
-    @XmlTransient
-    public Collection<Log> getLogCollection() {
-        return logCollection;
-    }
-
-    public void setLogCollection(Collection<Log> logCollection) {
-        this.logCollection = logCollection;
-    }
-
-    @XmlTransient
-    public Collection<Estudiante> getEstudianteCollection() {
-        return estudianteCollection;
-    }
-
-    public void setEstudianteCollection(Collection<Estudiante> estudianteCollection) {
-        this.estudianteCollection = estudianteCollection;
-    }
-
-    @XmlTransient
-    public Collection<Profesor> getProfesorCollection() {
-        return profesorCollection;
-    }
-
-    public void setProfesorCollection(Collection<Profesor> profesorCollection) {
-        this.profesorCollection = profesorCollection;
     }
 
     @Override
