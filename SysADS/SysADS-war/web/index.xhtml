@@ -19,20 +19,7 @@
             </ui:define>
 
             <ui:define name="menu">
-
-                <!--<h:link id="mnu_ttl-lnk" value="MENU" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('mnu_ttl-lnk', true)" onmouseout="turnLink('mnu_ttl-lnk', false)"/>-->
-
-                <h:form id="menuForm">
-
-                    <p:commandLink id="mnu_ttl-lnk" value="Menu" style="text-decoration: none; color: #BBB; font-size: 120%" onmouseover="turnLink('mnu_ttl-lnk', true)" onmouseout="turnLink('mnu_ttl-lnk', false)"/>
-
-                    <p:overlayPanel id="MenuPanel" for="mnu_ttl-lnk" showEvent="mouseover" hideEvent="mousedown" showEffect="blind" hideEffect="explode">
-                        <h:dataTable style="width: 1000px; height: 400px;">
-                            <ui:include src="./estudiantes/menu.xhtml" />
-                        </h:dataTable>
-                    </p:overlayPanel>
-                </h:form>
-
+                <h:outputText value="menu" style="color: #464646;" />
             </ui:define>
 
             <ui:define name="content">
@@ -51,26 +38,35 @@
 
                         </div>
                         <div id="la" class="login_area">
-                            <p:panel  d="panel" header="Login" >
-                                <h:panelGrid columns="1" bgcolor="transparent" width="100%">
-                                    <h:outputLabel for="usuario" value="Usuario:    *"  />
-                                    <p:inputText id="usuario"  required="true" label="usuario" size="25"  >
-                                        <f:validateLength minimum="2"  />
-                                    </p:inputText>
-
-                                    <h:outputLabel for="contraseña" value="Contraseña: *" />
-                                    <p:inputText id="contraseña" required="true" label="contraseña" size="25"/>
-
-                                    <p:commandButton value="Aceptar" />
-                                    <br />
-                                    <br />
-                                    <h:link id="olv_contraseña" value="Olvide Contraseña"/>
-                                    <h:link value="Registrarse" />
-                                    <br />
-                                    <br />
-                                    <br />
-                                </h:panelGrid>
-                            </p:panel>
+                            <h:form id="la-frm">
+                                <p:growl id="la-growl" showDetail="true" sticky="true" />
+                                <p:panel  d="panel" header="Login" >
+                                    <h:panelGrid columns="1" bgcolor="transparent" width="100%">
+                                        <h:outputLabel for="usuario" value="Usuario:    *"  />
+                                        <p:inputText id="usuario"  required="true" label="usuario" size="25" value="#{loginController.usrLogin}" >
+                                            <f:validateLength minimum="2"  />
+                                        </p:inputText>
+                                            
+                                        <h:outputLabel for="contraseña" value="Contraseña: *" />
+                                        <p:inputText id="contraseña" required="true" label="contraseña" size="25" value="#{loginController.pass}"/>
+                                            
+                                        
+                                        <p:selectOneRadio id="rol" value="#{loginController.usrRol}">  
+                                            <f:selectItem itemLabel="Estudiante" itemValue="1" />  
+                                            <f:selectItem itemLabel="Docente" itemValue="2" />
+                                        </p:selectOneRadio> 
+                                        <br />
+                                        <p:commandButton value="Aceptar" actionListener="#{loginController.doLogin()}"/>
+                                        <br />
+                                        <h:link id="olv_contraseña" value="Olvide Contraseña"/>
+                                        <h:link id="do-reg" value="Registrarse" />
+                                        <h:link id="intr" value="Intranet" />
+                                        <br />
+                                        <br />
+                                        <br />
+                                    </h:panelGrid>
+                                </p:panel>
+                            </h:form>
                         </div>
                     </div>
                     <div id="vc-section">
