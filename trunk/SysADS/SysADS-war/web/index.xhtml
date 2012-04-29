@@ -40,7 +40,23 @@
                         <div id="la" class="login_area">
                             <h:form id="la-frm">
                                 <p:growl id="la-growl" showDetail="true" sticky="true" />
-                                <p:panel  d="panel" header="Login" >
+                                    
+                                <p:dialog header="Login" widgetVar="oc-dlg">
+                                    <p:panel id="oc-dlg-pnl" header="Login - Recuperar Acceso">
+                                        <p:panelGrid columns="2">                                            
+                                            <h:outputLabel for="dlg-email" value="Email:    *"  />
+                                            <p:inputText id="dlg-email"  required="true" label="dlg-email" size="25" value="#{loginController.usuario.usrEmail}" >
+                                                <f:validateLength minimum="2"  />
+                                            </p:inputText>
+                                            
+                                            <h:outputText value="#{loginController.usuario.usrPreguntaSeguridad}" />
+                                            <p:inputText id="sec-quest"  required="true" size="25" />
+                                            
+                                            <p:commandButton value="Recuperar Acceso" actionListener="#{loginController.sendNewPass}" update="la-growl" />
+                                        </p:panelGrid>
+                                    </p:panel>
+                                </p:dialog>
+                                <p:panel  id="lgn-panel" header="Login" >
                                     <h:panelGrid columns="1" bgcolor="transparent" width="100%">
                                         <h:outputLabel for="usuario" value="Usuario:    *"  />
                                         <p:inputText id="usuario"  required="true" label="usuario" size="25" value="#{loginController.usrLogin}" >
@@ -48,17 +64,16 @@
                                         </p:inputText>
                                             
                                         <h:outputLabel for="contraseña" value="Contraseña: *" />
-                                        <p:inputText id="contraseña" required="true" label="contraseña" size="25" value="#{loginController.pass}"/>
-                                            
+                                        <p:password id="contraseña" required="true" label="contraseña" size="25" value="#{loginController.pass}"/>
                                         
-                                        <p:selectOneRadio id="rol" value="#{loginController.usrRol}">  
+                                        <p:selectOneRadio id="rol" required="true" value="#{loginController.usrRol}">  
                                             <f:selectItem itemLabel="Estudiante" itemValue="1" />  
                                             <f:selectItem itemLabel="Docente" itemValue="2" />
                                         </p:selectOneRadio> 
                                         <br />
-                                        <p:commandButton value="Aceptar" actionListener="#{loginController.doLogin()}"/>
+                                        <p:commandButton value="Aceptar" actionListener="#{loginController.doLogin}" update="la-growl" />
                                         <br />
-                                        <h:link id="olv_contraseña" value="Olvide Contraseña"/>
+                                        <h:link id="olv_contraseña" value="Olvide Contraseña" onclick="oc-dlg.show()" />
                                         <h:link id="do-reg" value="Registrarse" />
                                         <h:link id="intr" value="Intranet" />
                                         <br />
