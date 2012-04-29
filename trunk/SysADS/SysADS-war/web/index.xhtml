@@ -5,11 +5,11 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
-    <head>
+    <h:head>
         <link href="/resources/css/home.css" rel="stylesheet" type="text/css" />
         <link href="/resources/css/menuStyle.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="/resources/js/menuDynamic.js" />
-    </head>
+    </h:head>
     <body class="body-cls">
 
         <ui:composition template="/resources/templates/master_template.xhtml">
@@ -23,79 +23,68 @@
             </ui:define>
 
             <ui:define name="content">
-                <h:form>
-                    <hr />
-                    <div id="news" class="newsbar">News</div>
-                    <hr />
-                    <div id="ig-la" style="height: 270px;" >
-                        <div id="ig" style="width:60%; float:left;">
-                            <p:galleria effect="slide" effectDuration="1000" panelHeight="247" panelWidth="545">
-                                <p:graphicImage value="/resources/images/g1.jpg" panelWidth="80" title="image1" alt="image1 desc" />
-                                <p:graphicImage value="/resources/images/g2.jpg" panelWidth="80" title="image1" alt=" image2 desc" />
-                                <p:graphicImage value="/resources/images/g3.jpg" panelWidth="80" title="image1" alt=" image3 desc" />
-                                <p:graphicImage value="/resources/images/g4.jpg" panelWidth="80" title="image1" alt=" image4 desc" />
-                            </p:galleria>
+                <hr />
+                <div id="news" class="newsbar">News</div>
+                <hr />
+                <div id="ig-la" style="height: 270px;" >
+                    <div id="ig" style="width:60%; float:left;">
+                        <p:galleria effect="slide" effectDuration="1000" panelHeight="247" panelWidth="545">
+                            <p:graphicImage value="/resources/images/g1.jpg" panelWidth="80" title="image1" alt="image1 desc" />
+                            <p:graphicImage value="/resources/images/g2.jpg" panelWidth="80" title="image1" alt=" image2 desc" />
+                            <p:graphicImage value="/resources/images/g3.jpg" panelWidth="80" title="image1" alt=" image3 desc" />
+                            <p:graphicImage value="/resources/images/g4.jpg" panelWidth="80" title="image1" alt=" image4 desc" />
+                        </p:galleria>
 
-                        </div>
-                        <div id="la" class="login_area">
-                            <h:form id="la-frm">
-                                <p:growl id="la-growl" showDetail="true" sticky="true" />
-                                    
+                    </div>
+                    <div id="la" class="login_area">
+                        <h:form id="la-frm">
+                            <p:panel  id="lgn-panel" header="Login" >
+                                <p:growl id="la-growl" showDetail="true" />
                                 <p:dialog header="Login" widgetVar="oc-dlg">
                                     <p:panel id="oc-dlg-pnl" header="Login - Recuperar Acceso">
-                                        <p:panelGrid columns="2">                                            
-                                            <h:outputLabel for="dlg-email" value="Email:    *"  />
-                                            <p:inputText id="dlg-email"  required="true" label="dlg-email" size="25" value="#{loginController.usuario.usrEmail}" >
-                                                <f:validateLength minimum="2"  />
-                                            </p:inputText>
-                                            
-                                            <h:outputText value="#{loginController.usuario.usrPreguntaSeguridad}" />
-                                            <p:inputText id="sec-quest"  required="true" size="25" />
-                                            
-                                            <p:commandButton value="Recuperar Acceso" actionListener="#{loginController.sendNewPass}" update="la-growl" />
-                                        </p:panelGrid>
+
                                     </p:panel>
                                 </p:dialog>
-                                <p:panel  id="lgn-panel" header="Login" >
-                                    <h:panelGrid columns="1" bgcolor="transparent" width="100%">
-                                        <h:outputLabel for="usuario" value="Usuario:    *"  />
-                                        <p:inputText id="usuario"  required="true" label="usuario" size="25" value="#{loginController.usrLogin}" >
-                                            <f:validateLength minimum="2"  />
-                                        </p:inputText>
-                                            
-                                        <h:outputLabel for="contraseña" value="Contraseña: *" />
-                                        <p:password id="contraseña" required="true" label="contraseña" size="25" value="#{loginController.pass}"/>
-                                        
-                                        <p:selectOneRadio id="rol" required="true" value="#{loginController.usrRol}">  
-                                            <f:selectItem itemLabel="Estudiante" itemValue="1" />  
-                                            <f:selectItem itemLabel="Docente" itemValue="2" />
-                                        </p:selectOneRadio> 
-                                        <br />
-                                        <p:commandButton value="Aceptar" actionListener="#{loginController.doLogin}" update="la-growl" />
-                                        <br />
-                                        <h:link id="olv_contraseña" value="Olvide Contraseña" onclick="oc-dlg.show()" />
-                                        <h:link id="do-reg" value="Registrarse" />
-                                        <h:link id="intr" value="Intranet" />
-                                        <br />
-                                        <br />
-                                        <br />
-                                    </h:panelGrid>
-                                </p:panel>
-                            </h:form>
-                        </div>
-                    </div>
-                    <div id="vc-section">
-                        <br /><br />
-                        <p:tabView effect="fade" orientation="bottom">
-                            <p:tab title="Normas/Valores">
-                                <p:graphicImage value="/resources/images/normas-valores.png" />
-                            </p:tab>
-                            <p:tab title="Cursos/Carreras">
+                                <h:panelGrid columns="1" bgcolor="transparent" width="100%">
+                                    <h:outputLabel for="usuario" value="Usuario:    *"  />
+                                    <p:inputText id="usuario"  required="true" label="usuario" size="25" value="#{loginController.usrLogin}" >
+                                        <f:validateLength minimum="2"  />
+                                    </p:inputText>
 
-                            </p:tab>
-                        </p:tabView>
+                                    <h:outputLabel for="contraseña" value="Contraseña: *" />
+                                    <p:password id="contraseña" required="true" label="contraseña" size="25" value="#{loginController.pass}"/>
+
+                                    <p:selectOneRadio id="rol" required="true" value="#{loginController.usrRol}">  
+                                        <f:selectItem itemLabel="Estudiante" itemValue="1" />  
+                                        <f:selectItem itemLabel="Docente" itemValue="2" />
+                                    </p:selectOneRadio> 
+                                    <br />
+                                    <p:commandButton value="Aceptar" actionListener="#{loginController.doLogin}"/>
+                                    <br />
+
+                                    <h:commandLink id="olv_contraseña" value="Olvide Contraseña" action="oc-dlg.show();" />
+
+                                    <h:link id="do-reg" value="Registrarse" />
+                                    <h:link id="intr" value="Intranet" />
+                                    <br />
+                                    <br />
+                                    <br />
+                                </h:panelGrid>
+                            </p:panel>
+                        </h:form>
                     </div>
-                </h:form>
+                </div>
+                <div id="vc-section">
+                    <br /><br />
+                    <p:tabView effect="fade" orientation="bottom">
+                        <p:tab title="Normas/Valores">
+                            <p:graphicImage value="/resources/images/normas-valores.png" />
+                        </p:tab>
+                        <p:tab title="Cursos/Carreras">
+
+                        </p:tab>
+                    </p:tabView>
+                </div>
             </ui:define>
         </ui:composition>
     </body>
