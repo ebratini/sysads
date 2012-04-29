@@ -5,15 +5,8 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
-    <h:head>
-        <link href="/resources/css/home.css" rel="stylesheet" type="text/css" />
-        <link href="/resources/css/menuStyle.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="/resources/js/menuDynamic.js" />
-    </h:head>
     <body class="body-cls">
-
         <ui:composition template="/resources/templates/master_template.xhtml">
-
             <ui:define name="title">
                 SysADS - Registro de Usuarios
             </ui:define>
@@ -23,14 +16,74 @@
             </ui:define>
 
             <ui:define name="content">
-                <h:form id="frm-regusr">
-                    <p:fieldset legend="Login" toggleable="true" toggleSpeed="500">
-                        
-                    </p:fieldset>
-                    <p:fieldset legend="Configuracion de Seguridad" toggleable="true" toggleSpeed="500">
-                        
-                    </p:fieldset>
-                </h:form>
+                <div id="container">
+                    <div id="mainContent">
+                        <h:form>
+                            <p:growl id="rg_growl" showDetail="true" sticky="true" autoUpdate="true" />
+                            <p:panel>
+                                <p:fieldset legend="Informacion de Login" toggleable="true" toggleSpeed="500">
+                                    <h:panelGrid columns="2">  
+                                        <h:outputLabel for="nombre_usuario" value="Nombre Usuario:* " />
+                                        <p:inputText id="nombre_usuario" required="true" />
+
+                                        <h:outputLabel for="nombre_personal" value="Nombre:* " />  
+                                        <p:inputText id="nombre_personal" />
+
+                                        <h:outputLabel for="apellido" value="Apellido:* " />  
+                                        <p:inputText id="apellido" required="true" />
+
+                                        <h:outputLabel for="email" value="Email:* " />  
+                                        <p:inputText id="email" required="true" />
+                                    </h:panelGrid>
+                                </p:fieldset>
+                                <p:spacer height="10" />
+                                <p:fieldset legend="Configuracion de Seguridad" toggleable="true" toggleSpeed="500">
+                                    <h:panelGrid columns="2">  
+                                        <h:outputLabel for="password" value="Password:* " />  
+                                        <p:password id="password" required="true" label="Password 1" feedback="true" match="confirm_pass"/>
+
+                                        <h:outputLabel for="confirm_pass" value="Confirmar Password: " />  
+                                        <p:password id="confirm_pass" label="Password 2" required="true"/>
+
+                                        <h:outputText value="Vigencia Password: " />  
+                                        <p:selectOneMenu>  
+                                            <f:selectItem itemLabel="1 Mes" itemValue="1" />  
+                                            <f:selectItem itemLabel="2 Meses" itemValue="2" />  
+                                            <f:selectItem itemLabel="3 Meses" itemValue="3" />  
+                                            <f:selectItem itemLabel="4 Meses" itemValue="4" />
+                                            <f:selectItem itemLabel="5 Meses" itemValue="5" />  
+                                            <f:selectItem itemLabel="6 Meses" itemValue="6" />  
+                                            <f:selectItem itemLabel="7 Meses" itemValue="7" />  
+                                            <f:selectItem itemLabel="8 Meses" itemValue="8" />  
+                                            <f:selectItem itemLabel="9 Meses" itemValue="9" />  
+                                            <f:selectItem itemLabel="10 Meses" itemValue="10" />  
+                                            <f:selectItem itemLabel="11 Meses" itemValue="11" />  
+                                            <f:selectItem itemLabel="12 Meses" itemValue="12" />
+                                            <f:selectItem itemLabel="Indefinida" itemValue="13" />
+                                        </p:selectOneMenu>
+
+                                        <h:outputText value="Pregunta Seguridad: " />  
+                                        <p:selectOneMenu>  
+                                            <f:selectItem itemLabel="Cual es tu color favorito?" itemValue="1" />  
+                                            <f:selectItem itemLabel="Donde nacio tu madre?" itemValue="2" />  
+                                            <f:selectItem itemLabel="Donde nacio tu padre?" itemValue="3" />  
+                                            <f:selectItem itemLabel="Numero de id carnet universidad?" itemValue="4" />
+                                            <f:selectItem itemLabel="Como se llamo tu primera mascota?" itemValue="5" />
+                                        </p:selectOneMenu>
+
+                                        <h:outputText value="Respuesta:* " />
+                                        <p:inputText id="respuesta_psec" required="true" />
+                                    </h:panelGrid>
+                                </p:fieldset>
+                                <f:facet name="footer">
+                                    <p:commandButton value="Guardar" icon="ui-icon-check"/>
+                                    <p:spacer width="10" />
+                                    <p:commandButton value="Cancelar" icon="ui-icon-cancel"/>  
+                                </f:facet>
+                            </p:panel>
+                        </h:form>
+                    </div>
+                </div>
             </ui:define>
         </ui:composition>
     </body>

@@ -5,13 +5,8 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
-    <h:head>
-        <link href="/resources/css/home.css" rel="stylesheet" type="text/css" />
-        <link href="/resources/css/menuStyle.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="/resources/js/menuDynamic.js" />
-    </h:head>
-    <body class="body-cls">
 
+    <body class="body-cls">
         <ui:composition template="/resources/templates/master_template.xhtml">
 
             <ui:define name="title">
@@ -39,22 +34,22 @@
                     <div id="la" class="login_area">
                         <h:form id="la-frm">
                             <p:panel  id="lgn-panel" header="Login" >
-                                <p:growl id="la-growl" showDetail="true" />
+                                <p:growl id="la-growl" sticky="true" showDetail="true" autoUpdate="true"/>
                                 <h:panelGrid columns="1" bgcolor="transparent" width="100%">
                                     <h:outputLabel for="usuario" value="Usuario:    *"  />
-                                    <p:inputText id="usuario"  required="true" label="usuario" size="25" value="#{loginController.usrLogin}" >
+                                    <p:inputText id="usuario"  required="true" label="Usuario" size="25" value="#{loginController.usrLogin}" >
                                         <f:validateLength minimum="2"  />
                                     </p:inputText>
 
                                     <h:outputLabel for="contraseña" value="Contraseña: *" />
-                                    <p:password id="contraseña" required="true" label="contraseña" size="25" value="#{loginController.pass}"/>
+                                    <p:password id="contraseña" required="true" label="Contraseña" size="25" value="#{loginController.pass}"/>
 
-                                    <p:selectOneRadio id="rol" required="true" value="#{loginController.usrRol}">  
+                                    <p:selectOneRadio id="rol" label="Rol" required="true" value="#{loginController.usrRol}">  
                                         <f:selectItem itemLabel="Estudiante" itemValue="1" />  
                                         <f:selectItem itemLabel="Docente" itemValue="2" />
                                     </p:selectOneRadio> 
                                     <br />
-                                    <p:commandButton value="Aceptar" actionListener="#{loginController.doLogin}"/>
+                                    <p:commandButton value="Aceptar" action="#{loginController.doLogin}"/>
                                     <br />
                                 </h:panelGrid>
                             </p:panel>
@@ -65,11 +60,15 @@
                                 <h:outputText value="Olvide Contraseña" />
                             </h:outputLink>
                             &nbsp;&nbsp;
-                            <h:link id="do-reg" value="Registrarse" />
+                            <h:outputLink id="do-reg" value="usuarios/registrarse.jsf">
+                                <h:outputText value="Registrarse" />
+                            </h:outputLink>
                             &nbsp;&nbsp;
-                            <h:link id="intr" value="Intranet" />
+                            <h:outputLink id="intr" value="javascript:void(0)" onclick="oc_dlg.show();">
+                                <h:outputText value="Intranet" />
+                            </h:outputLink>
                                 
-                            <p:dialog id="dlg" header="Login - Recuperar Acceso" widgetVar="oc_dlg">
+                            <p:dialog id="dlg" header="Login - Recuperar Acceso" widgetVar="oc_dlg" showEffect="clip" hideEffect="clip" modal="true">
                                 <h:form>  
                                     <h:panelGrid columns="2" style="margin-bottom:10px">  
                                         <h:outputLabel for="nombreusuario" value="Nombre Usuario:" />  
