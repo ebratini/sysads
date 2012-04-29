@@ -40,11 +40,6 @@
                         <h:form id="la-frm">
                             <p:panel  id="lgn-panel" header="Login" >
                                 <p:growl id="la-growl" showDetail="true" />
-                                <p:dialog header="Login" widgetVar="oc-dlg">
-                                    <p:panel id="oc-dlg-pnl" header="Login - Recuperar Acceso">
-
-                                    </p:panel>
-                                </p:dialog>
                                 <h:panelGrid columns="1" bgcolor="transparent" width="100%">
                                     <h:outputLabel for="usuario" value="Usuario:    *"  />
                                     <p:inputText id="usuario"  required="true" label="usuario" size="25" value="#{loginController.usrLogin}" >
@@ -61,16 +56,33 @@
                                     <br />
                                     <p:commandButton value="Aceptar" actionListener="#{loginController.doLogin}"/>
                                     <br />
-
-                                    <h:commandLink id="olv_contraseña" value="Olvide Contraseña" action="oc-dlg.show();" />
-
-                                    <h:link id="do-reg" value="Registrarse" />
-                                    <h:link id="intr" value="Intranet" />
-                                    <br />
-                                    <br />
-                                    <br />
                                 </h:panelGrid>
                             </p:panel>
+                        </h:form>
+                        <br />
+                        <h:form>
+                            <h:outputLink id="olv_contraseña" value="javascript:void(0)" onclick="oc_dlg.show();" >
+                                <h:outputText value="Olvide Contraseña" />
+                            </h:outputLink>
+                            &nbsp;&nbsp;
+                            <h:link id="do-reg" value="Registrarse" />
+                            &nbsp;&nbsp;
+                            <h:link id="intr" value="Intranet" />
+                                
+                            <p:dialog id="dlg" header="Login - Recuperar Acceso" widgetVar="oc_dlg">
+                                <h:form>  
+                                    <h:panelGrid columns="2" style="margin-bottom:10px">  
+                                        <h:outputLabel for="nombreusuario" value="Nombre Usuario:" />  
+                                        <p:inputText id="nombreusuario" />  
+                                    </h:panelGrid>  
+                                        
+                                    <p:commandButton id="submitButton" value="Submit" oncomplete="dlg.hide();"/>  
+                                        
+                                </h:form>
+                            </p:dialog>
+                            <br />
+                            <br />
+                            <br />
                         </h:form>
                     </div>
                 </div>
