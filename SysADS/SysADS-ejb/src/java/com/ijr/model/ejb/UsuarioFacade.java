@@ -27,6 +27,7 @@ import com.ijr.model.entities.Usuario;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -46,4 +47,9 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
         super(Usuario.class);
     }
     
+    public Usuario getUsuarioByLogin(String login) {
+        Query query = em.createNamedQuery("Usuario.findByUsrLogin");
+        query.setParameter("usrLogin", login);
+        return (Usuario) query.getSingleResult();
+    }
 }
