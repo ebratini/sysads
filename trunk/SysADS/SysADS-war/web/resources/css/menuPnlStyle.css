@@ -6,29 +6,19 @@
         Purpose of the stylesheet follows.
 */
 
-<!--
-body {
-    font: 100% Verdana, Arial, Helvetica, sans-serif;
-    background: #464646;
-    margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
-    padding: 0;
-    text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
-    color: #000000;
-    width: 500px;
-    float: left;
-}
-.oneColLiqCtr #mnu-container {
+#mnu_container {
     width: 1000px;  /* this will create a container 80% of the browser width */
     background: #464646;
     margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
-    border: 1px solid #000000;
+    /*    border: 1px solid #000000;*/
+    border: none;
     text-align: left; /* this overrides the text-align: center on the body element. */
     display: block;
 }
-.oneColLiqCtr #mnu-mainContent {
+#mnu_mainContent {
     padding: 0 20px; /* remember that padding is the space inside the div box and margin is the space outside the div box */
+    border: none;
 }
--->
 
 .mnuItmLink {
     text-decoration: none;
@@ -40,10 +30,10 @@ body {
     color: #BBB;
 }
 
-.li-cls {
+.li_cls {
     margin-left: 10px;
 }
 
 .mnuItemDiv {
-    font-size: 70%;
+    font-size: 90%;
 }
