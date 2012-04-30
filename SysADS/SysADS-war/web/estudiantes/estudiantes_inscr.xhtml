@@ -41,19 +41,19 @@
                                                 <f:selectItem itemLabel="Modulos" itemValue="" />
                                                 <f:selectItems value="#{pPRBean.suburbs}" />
                                             </p:selectOneMenu>
-                                            </h:panelGrid>
+                                        </h:panelGrid>
                                         <p:panel header="Secciones Disponibles" >
                                             <h:panelGrid columns="2">
                                                 <p:selectBooleanCheckbox value="" />
                                                 <h:outputLabel for="secciones" value="Secciones seleccionadas de la base de datos" />  
                                             </h:panelGrid>                                   
                                         </p:panel>
-                                        </p:panel>
+                                    </p:panel>
                                     <p:separator />
                                     <p:commandButton value="Submit" update="msgs" actionListener="#{pPRBean.displayLocation}" id="btnSubmit"/>
                                 </h:form>
-                                
-                                        
+
+
                                 <p:spacer height="10" />
                             </p:panel>
                         </h:form>

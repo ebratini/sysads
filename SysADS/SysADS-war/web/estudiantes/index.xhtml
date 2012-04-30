@@ -21,12 +21,12 @@
                 <h:outputLink id="mnu_ttl_lnk" value="javascript:void(0)" style="text-decoration: none; color: #BBB; font-size: 120%" onmouseover="turnLink('mnu_ttl_lnk', true)" onmouseout="turnLink('mnu_ttl_lnk', false)">
                     <h:outputText value="Menu" />
                 </h:outputLink>
-                <p:overlayPanel style="background-color: #464646; border: none;" id="menuPanel" for="mnu_ttl_lnk" showEvent="mouseover" hideEvent="mousedown" showEffect="blind" hideEffect="blind">
+                <p:overlayPanel style="background-color: #464646; width: 886px; border: none;" id="menuPanel" for="mnu_ttl_lnk" showEvent="mouseover" hideEvent="mousedown" showEffect="blind" hideEffect="blind">
                     <div id="mnu_container" style="border: none;">
                         <div id="mnu_mainContent">
                             <div id="menuContainer"  style="width:100%; margin:0 auto;">
                                 <div id="img_div" style="width:40%; float:left;">
-                                    <h:graphicImage value="/resources/images/birrete.jpg" width="360px" height="300px" />
+                                    <h:graphicImage value="/resources/images/birrete.jpg" width="300px" height="263px" />
                                 </div>
                                 <div id="left_menu_div" style="width:30%; height:100%; float:left; display: block;">
                                     <!-- Administracion Cuenta de Usuario -->
@@ -85,7 +85,7 @@
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_hi" class="mnuItemDiv">
-                                                <a href="estudiantes_reg.jsf" id="hi_lnk" class="mnuItmLink" onmouseover="turnLink('hi_lnk', true)" onmouseout="turnLink('hi_lnk', false)">Hacer Inscripcion</a>
+                                                <a href="#"  onclick="est_reg_dlg.show();" id="hi_lnk" class="mnuItmLink" onmouseover="turnLink('hi_lnk', true)" onmouseout="turnLink('hi_lnk', false)">Hacer Inscripcion</a>
                                             </div>
                                         </li>
                                         <li class="li_cls">
@@ -211,7 +211,7 @@
                                 <h:outputText value="Olvide Contraseña" />
                             </h:outputLink>
                             &nbsp;&nbsp;
-                            <h:outputLink id="do-reg" value="usuarios/registrarse.jsf">
+                            <h:outputLink id="do-reg" value="./usuarios/registrarse.jsf">
                                 <h:outputText value="Registrarse" />
                             </h:outputLink>
                             &nbsp;&nbsp;
@@ -219,7 +219,7 @@
                                 <h:outputText value="Intranet" />
                             </h:outputLink>
 
-                            <p:dialog id="dlg" header="Login - Recuperar Acceso" widgetVar="oc_dlg" showEffect="clip" hideEffect="clip" modal="true">
+                            <p:dialog id="dlg" header="Login - Recuperar Acceso" widgetVar="oc_dlg" showEffect="clip" hideEffect="clip" modal="true" >
                                 <h:form>  
                                     <h:panelGrid columns="2" style="margin-bottom:10px">  
                                         <h:outputLabel for="nombreusuario" value="Nombre Usuario:" />  
@@ -228,6 +228,33 @@
 
                                     <p:commandButton id="submitButton" value="Submit" oncomplete="dlg.hide();"/>  
 
+                                </h:form>
+                            </p:dialog>
+                                           
+                            <p:dialog id="ins_dlg" header="Inscripcion - Reinscripcion" widgetVar="est_reg_dlg" showEffect="clip" hideEffect="clip" modal="true" >
+                                <h:form>  
+                                    <h:panelGrid columns="3" style="margin-bottom:10px">                                         
+                                        <h:outputLink id="newuser" value="./estudiantes_reg.jsf" onclick="dlg.hide();">
+                                            <p:button value="Primera Inscripcion"/>
+                                        </h:outputLink> 
+                                        <h:outputText value="&nbsp;&nbsp;&nbsp;&nbsp;" />
+                                        <h:outputLink id="user" value="./estudiantes_inscr.jsf" onclick="dlg.hide();">
+                                            <p:button value="Reinscripcion"/>
+                                        </h:outputLink>                                         
+                                    </h:panelGrid>  
+                                </h:form>
+                            </p:dialog>
+                            <p:dialog id="status_ins" header="Inscripcion - Reinscripcion" widgetVar="est_reg_dlg" showEffect="clip" hideEffect="clip" modal="true" >
+                                <h:form>  
+                                    <h:panelGrid columns="3" style="margin-bottom:10px">                                         
+                                        <h:outputLink id="newuser" value="./estudiantes_reg.jsf" onclick="dlg.hide();">
+                                            <p:button value="Primera Inscripcion"/>
+                                        </h:outputLink> 
+                                        <h:outputText value="&nbsp;&nbsp;&nbsp;&nbsp;" />
+                                        <h:outputLink id="user" value="./estudiantes_inscr.jsf" onclick="dlg.hide();">
+                                            <p:button value="Reinscripcion"/>
+                                        </h:outputLink>                                         
+                                    </h:panelGrid>  
                                 </h:form>
                             </p:dialog>
                             <br />
