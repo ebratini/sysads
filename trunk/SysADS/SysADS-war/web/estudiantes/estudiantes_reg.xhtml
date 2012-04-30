@@ -19,7 +19,7 @@
                 <div id="container">
                     <div id="mainContent">
                         <h:form>
-                            <p:growl id="rg_growl" showDetail="true" life="5000" />
+                            <p:growl id="est_growl" showDetail="true" life="5000" />
                             <p:panel id="rg_pnl">
                                 <p:focus context="rg_pnl"/>
                                 <p:fieldset legend="Datos Personales" toggleable="true" toggleSpeed="500" >
@@ -109,7 +109,7 @@
                                     </h:panelGrid>
                                 </p:fieldset>
                                 <f:facet name="footer">
-                                    <p:commandButton value="Guardar" action="#{usuarioController.doCreateUser}" icon="ui-icon-check" update="rg_growl" />
+                                    <p:commandButton value="Guardar" action="#{usuarioController.doCreateUser}" icon="ui-icon-check" update="est_growl" />
                                     <p:spacer width="10" />
                                     <p:commandButton value="Cancelar" action="#{usuarioController.cancelUserCreation}" icon="ui-icon-cancel" />  
                                 </f:facet>
