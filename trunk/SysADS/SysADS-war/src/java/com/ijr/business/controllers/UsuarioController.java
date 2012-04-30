@@ -68,10 +68,10 @@ public class UsuarioController {
         usuarioFacade.create(usuario);
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage("Registro Usuarios", "Usuario creado exitosamente"));
-        return "index.jsf";
+        return "/index.jsf";
     }
 
     public String cancelUserCreation() {
-        return "index.jsf";
+        return "/index.jsf";
     }
 }
