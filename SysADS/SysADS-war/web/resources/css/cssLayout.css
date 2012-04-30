@@ -67,7 +67,7 @@
 }
 #mainContent {
     width: 98%;
-    background: whitesmoke url("resources/images/background-image.jpg");
+    background: whitesmoke url("/resources/images/background_image.jpg");
     padding: 0px; /* remember that padding is the space inside the div box and margin is the space outside the div box */
     margin: 0px auto;
 }

@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
-    <body class="body-cls">
+    <body class="body_cls">
         <ui:composition template="/resources/templates/master_template.xhtml">
             <ui:define name="title">
                 SysADS - Registro de Usuarios
@@ -20,7 +20,8 @@
                     <div id="mainContent">
                         <h:form>
                             <p:growl id="rg_growl" showDetail="true" life="5000" />
-                            <p:panel>
+                            <p:panel id="rg_pnl">
+                                <p:focus context="rg_pnl"/>
                                 <p:fieldset legend="Informacion de Login" toggleable="true" toggleSpeed="500">
                                     <h:panelGrid columns="2">  
                                         <h:outputLabel for="nombre_usuario" value="Nombre Usuario:* " />

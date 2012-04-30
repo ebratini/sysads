@@ -1,49 +1,49 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link href="./resources/css/menuStyle.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="./resources/js/menuDynamic.js" />
-        <title>Untitled Document</title>
+        <h:outputStylesheet library="css" name="menuStyle.css" />
+        <h:outputScript library="js" name="menuDynamic.js" />
+        <title>Menu</title>
     </h:head>
 
     <h:body class="oneColLiqCtr">
-
-        <div id="mnu-container">
-            <div id="mnu-mainContent">
+        <div id="mnu_container">
+            <div id="mnu_mainContent">
                 <div id="menuContainer"  style="width:100%; margin:0 auto">
-                    <div id="img-div" style="width:40%; float:left;">
+                    <div id="img_div" style="width:40%; float:left;">
                         <p>&nbsp;</p>
                         <p>&nbsp;</p>
                         <p>&nbsp;</p>
                         <p>&nbsp;</p>
                         <p>&nbsp;</p>
                     </div>
-                    <div id="left-menu-div" style="width:30%; height:100%; float:left; display: block;">
+                    <div id="left_menu_div" style="width:30%; height:100%; float:left; display: block;">
                         <!-- Administracion Cuenta de Usuario -->
                         <ul style="margin:0; padding:0; list-style-type:none; padding-bottom:20px;">
                             <li>
-                                <div id="lm-title-top" style="width:100%; margin:0 auto; color:#DDD; font-size:120%; padding-bottom: 2px;">Administracion Cuenta</div>
+                                <div id="lm_title_top" style="width:100%; margin:0 auto; color:#DDD; font-size:120%; padding-bottom: 2px;">Administracion Cuenta</div>
                             </li>
-                            <li class="li-cls">
-                                <div id="lm-mnuItm-vp" class="mnuItemDiv">
-                                    <a href="#" id="vp-lnk" class="mnuItmLink" onmouseover="turnLink('vp-lnk', true)" onmouseout="turnLink('vp-lnk', false)">Ver Perfil</a>
+                            <li class="li_cls">
+                                <div id="lm_mnuItm_vp" class="mnuItemDiv">
+                                    <a href="#" id="vp_lnk" class="mnuItmLink" onmouseover="turnLink('vp_lnk', true)" onmouseout="turnLink('vp_lnk', false)">Ver Perfil</a>
                                 </div>
                             </li>
-                            <li class="li-cls">
-                                <div id="lm-title"  class="mnuItemDiv">
-                                    <a href="#" id="cc-lnk" class="mnuItmLink" onmouseover="turnLink('cc-lnk', true)" onmouseout="turnLink('cc-lnk', false)">Cambiar Contraseña</a>
+                            <li class="li_cls">
+                                <div id="lm_title"  class="mnuItemDiv">
+                                    <a href="#" id="cc_lnk" class="mnuItmLink" onmouseover="turnLink('cc_lnk', true)" onmouseout="turnLink('cc_lnk', false)">Cambiar Contraseña</a>
                                 </div>
                             </li>
-                            <li class="li-cls">
-                                <div id="lm-title"  class="mnuItemDiv">
-                                    <a href="#" id="cprs-lnk" class="mnuItmLink" onmouseover="turnLink('cprs-lnk', true)" onmouseout="turnLink('cprs-lnk', false)">Editar Pregunta/Respuesta Seguridad</a>
+                            <li class="li_cls">
+                                <div id="lm_title"  class="mnuItemDiv">
+                                    <a href="#" id="cprs_lnk" class="mnuItmLink" onmouseover="turnLink('cprs_lnk', true)" onmouseout="turnLink('cprs_lnk', false)">Editar Pregunta/Respuesta Seguridad</a>
                                 </div>
                             </li>
-                            <li class="li-cls">
-                                <div id="lm-title"  class="mnuItemDiv">
-                                    <a href="#" id="evc-lnk" class="mnuItmLink" onmouseover="turnLink('evc-lnk', true)" onmouseout="turnLink('evc-lnk', false)">Editar Vigencia Contraseña</a>
+                            <li class="li_cls">
+                                <div id="lm_title"  class="mnuItemDiv">
+                                    <a href="#" id="evc_lnk" class="mnuItmLink" onmouseover="turnLink('evc_lnk', true)" onmouseout="turnLink('evc_lnk', false)">Editar Vigencia Contraseña</a>
                                 </div>
                             </li>
 
@@ -51,16 +51,16 @@
                         <!-- Administracion Datos Personales -->
                         <ul style="margin:0; padding:0; list-style-type:none; padding-bottom:20px;">
                             <li>
-                                <div id="lm-title-cnt" style="width:100%; margin:0 auto; color:#DDD; font-size:120%; padding-bottom: 2px;">Datos Personales</div>
+                                <div id="lm_title_cnt" style="width:100%; margin:0 auto; color:#DDD; font-size:120%; padding-bottom: 2px;">Datos Personales</div>
                             </li>
-                            <li class="li-cls">
-                                <div id="lm-mnuItm-vedp" class="mnuItemDiv">
-                                    <a href="#" id="vedp-lnk" class="mnuItmLink" onmouseover="turnLink('vedp-lnk', true)" onmouseout="turnLink('vedp-lnk', false)">Ver/Editar Datos Personales</a>
+                            <li class="li_cls">
+                                <div id="lm_mnuItm_vedp" class="mnuItemDiv">
+                                    <a href="#" id="vedp_lnk" class="mnuItmLink" onmouseover="turnLink('vedp_lnk', true)" onmouseout="turnLink('vedp_lnk', false)">Ver/Editar Datos Personales</a>
                                 </div>
                             </li>
-                            <li class="li-cls">
-                                <div id="lm-mnuItm-vece" class="mnuItemDiv">
-                                    <a href="#" id="vece-lnk" class="mnuItmLink" onmouseover="turnLink('vece-lnk', true)" onmouseout="turnLink('vece-lnk', false)">Ver/Editar Contacto(s) Emergencia</a>
+                            <li class="li_cls">
+                                <div id="lm_mnuItm_vece" class="mnuItemDiv">
+                                    <a href="#" id="vece_lnk" class="mnuItmLink" onmouseover="turnLink('vece_lnk', true)" onmouseout="turnLink('vece_lnk', false)">Ver/Editar Contacto(s) Emergencia</a>
                                 </div>
                             </li>
                         </ul>
@@ -68,61 +68,61 @@
                         <!-- Academica -->
                         <ul style="margin:0; padding:0; list-style-type:none; padding-bottom:20px;">
                             <li>
-                                <div id="lm-title-btm" style="width:100%; margin:0 auto; color:#DDD; font-size:120%; padding-bottom: 2px;">Academica</div>
+                                <div id="lm_title_btm" style="width:100%; margin:0 auto; color:#DDD; font-size:120%; padding-bottom: 2px;">Academica</div>
                             </li>
-                            <li class="li-cls">
-                                <div id="lm-mnuItm-ci" class="mnuItemDiv">
-                                    <a href="#" id="ci-lnk" class="mnuItmLink" onmouseover="turnLink('ci-lnk', true)" onmouseout="turnLink('ci-lnk', false)">Calendario Inscripcion</a>
+                            <li class="li_cls">
+                                <div id="lm_mnuItm_ci" class="mnuItemDiv">
+                                    <a href="#" id="ci_lnk" class="mnuItmLink" onmouseover="turnLink('ci_lnk', true)" onmouseout="turnLink('ci_lnk', false)">Calendario Inscripcion</a>
                                 </div>
                             </li>
-                            <li class="li-cls">
-                                <div id="lm-mnuItm-hi" class="mnuItemDiv">
-                                    <a href="#" id="hi-lnk" class="mnuItmLink" onmouseover="turnLink('hi-lnk', true)" onmouseout="turnLink('hi-lnk', false)">Hacer Inscripcion</a>
+                            <li class="li_cls">
+                                <div id="lm_mnuItm_hi" class="mnuItemDiv">
+                                    <a href="#" id="hi_lnk" class="mnuItmLink" onmouseover="turnLink('hi_lnk', true)" onmouseout="turnLink('hi_lnk', false)">Hacer Inscripcion</a>
                                 </div>
                             </li>
-                            <li class="li-cls">
-                                <div id="lm-mnuItm-hisi" class="mnuItemDiv">
-                                    <a href="#" id="hisi-lnk" class="mnuItmLink" onmouseover="turnLink('hisi-lnk', true)" onmouseout="turnLink('hisi-lnk', false)">Historico Inscripciones</a>
+                            <li class="li_cls">
+                                <div id="lm_mnuItm_hisi" class="mnuItemDiv">
+                                    <a href="#" id="hisi_lnk" class="mnuItmLink" onmouseover="turnLink('hisi_lnk', true)" onmouseout="turnLink('hisi_lnk', false)">Historico Inscripciones</a>
                                 </div>
                             </li>
-                            <li class="li-cls">
-                                <div id="lm-mnuItm-si" class="mnuItemDiv">
-                                    <a href="#" id="si-lnk" class="mnuItmLink" onmouseover="turnLink('si-lnk', true)" onmouseout="turnLink('si-lnk', false)">Status Inscripcion</a>
+                            <li class="li_cls">
+                                <div id="lm_mnuItm_si" class="mnuItemDiv">
+                                    <a href="#" id="si_lnk" class="mnuItmLink" onmouseover="turnLink('si_lnk', true)" onmouseout="turnLink('si_lnk', false)">Status Inscripcion</a>
                                 </div>
                             </li>
-                            <li class="li-cls">
-                                <div id="lm-mnuItm-rc" class="mnuItemDiv">
-                                    <a href="#" id="rc-lnk" class="mnuItmLink" onmouseover="turnLink('rc-lnk', true)" onmouseout="turnLink('rc-lnk', false)">Retiro Curso/Carrera</a>
+                            <li class="li_cls">
+                                <div id="lm_mnuItm_rc" class="mnuItemDiv">
+                                    <a href="#" id="rc_lnk" class="mnuItmLink" onmouseover="turnLink('rc_lnk', true)" onmouseout="turnLink('rc_lnk', false)">Retiro Curso/Carrera</a>
                                 </div>
                             </li>
-                            <li class="li-cls">
-                                <div id="lm-mnuItm-ccal" class="mnuItemDiv">
-                                    <a href="#" id="ccal-lnk" class="mnuItmLink" onmouseover="turnLink('ccal-lnk', true)" onmouseout="turnLink('ccal-lnk', false)">Consulta Calificaciones</a>
+                            <li class="li_cls">
+                                <div id="lm_mnuItm_ccal" class="mnuItemDiv">
+                                    <a href="#" id="ccal_lnk" class="mnuItmLink" onmouseover="turnLink('ccal_lnk', true)" onmouseout="turnLink('ccal_lnk', false)">Consulta Calificaciones</a>
                                 </div>
                             </li>
                         </ul>
 
                         <p>&nbsp;</p>
                     </div>
-                    <div id="right-menu-div" style="width:30%; float:left;">
+                    <div id="right_menu_div" style="width:30%; float:left;">
                         <!-- Administracion Financiera -->
                         <ul style="margin:0; padding:0; list-style-type:none; padding-bottom:32px;">
                             <li>
-                                <div id="rm-title-top" style="width:100%; margin:0 auto; color:#DDD; font-size:120%; padding-bottom: 2px;">Financiera</div>
+                                <div id="rm_title_top" style="width:100%; margin:0 auto; color:#DDD; font-size:120%; padding-bottom: 2px;">Financiera</div>
                             </li>
-                            <li class="li-cls">
-                                <div id="lr-mnuItm-hp" class="mnuItemDiv">
-                                    <a href="#" id="hp-lnk" class="mnuItmLink" onmouseover="turnLink('hp-lnk', true)" onmouseout="turnLink('hp-lnk', false)">Hacer Pago</a>
+                            <li class="li_cls">
+                                <div id="lr_mnuItm_hp" class="mnuItemDiv">
+                                    <a href="#" id="hp_lnk" class="mnuItmLink" onmouseover="turnLink('hp_lnk', true)" onmouseout="turnLink('hp_lnk', false)">Hacer Pago</a>
                                 </div>
                             </li>
-                            <li class="li-cls">
-                                <div id="rm-mnuItm-hisp"  class="mnuItemDiv">
-                                    <a href="#" id="hisp-lnk" class="mnuItmLink" onmouseover="turnLink('hisp-lnk', true)" onmouseout="turnLink('hisp-lnk', false)">Historico Pago</a>
+                            <li class="li_cls">
+                                <div id="rm_mnuItm_hisp"  class="mnuItemDiv">
+                                    <a href="#" id="hisp_lnk" class="mnuItmLink" onmouseover="turnLink('hisp_lnk', true)" onmouseout="turnLink('hisp_lnk', false)">Historico Pago</a>
                                 </div>
                             </li>
-                            <li class="li-cls">
-                                <div id="rm-mnuItm-ref"  class="mnuItemDiv">
-                                    <a href="#" id="ref-lnk" class="mnuItmLink" onmouseover="turnLink('ref-lnk', true)" onmouseout="turnLink('ref-lnk', false)">Reporte Estado Financiero</a>
+                            <li class="li_cls">
+                                <div id="rm_mnuItm_ref"  class="mnuItemDiv">
+                                    <a href="#" id="ref_lnk" class="mnuItmLink" onmouseover="turnLink('ref_lnk', true)" onmouseout="turnLink('ref_lnk', false)">Reporte Estado Financiero</a>
                                 </div>
                             </li>
                         </ul>
@@ -130,21 +130,21 @@
                         <!-- Otros/General -->
                         <ul style="margin:0; padding:0; list-style-type:none; padding-bottom:20px;">
                             <li>
-                                <div id="rm-title-cnt" style="width:100%; margin:0 auto; color:#DDD; font-size:120%; padding-bottom: 2px;">De Interes</div>
+                                <div id="rm_title_cnt" style="width:100%; margin:0 auto; color:#DDD; font-size:120%; padding-bottom: 2px;">De Interes</div>
                             </li>
-                            <li class="li-cls">
-                                <div id="rm-mnuItm-ijr" class="mnuItemDiv">
-                                    <a href="#" id="ijr-lnk" class="mnuItmLink" onmouseover="turnLink('ijr-lnk', true)" onmouseout="turnLink('ijr-lnk', false)">Instituto Jose Reyes</a>
+                            <li class="li_cls">
+                                <div id="rm_mnuItm_ijr" class="mnuItemDiv">
+                                    <a href="#" id="ijr_lnk" class="mnuItmLink" onmouseover="turnLink('ijr_lnk', true)" onmouseout="turnLink('ijr_lnk', false)">Instituto Jose Reyes</a>
                                 </div>
                             </li>
-                            <li class="li-cls">
-                                <div id="lm-mnuItm-cso" class="mnuItemDiv">
-                                    <a href="#" id="cso-lnk" class="mnuItmLink" onmouseover="turnLink('cso-lnk', true)" onmouseout="turnLink('cso-lnk', false)">Carreras/Cursos</a>
+                            <li class="li_cls">
+                                <div id="lm_mnuItm_cso" class="mnuItemDiv">
+                                    <a href="#" id="cso_lnk" class="mnuItmLink" onmouseover="turnLink('cso_lnk', true)" onmouseout="turnLink('cso_lnk', false)">Carreras/Cursos</a>
                                 </div>
                             </li>
-                            <li class="li-cls">
-                                <div id="lm-mnuItm-ms" class="mnuItemDiv">
-                                    <a href="#" id="ms-lnk" class="mnuItmLink" onmouseover="turnLink('ms-lnk', true)" onmouseout="turnLink('ms-lnk', false)">Mapa del Sitio</a>
+                            <li class="li_cls">
+                                <div id="lm_mnuItm_ms" class="mnuItemDiv">
+                                    <a href="#" id="ms_lnk" class="mnuItmLink" onmouseover="turnLink('ms_lnk', true)" onmouseout="turnLink('ms_lnk', false)">Mapa del Sitio</a>
                                 </div>
                             </li>
                         </ul>

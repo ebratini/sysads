@@ -5,13 +5,12 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
-    <head>
-        <link href="/resources/css/home.css" rel="stylesheet" type="text/css" />
-        <link href="/resources/css/menuStyle.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="/resources/js/menuDynamic.js" />
-    </head>
-    <body class="body-cls">
 
+<!--    <h:head>
+        <h:outputStylesheet library="css" name="menuStyle.css" />
+        <h:outputScript library="js" name="resources/js/menuDynamic.js" />
+    </h:head>-->
+    <body class="body_cls">
         <ui:composition template="/resources/templates/master_template.xhtml">
 
             <ui:define name="title">
@@ -19,66 +18,235 @@
             </ui:define>
 
             <ui:define name="menu">
-                <h:form id="menuForm">
-                    <p:commandLink id="mnu_ttl-lnk" value="Menu" style="text-decoration: none; color: #BBB; font-size: 120%" onmouseover="turnLink('mnu_ttl-lnk', true)" onmouseout="turnLink('mnu_ttl-lnk', false)"/>
-                    <p:overlayPanel id="MenuPanel" for="mnu_ttl-lnk" showEvent="mouseover" hideEvent="mousedown" showEffect="blind" hideEffect="blind">
-                        <h:dataTable style="width: 1000px; height: 400px;">
-                            <ui:include src="./estudiantes/menu.xhtml" />
-                        </h:dataTable>
-                    </p:overlayPanel>
-                </h:form>
+                <h:outputLink id="mnu_ttl_lnk" value="javascript:void(0)" style="text-decoration: none; color: #BBB; font-size: 120%" onmouseover="turnLink('mnu_ttl_lnk', true)" onmouseout="turnLink('mnu_ttl_lnk', false)">
+                    <h:outputText value="Menu" />
+                </h:outputLink>
+                <p:overlayPanel style="background-color: #464646; border: none;" id="menuPanel" for="mnu_ttl_lnk" showEvent="mouseover" hideEvent="mousedown" showEffect="blind" hideEffect="blind">
+                    <div id="mnu_container" style="border: none;">
+                        <div id="mnu_mainContent">
+                            <div id="menuContainer"  style="width:100%; margin:0 auto;">
+                                <div id="img_div" style="width:40%; float:left;">
+                                    <h:graphicImage value="/resources/images/birrete.jpg" width="360px" height="300px" />
+                                </div>
+                                <div id="left_menu_div" style="width:30%; height:100%; float:left; display: block;">
+                                    <!-- Administracion Cuenta de Usuario -->
+                                    <ul style="margin:0; padding:0; list-style-type:none; padding-bottom:20px;">
+                                        <li>
+                                            <div id="lm_title_top" style="width:100%; margin:0 auto; color:#DDD; font-size:120%; padding-bottom: 2px;">Administracion Cuenta</div>
+                                        </li>
+                                        <li class="li_cls">
+                                            <div id="lm_mnuItm_vp" class="mnuItemDiv">
+                                                <a href="#" id="vp_lnk" class="mnuItmLink" onmouseover="turnLink('vp_lnk', true)" onmouseout="turnLink('vp_lnk', false)">Ver Perfil</a>
+                                            </div>
+                                        </li>
+                                        <li class="li_cls">
+                                            <div id="lm_title"  class="mnuItemDiv">
+                                                <a href="#" id="cc_lnk" class="mnuItmLink" onmouseover="turnLink('cc_lnk', true)" onmouseout="turnLink('cc_lnk', false)">Cambiar Contraseña</a>
+                                            </div>
+                                        </li>
+                                        <li class="li_cls">
+                                            <div id="lm_title"  class="mnuItemDiv">
+                                                <a href="#" id="cprs_lnk" class="mnuItmLink" onmouseover="turnLink('cprs_lnk', true)" onmouseout="turnLink('cprs_lnk', false)">Editar Pregunta/Respuesta Seguridad</a>
+                                            </div>
+                                        </li>
+                                        <li class="li_cls">
+                                            <div id="lm_title"  class="mnuItemDiv">
+                                                <a href="#" id="evc_lnk" class="mnuItmLink" onmouseover="turnLink('evc_lnk', true)" onmouseout="turnLink('evc_lnk', false)">Editar Vigencia Contraseña</a>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                    <!-- Administracion Datos Personales -->
+                                    <ul style="margin:0; padding:0; list-style-type:none; padding-bottom:20px;">
+                                        <li>
+                                            <div id="lm_title_cnt" style="width:100%; margin:0 auto; color:#DDD; font-size:120%; padding-bottom: 2px;">Datos Personales</div>
+                                        </li>
+                                        <li class="li_cls">
+                                            <div id="lm_mnuItm_vedp" class="mnuItemDiv">
+                                                <a href="#" id="vedp_lnk" class="mnuItmLink" onmouseover="turnLink('vedp_lnk', true)" onmouseout="turnLink('vedp_lnk', false)">Ver/Editar Datos Personales</a>
+                                            </div>
+                                        </li>
+                                        <li class="li_cls">
+                                            <div id="lm_mnuItm_vece" class="mnuItemDiv">
+                                                <a href="#" id="vece_lnk" class="mnuItmLink" onmouseover="turnLink('vece_lnk', true)" onmouseout="turnLink('vece_lnk', false)">Ver/Editar Contacto(s) Emergencia</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Academica -->
+                                    <ul style="margin:0; padding:0; list-style-type:none; padding-bottom:20px;">
+                                        <li>
+                                            <div id="lm_title_btm" style="width:100%; margin:0 auto; color:#DDD; font-size:120%; padding-bottom: 2px;">Academica</div>
+                                        </li>
+                                        <li class="li_cls">
+                                            <div id="lm_mnuItm_ci" class="mnuItemDiv">
+                                                <a href="#" id="ci_lnk" class="mnuItmLink" onmouseover="turnLink('ci_lnk', true)" onmouseout="turnLink('ci_lnk', false)">Calendario Inscripcion</a>
+                                            </div>
+                                        </li>
+                                        <li class="li_cls">
+                                            <div id="lm_mnuItm_hi" class="mnuItemDiv">
+                                                <a href="#" id="hi_lnk" class="mnuItmLink" onmouseover="turnLink('hi_lnk', true)" onmouseout="turnLink('hi_lnk', false)">Hacer Inscripcion</a>
+                                            </div>
+                                        </li>
+                                        <li class="li_cls">
+                                            <div id="lm_mnuItm_hisi" class="mnuItemDiv">
+                                                <a href="#" id="hisi_lnk" class="mnuItmLink" onmouseover="turnLink('hisi_lnk', true)" onmouseout="turnLink('hisi_lnk', false)">Historico Inscripciones</a>
+                                            </div>
+                                        </li>
+                                        <li class="li_cls">
+                                            <div id="lm_mnuItm_si" class="mnuItemDiv">
+                                                <a href="#" id="si_lnk" class="mnuItmLink" onmouseover="turnLink('si_lnk', true)" onmouseout="turnLink('si_lnk', false)">Status Inscripcion</a>
+                                            </div>
+                                        </li>
+                                        <li class="li_cls">
+                                            <div id="lm_mnuItm_rc" class="mnuItemDiv">
+                                                <a href="#" id="rc_lnk" class="mnuItmLink" onmouseover="turnLink('rc_lnk', true)" onmouseout="turnLink('rc_lnk', false)">Retiro Curso/Carrera</a>
+                                            </div>
+                                        </li>
+                                        <li class="li_cls">
+                                            <div id="lm_mnuItm_ccal" class="mnuItemDiv">
+                                                <a href="#" id="ccal_lnk" class="mnuItmLink" onmouseover="turnLink('ccal_lnk', true)" onmouseout="turnLink('ccal_lnk', false)">Consulta Calificaciones</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <p>&nbsp;</p>
+                                </div>
+                                <div id="right_menu_div" style="width:30%; float:left;">
+                                    <!-- Administracion Financiera -->
+                                    <ul style="margin:0; padding:0; list-style-type:none; padding-bottom:32px;">
+                                        <li>
+                                            <div id="rm_title_top" style="width:100%; margin:0 auto; color:#DDD; font-size:120%; padding-bottom: 2px;">Financiera</div>
+                                        </li>
+                                        <li class="li_cls">
+                                            <div id="lr_mnuItm_hp" class="mnuItemDiv">
+                                                <a href="#" id="hp_lnk" class="mnuItmLink" onmouseover="turnLink('hp_lnk', true)" onmouseout="turnLink('hp_lnk', false)">Hacer Pago</a>
+                                            </div>
+                                        </li>
+                                        <li class="li_cls">
+                                            <div id="rm_mnuItm_hisp"  class="mnuItemDiv">
+                                                <a href="#" id="hisp_lnk" class="mnuItmLink" onmouseover="turnLink('hisp_lnk', true)" onmouseout="turnLink('hisp_lnk', false)">Historico Pago</a>
+                                            </div>
+                                        </li>
+                                        <li class="li_cls">
+                                            <div id="rm_mnuItm_ref"  class="mnuItemDiv">
+                                                <a href="#" id="ref_lnk" class="mnuItmLink" onmouseover="turnLink('ref_lnk', true)" onmouseout="turnLink('ref_lnk', false)">Reporte Estado Financiero</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Otros/General -->
+                                    <ul style="margin:0; padding:0; list-style-type:none; padding-bottom:20px;">
+                                        <li>
+                                            <div id="rm_title_cnt" style="width:100%; margin:0 auto; color:#DDD; font-size:120%; padding-bottom: 2px;">De Interes</div>
+                                        </li>
+                                        <li class="li_cls">
+                                            <div id="rm_mnuItm_ijr" class="mnuItemDiv">
+                                                <a href="http://www.institutojosereyes.com/" id="ijr_lnk" class="mnuItmLink" onmouseover="turnLink('ijr_lnk', true)" onmouseout="turnLink('ijr_lnk', false)">Instituto Jose Reyes</a>
+                                            </div>
+                                        </li>
+                                        <li class="li_cls">
+                                            <div id="lm_mnuItm_cso" class="mnuItemDiv">
+                                                <a href="#" id="cso_lnk" class="mnuItmLink" onmouseover="turnLink('cso_lnk', true)" onmouseout="turnLink('cso_lnk', false)">Carreras/Cursos</a>
+                                            </div>
+                                        </li>
+                                        <li class="li_cls">
+                                            <div id="lm_mnuItm_ms" class="mnuItemDiv">
+                                                <a href="#" id="ms_lnk" class="mnuItmLink" onmouseover="turnLink('ms_lnk', true)" onmouseout="turnLink('ms_lnk', false)">Mapa del Sitio</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <p>&nbsp;</p>
+                                <p>&nbsp;</p>
+                                <p>&nbsp;</p>
+                                <p>&nbsp;</p>
+                            </div>
+                            <p>&nbsp;</p>
+                            <!-- end #mainContent --></div>
+                        <!-- end #container --></div>
+                </p:overlayPanel>
             </ui:define>
 
             <ui:define name="content">
-                <h:form>
-                    <hr />
-                    <div id="news" class="newsbar">News</div>
-                    <hr />
-                    <div id="ig-la" style="height: 270px;" >
-                        <div id="ig" style="width:60%; float:left;">
-                            <p:galleria effect="slide" effectDuration="1000" panelHeight="247" panelWidth="545">
-                                <p:graphicImage value="/resources/images/g1.jpg" panelWidth="80" title="image1" alt="image1 desc" />
-                                <p:graphicImage value="/resources/images/g2.jpg" panelWidth="80" title="image1" alt=" image2 desc" />
-                                <p:graphicImage value="/resources/images/g3.jpg" panelWidth="80" title="image1" alt=" image3 desc" />
-                                <p:graphicImage value="/resources/images/g4.jpg" panelWidth="80" title="image1" alt=" image4 desc" />
-                            </p:galleria>
+                <hr />
+                <div id="news" class="newsbar">News</div>
+                <hr />
+                <div id="ig-la" style="height: 270px;" >
+                    <div id="ig" style="width:60%; float:left;">
+                        <p:galleria effect="slide" effectDuration="1000" panelHeight="247" panelWidth="545">
+                            <p:graphicImage value="/resources/images/g1.jpg" panelWidth="80" title="image1" alt="image1 desc" />
+                            <p:graphicImage value="/resources/images/g2.jpg" panelWidth="80" title="image1" alt=" image2 desc" />
+                            <p:graphicImage value="/resources/images/g3.jpg" panelWidth="80" title="image1" alt=" image3 desc" />
+                            <p:graphicImage value="/resources/images/g4.jpg" panelWidth="80" title="image1" alt=" image4 desc" />
+                        </p:galleria>
 
-                        </div>
-                        <div id="la" class="login_area">
-                            <p:panel  d="panel" header="Login" >
+                    </div>
+                    <div id="la" class="login_area">
+                        <h:form id="la-frm">
+                            <p:panel  id="lgn-panel" header="Login" >
+                                <p:growl id="la-growl" sticky="true" showDetail="true" autoUpdate="true"/>
                                 <h:panelGrid columns="1" bgcolor="transparent" width="100%">
                                     <h:outputLabel for="usuario" value="Usuario:    *"  />
-                                    <p:inputText id="usuario"  required="true" label="usuario" size="25"  >
+                                    <p:inputText id="usuario"  required="true" label="Usuario" size="25" value="#{loginController.usrLogin}" >
                                         <f:validateLength minimum="2"  />
                                     </p:inputText>
 
                                     <h:outputLabel for="contraseña" value="Contraseña: *" />
-                                    <p:inputText id="contraseña" required="true" label="contraseña" size="25"/>
+                                    <p:password id="contraseña" required="true" label="Contraseña" size="25" value="#{loginController.pass}"/>
 
-                                    <p:commandButton value="Aceptar" />
+                                    <p:selectOneRadio id="rol" label="Rol" required="true" value="#{loginController.usrRol}">  
+                                        <f:selectItem itemLabel="Estudiante" itemValue="1" />  
+                                        <f:selectItem itemLabel="Docente" itemValue="2" />
+                                    </p:selectOneRadio> 
                                     <br />
-                                    <br />
-                                    <h:link id="olv_contraseña" value="Olvide Contraseña"/>
-                                    <h:link value="Registrarse" />
-                                    <br />
-                                    <br />
+                                    <p:commandButton value="Aceptar" action="#{loginController.doLogin}"/>
                                     <br />
                                 </h:panelGrid>
                             </p:panel>
-                        </div>
-                    </div>
-                    <div id="vc-section">
-                        <br /><br />
-                        <p:tabView effect="fade" orientation="bottom">
-                            <p:tab title="Normas/Valores">
-                                <p:graphicImage value="/resources/images/normas-valores.png" />
-                            </p:tab>
-                            <p:tab title="Cursos/Carreras">
+                        </h:form>
+                        <br />
+                        <h:form>
+                            <h:outputLink id="olv_contraseña" value="javascript:void(0)" onclick="oc_dlg.show();" >
+                                <h:outputText value="Olvide Contraseña" />
+                            </h:outputLink>
+                            &nbsp;&nbsp;
+                            <h:outputLink id="do-reg" value="usuarios/registrarse.jsf">
+                                <h:outputText value="Registrarse" />
+                            </h:outputLink>
+                            &nbsp;&nbsp;
+                            <h:outputLink id="intr" value="javascript:void(0)" onclick="oc_dlg.show();">
+                                <h:outputText value="Intranet" />
+                            </h:outputLink>
 
-                            </p:tab>
-                        </p:tabView>
+                            <p:dialog id="dlg" header="Login - Recuperar Acceso" widgetVar="oc_dlg" showEffect="clip" hideEffect="clip" modal="true">
+                                <h:form>  
+                                    <h:panelGrid columns="2" style="margin-bottom:10px">  
+                                        <h:outputLabel for="nombreusuario" value="Nombre Usuario:" />  
+                                        <p:inputText id="nombreusuario" />  
+                                    </h:panelGrid>  
+
+                                    <p:commandButton id="submitButton" value="Submit" oncomplete="dlg.hide();"/>  
+
+                                </h:form>
+                            </p:dialog>
+                            <br />
+                            <br />
+                            <br />
+                        </h:form>
                     </div>
-                </h:form>
+                </div>
+                <div id="vc-section">
+                    <br /><br />
+                    <p:tabView effect="fade" orientation="bottom">
+                        <p:tab title="Normas/Valores">
+                            <p:graphicImage value="/resources/images/normas-valores.png" />
+                        </p:tab>
+                        <p:tab title="Cursos/Carreras">
+
+                        </p:tab>
+                    </p:tabView>
+                </div>
             </ui:define>
         </ui:composition>
     </body>
