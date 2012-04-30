@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <body class="body_cls">
+        <ui:composition template="/resources/templates/master_template.xhtml">
+            <ui:define name="title">
+                SysADS - Registro Datos Estudiantes
+            </ui:define>
+
+            <ui:define name="menu">
+                <h:outputText value="menu" style="color: #464646;" />
+            </ui:define>
+
+            <ui:define name="content">
+                <div id="container">
+                    <div id="mainContent">
+                        <h:form>
+                            <p:growl id="rg_growl" showDetail="true" life="5000" />
+                            <p:panel id="rg_pnl">
+                                <p:focus context="rg_pnl"/>
+                                <p:fieldset legend="Datos Personales" toggleable="true" toggleSpeed="500" >
+                                    <h:panelGrid columns="2">  
+                                        <h:outputLabel for="primer_nombre" value="Primer Nombre:*" />
+                                        <p:inputText id="primer_nombre" value="" required="true" />
+                                        
+                                        <h:outputLabel for="segundo_nombre" value="Segundo Nombre: " />
+                                        <p:inputText id="segundo_nombre" value="" required="false"/>
+                                        
+                                        <h:outputLabel for="primer_apellido" value="Primer Apellido:*" />
+                                        <p:inputText id="primer_nombre" value="" required="true" />
+                                        
+                                        <h:outputLabel for="segundo_apellido" value="Segundo Apellido: " />
+                                        <p:inputText id="segundo_nombre" value="" required="false" />
+
+                                        <h:outputLabel for="apodo" value="Apodo: " />  
+                                        <p:inputText id="apodo" value="" required="false" />
+                                        
+                                        <h:outputLabel for="sexo" value="Sexo:* " />  
+                                        <p:selectOneMenu value="">  
+                                            <f:selectItem itemLabel="Masculino" itemValue="1" />  
+                                            <f:selectItem itemLabel="Femenino" itemValue="2" />  
+                                            </p:selectOneMenu>
+                                        
+                                        <h:outputLabel for="dni" value="Identificacion:* " />  
+                                        <h:panelGrid columns="3">
+                                        <p:inputText id="dni" value="" required="true" />
+                                        <h:outputLabel for="tipoDoc" value="&nbsp;&nbsp;&nbsp;Tipo:* " />  
+                                        <p:selectOneMenu value=" ">  
+                                            <f:selectItem itemLabel="Cedula" itemValue="1" />  
+                                            <f:selectItem itemLabel="Pasaporte" itemValue="2" />  
+                                            <f:selectItem itemLabel="Acta de Nacimiento" itemValue="3" />  
+                                        </p:selectOneMenu>
+                                        </h:panelGrid>
+                                                                                
+                                        <h:outputLabel for="nacionalidad" value="Nacionalidad: " />
+                                        <p:inputText id="nacionalidad" value="" required="false" />
+                                        <h:outputLabel for="direccion" value="Direccion:*" />
+                                        <p:inputText id="direccion" value="" required="true"  size="60"/>
+                                        
+                                        <h:outputLabel for="email" value="Email:* " />  
+                                        <h:panelGrid columns="3">
+                                            <p:inputText id="email" value="" required="true" size="20" />
+                                            <h:outputLabel for="telefono" value="&nbsp;&nbsp;&nbsp;Telefono:* " /> 
+                                            <p:inputText id="telefono" value="" required="true"  />
+                                        </h:panelGrid>                                    
+                                        
+                                        <h:outputLabel for="fecha_nac" value="Fecha Nacimiento: * " />
+                                        <h:panelGrid columns="3">
+                                            <p:inputText id="fech_nac_dia" value="" required="true" size="2"/>
+                                            <p:inputText id="fech_nac_mes" value="" required="true" size="2"/>
+                                            <p:inputText id="fech_nac_anio" value="" required="true" size="4"/>
+                                        </h:panelGrid> 
+                                        
+                                        <h:outputLabel for="lugar_nac" value="Lugar de Nacimiento: " />
+                                        <p:inputText id="lugar_nac" value="" required="false" />
+                                        
+                                        
+                                    </h:panelGrid>
+                                </p:fieldset>
+                                <p:spacer height="10" />
+                                
+                                <p:fieldset legend="Contactos de Emergencia" toggleable="true" toggleSpeed="500">
+                                    <h:panelGrid columns="2">  
+                                        <h:outputLabel for="primer_nombre_emer" value="Primer Nombre:*" />
+                                        <p:inputText id="primer_nombre_emer" value="" required="true" />
+                                        
+                                        <h:outputLabel for="segundo_nombre_emer" value="Segundo Nombre: " />
+                                        <p:inputText id="segundo_nombre_emer" value="" required="false"/>
+                                        
+                                        <h:outputLabel for="primer_apellido_emer" value="Primer Apellido:*" />
+                                        <p:inputText id="primer_nombre_emer" value="" required="true" />
+                                        
+                                        <h:outputLabel for="segundo_apellido_emer" value="Segundo Apellido: " />
+                                        <p:inputText id="segundo_nombre_emer" value="" required="false" />
+                                        
+                                        <h:outputLabel for="direccion_emer" value="Direccion:*" />
+                                        <p:inputText id="direccion_emer" value="" required="true"  size="60"/>
+                                        
+                                        <h:outputLabel for="telefono_emer" value="Telefono:* " /> 
+                                        <p:inputText id="telefono_emer" value="" required="true"  />
+                                        
+                                        <h:outputLabel for="parentesco" value="Parentesco:*" />
+                                        <p:inputText id="parentesco" value="" required="true" />
+                                        
+                                    </h:panelGrid>
+                                </p:fieldset>
+                                <f:facet name="footer">
+                                    <p:commandButton value="Guardar" action="#{usuarioController.doCreateUser}" icon="ui-icon-check" update="rg_growl" />
+                                    <p:spacer width="10" />
+                                    <p:commandButton value="Cancelar" action="#{usuarioController.cancelUserCreation}" icon="ui-icon-cancel" />  
+                                </f:facet>
+
+                            </p:panel>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
