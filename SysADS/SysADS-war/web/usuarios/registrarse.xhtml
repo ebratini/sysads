@@ -19,34 +19,34 @@
                 <div id="container">
                     <div id="mainContent">
                         <h:form>
-                            <p:growl id="rg_growl" showDetail="true" sticky="true" autoUpdate="true" />
+                            <p:growl id="rg_growl" showDetail="true" life="5000" />
                             <p:panel>
                                 <p:fieldset legend="Informacion de Login" toggleable="true" toggleSpeed="500">
                                     <h:panelGrid columns="2">  
                                         <h:outputLabel for="nombre_usuario" value="Nombre Usuario:* " />
-                                        <p:inputText id="nombre_usuario" required="true" />
+                                        <p:inputText id="nombre_usuario" value="#{usuarioController.usuario.usrLogin}" required="true" />
 
                                         <h:outputLabel for="nombre_personal" value="Nombre:* " />  
-                                        <p:inputText id="nombre_personal" />
+                                        <p:inputText id="nombre_personal" value="#{usuarioController.usuario.usrNombre}" required="true" />
 
                                         <h:outputLabel for="apellido" value="Apellido:* " />  
-                                        <p:inputText id="apellido" required="true" />
+                                        <p:inputText id="apellido" value="#{usuarioController.usuario.usrApellido}" required="true" />
 
                                         <h:outputLabel for="email" value="Email:* " />  
-                                        <p:inputText id="email" required="true" />
+                                        <p:inputText id="email" value="#{usuarioController.usuario.usrEmail}" required="true" />
                                     </h:panelGrid>
                                 </p:fieldset>
                                 <p:spacer height="10" />
                                 <p:fieldset legend="Configuracion de Seguridad" toggleable="true" toggleSpeed="500">
                                     <h:panelGrid columns="2">  
                                         <h:outputLabel for="password" value="Password:* " />  
-                                        <p:password id="password" required="true" label="Password 1" feedback="true" match="confirm_pass"/>
+                                        <p:password id="password" value="#{usuarioController.usuario.usrPassword}" required="true" label="Password 1" feedback="true" match="confirm_pass"/>
 
                                         <h:outputLabel for="confirm_pass" value="Confirmar Password: " />  
                                         <p:password id="confirm_pass" label="Password 2" required="true"/>
 
                                         <h:outputText value="Vigencia Password: " />  
-                                        <p:selectOneMenu>  
+                                        <p:selectOneMenu value="#{usuarioController.usuario.usrVigenciaPassword}">  
                                             <f:selectItem itemLabel="1 Mes" itemValue="1" />  
                                             <f:selectItem itemLabel="2 Meses" itemValue="2" />  
                                             <f:selectItem itemLabel="3 Meses" itemValue="3" />  
@@ -63,7 +63,7 @@
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Pregunta Seguridad: " />  
-                                        <p:selectOneMenu>  
+                                        <p:selectOneMenu value="#{usuarioController.usuario.usrPreguntaSeguridad}">  
                                             <f:selectItem itemLabel="Cual es tu color favorito?" itemValue="1" />  
                                             <f:selectItem itemLabel="Donde nacio tu madre?" itemValue="2" />  
                                             <f:selectItem itemLabel="Donde nacio tu padre?" itemValue="3" />  
@@ -72,13 +72,13 @@
                                         </p:selectOneMenu>
 
                                         <h:outputText value="Respuesta:* " />
-                                        <p:inputText id="respuesta_psec" required="true" />
+                                        <p:inputText id="respuesta_psec" value="#{usuarioController.usuario.usrRespuestaPreguntaSeguridad}" required="true" />
                                     </h:panelGrid>
                                 </p:fieldset>
                                 <f:facet name="footer">
-                                    <p:commandButton value="Guardar" icon="ui-icon-check"/>
+                                    <p:commandButton value="Guardar" action="#{usuarioController.doCreateUser}" icon="ui-icon-check" update="rg_growl" />
                                     <p:spacer width="10" />
-                                    <p:commandButton value="Cancelar" icon="ui-icon-cancel"/>  
+                                    <p:commandButton value="Cancelar" action="#{usuarioController.cancelUserCreation}" icon="ui-icon-cancel" />  
                                 </f:facet>
                             </p:panel>
                         </h:form>
