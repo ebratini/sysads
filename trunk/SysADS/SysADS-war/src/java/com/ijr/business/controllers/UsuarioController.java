@@ -59,11 +59,12 @@ public class UsuarioController {
     }
 
     public String doCreateUser() {
-        usuario.setUsrUltimoAcceso(new Date());
-        usuario.setUsrFechaCreacion(new Date());
+        Date dte = new Date();
+        usuario.setUsrUltimoAcceso(dte);
+        usuario.setUsrFechaCreacion(dte);
         usuario.setUsrVerificado('n');
         usuario.setUsrUpdateBy("registro usuarios");
-        usuario.setUsrUpdateDate(new Date());
+        usuario.setUsrUpdateDate(dte);
         usuario.setUsrStatus('p');
         usuarioFacade.create(usuario);
         FacesContext context = FacesContext.getCurrentInstance();
