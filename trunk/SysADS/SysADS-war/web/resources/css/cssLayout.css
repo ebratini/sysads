@@ -59,11 +59,12 @@
 }
 
 #container {
-    width: 70%;
-    background-color: #dddddd;
+    width: 60%;
+    background-color: whitesmoke;
     margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
     border: 1px solid #000000;
     text-align: left; /* this overrides the text-align: center on the body element. */
+    border: none;
 }
 #mainContent {
     width: 98%;
@@ -83,7 +84,7 @@
 }
 
 .searchbox {
-     border-radius: 5em;
+     border-radius: 10px;
      color: #dddddd;
 }
 
