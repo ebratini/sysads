@@ -24,6 +24,7 @@
 package com.ijr.model.ejb;
 
 import com.ijr.model.entities.Usuario;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -35,6 +36,9 @@ import javax.persistence.Query;
  */
 @Stateless
 public class UsuarioFacade extends AbstractFacade<Usuario> {
+
+    @EJB
+    private SecurityServiceEJB securityServiceEJB;
     @PersistenceContext(unitName = "SysADS-ejbPU")
     private EntityManager em;
 
@@ -46,7 +50,19 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
     public UsuarioFacade() {
         super(Usuario.class);
     }
-    
+
+    @Override
+    public void create(Usuario entity) {
+        String encryptedPassword = securityServiceEJB.encrypt(entity.getUsrPassword(), SecurityServiceEJB.EncryptionMethod.SHA);
+        if (encryptedPassword != null) {
+            if (encryptedPassword.length() > 45) {
+                encryptedPassword = encryptedPassword.substring(0, 45);
+            }
+            entity.setUsrPassword(encryptedPassword);
+        }
+        super.create(entity);
+    }
+
     public Usuario getUsuarioByLogin(String login) {
         Query query = em.createNamedQuery("Usuario.findByUsrLogin");
         query.setParameter("usrLogin", login);
