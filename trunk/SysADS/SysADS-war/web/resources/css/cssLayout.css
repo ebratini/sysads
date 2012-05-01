@@ -83,8 +83,8 @@
 }
 
 .searchbox {
-     border-radius: 10em;
-     text-decoration-color: #dddddd;
+     border-radius: 5em;
+     color: #dddddd;
 }
 
 .logged_user_link {
