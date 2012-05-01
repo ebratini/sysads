@@ -19,11 +19,14 @@
                 <div id="container">
                     <div id="mainContent">
                         <h:form>
-                            <p:growl id="est_growl" showDetail="true" life="5000" />
+                            
                             <p:panel id="rg_pnl">
+                             
                                 <p:focus context="rg_pnl"/>
                                 <p:fieldset legend="Datos Personales" toggleable="true" toggleSpeed="500" >
+                                    <p:growl id="msgrowl" showDetail="true"/> 
                                     <h:panelGrid columns="2">  
+                                        
                                         <h:outputLabel for="primer_nombre" value="Primer Nombre:*" />
                                         <p:inputText id="primer_nombre" value="" required="true" />
                                         
@@ -84,6 +87,7 @@
                                 <p:spacer height="10" />
                                 
                                 <p:fieldset legend="Contactos de Emergencia" toggleable="true" toggleSpeed="500">
+                                    
                                     <h:panelGrid columns="2">  
                                         <h:outputLabel for="primer_nombre_emer" value="Primer Nombre:*" />
                                         <p:inputText id="primer_nombre_emer" value="" required="true" />
@@ -105,11 +109,12 @@
                                         
                                         <h:outputLabel for="parentesco" value="Parentesco:*" />
                                         <p:inputText id="parentesco" value="" required="true" />
-                                        
+                                                                                
                                     </h:panelGrid>
+                                     
                                 </p:fieldset>
                                 <f:facet name="footer">
-                                    <p:commandButton value="Guardar" action="#{usuarioController.doCreateUser}" icon="ui-icon-check" update="est_growl" />
+                                    <p:commandButton value="Guardar" action="#{usuarioController.doCreateUser}" icon="ui-icon-check" update="msgrowl" />
                                     <p:spacer width="10" />
                                     <p:commandButton value="Cancelar" action="#{usuarioController.cancelUserCreation}" icon="ui-icon-cancel" />  
                                 </f:facet>

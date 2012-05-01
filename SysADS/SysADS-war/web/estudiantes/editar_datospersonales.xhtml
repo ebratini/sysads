@@ -19,8 +19,8 @@
                 <div id="container">
                     <div id="mainContent">
                         <h:form>
-                            <p:growl id="est_growl" showDetail="true" life="5000" />
-                            <p:panel id="rg_pnl" header="Ver / Editar Datos Personales">
+                            <p:growl id="ed_datos_growl" showDetail="true" life="5000" />
+                            <p:panel id="ed_datos_pnl" header="Ver / Editar Datos Personales">
 
                                 <p:spacer height="10" />
                                 <h:panelGrid columns="2">  
@@ -112,9 +112,9 @@
                                 <p:spacer height="10" />
 
                                 <f:facet name="footer">
-                                    <p:commandButton value="Guardar" action="#{usuarioController.doCreateUser}" icon="ui-icon-check" update="est_growl" />
+                                    <p:commandButton value="Guardar"  icon="ui-icon-check" update="ed_datos_growl" />
                                     <p:spacer width="10" />
-                                    <p:commandButton value="Cancelar" action="#{usuarioController.cancelUserCreation}" icon="ui-icon-cancel" />  
+                                    <p:commandButton value="Cancelar"  icon="ui-icon-cancel" />  
                                 </f:facet>
 
                             </p:panel>
