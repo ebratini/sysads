@@ -59,8 +59,10 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
                 encryptedPassword = encryptedPassword.substring(0, 45);
             }
             entity.setUsrPassword(encryptedPassword);
+            super.create(entity);
+        } else {
+            throw  new RuntimeException("No se pudo encriptar password. El proceso de creacion de usuario fue cancelado.");
         }
-        super.create(entity);
     }
 
     public Usuario getUsuarioByLogin(String login) {
