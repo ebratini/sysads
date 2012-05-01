@@ -91,18 +91,18 @@ public class LoginController {
         Usuario usr = usuarioFacade.getUsuarioByLogin(usrLogin);
         FacesContext context = FacesContext.getCurrentInstance();
         if (usr != null) {
-            if (securityServiceEJB.encrypt(usrPass).equals(usr.getUsrPassword())) {
+            if (usr.getUsrPassword().equals(securityServiceEJB.encrypt(usrPass))) {
                 this.usuario = usr;
                 context.addMessage(null, new FacesMessage("Login", "Bienvenid@ " + usrLogin));
                 if (usrRol.equalsIgnoreCase("estudiante")) {
-                    return "estudiantes/index.xhtml";
+                    return "estudiantes/index.jsf";
                 } else {
-                    return "profesores/index.xhtml";
+                    return "profesores/index.jsf";
                 }
             }
         }
         context.addMessage(null, new FacesMessage("Login", "Usuario/Contraseña Invalidos"));
-        return null;
+        return "/index.jsf";
     }
     
     public String doLogout() {
