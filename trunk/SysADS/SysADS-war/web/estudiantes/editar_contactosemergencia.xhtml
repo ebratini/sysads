@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <body class="body_cls">
+        <ui:composition template="/resources/templates/master_template.xhtml">
+            <ui:define name="title">
+                SysADS - Registro Datos Estudiantes
+            </ui:define>
+
+            <ui:define name="menu">
+                <h:outputText value="menu" style="color: #464646;" />
+            </ui:define>
+
+            <ui:define name="content">
+                <div id="container">
+                    <div id="mainContent">
+                        <h:form>
+                            
+                            <p:panel id="emer_pnl" header="Ver / Editar Datos Personales">
+                            <p:growl id="emer_growl" showDetail="true" life="5000" />
+                                <p:spacer height="10" />
+                                <h:panelGrid columns="2">  
+                                    <h:outputLabel for="primer_nombre_emer" value="Primer Nombre:*" />
+                                    <p:inplace emptyLabel="Clic Para Modificar Datos" effect="slide">
+                                        <p:inputText id="primer_nombre_emer" value="" required="true" />
+                                    </p:inplace>
+
+                                    <h:outputLabel for="segundo_nombre_emer" value="Segundo Nombre: " />
+                                    <p:inplace emptyLabel="Clic Para Modificar Datos" effect="slide">
+                                        <p:inputText id="segundo_nombre_emer" value="" required="false"/>
+                                    </p:inplace>
+
+                                    <h:outputLabel for="primer_apellido_emer" value="Primer Apellido:*" />
+                                    <p:inplace emptyLabel="Clic Para Modificar Datos" effect="slide"  >
+                                        <p:inputText id="primer_nombre_emer" value="" required="true" />
+                                    </p:inplace>
+
+                                    <h:outputLabel for="segundo_apellido_emer" value="Segundo Apellido: " />
+                                    <p:inplace emptyLabel="Clic Para Modificar Datos" effect="slide">
+                                        <p:inputText id="segundo_nombre_emer" value="" required="false" />
+                                    </p:inplace>
+
+                                    <h:outputLabel for="direccion_emer" value="Direccion:*" />
+                                    <p:inplace emptyLabel="Clic Para Modificar Datos" effect="slide">
+                                        <p:inputText id="direccion_emer" value="" required="true"  size="60"/>
+                                    </p:inplace>
+
+                                    <h:outputLabel for="telefono_emer" value="Telefono:* " /> 
+                                    <p:inplace emptyLabel="Clic Para Modificar Datos" effect="slide">
+                                        <p:inputText id="telefono_emer" value="" required="true"  />
+                                    </p:inplace>
+
+                                    <h:outputLabel for="parentesco" value="Parentesco:*" />
+                                    <p:inplace emptyLabel="Clic Para Modificar Datos" effect="slide">
+                                        <p:inputText id="parentesco" value="" required="true" />
+                                    </p:inplace>
+                                        
+                                </h:panelGrid>
+
+                                <p:spacer height="10" />
+
+                                <f:facet name="footer">
+                                    <p:commandButton  value="Guardar"  icon="ui-icon-check" update="emer_growl" />
+                                    <p:spacer width="10" />
+                                    <p:commandButton value="Cancelar"  icon="ui-icon-cancel" />  
+                                </f:facet>
+
+                            </p:panel>
+                        </h:form>
+                    </div>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>
