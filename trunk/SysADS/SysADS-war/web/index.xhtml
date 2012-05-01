@@ -30,7 +30,7 @@
                             <p:graphicImage value="/resources/images/g4.jpg" panelWidth="80" title="image1" alt=" image4 desc" />
                         </p:galleria>
                     </div>
-                    <div id="la" class="login_area">
+                    <div id="la" class="login_area" style="width:40%; float:right;">
                         <h:form>
                             <p:panel  id="lgn-panel" header="Login" >
                                 <p:growl id="la_growl" life="3500" showDetail="true" />
@@ -66,16 +66,16 @@
                             <h:outputLink id="intr" value="javascript:void(0)" onclick="oc_dlg.show();">
                                 <h:outputText value="Intranet" />
                             </h:outputLink>
-                                
+
                             <p:dialog id="oc_dlg" header="Login - Recuperar Acceso" widgetVar="oc_dlg" showEffect="clip" hideEffect="clip" modal="true">
                                 <h:form>  
                                     <h:panelGrid columns="2" style="margin-bottom:10px">  
                                         <h:outputLabel for="nombreusuario" value="Nombre Usuario:" />  
                                         <p:inputText id="nombreusuario" />  
                                     </h:panelGrid>  
-                                        
+
                                     <p:commandButton id="submitButton" value="Submit" oncomplete="dlg.hide();"/>  
-                                        
+
                                 </h:form>
                             </p:dialog>
                             <br />
@@ -84,11 +84,13 @@
                         </h:form>
                     </div>
                 </div>
-                <div id="vc-section">
+                <div id="vc_section">
                     <br /><br />
                     <p:tabView effect="fade" orientation="bottom">
                         <p:tab title="Normas/Valores">
-                            <p:graphicImage value="/resources/images/normas-valores.png" />
+                            <center>
+                                <p:graphicImage value="/resources/images/normas-valores.png" />
+                            </center>
                         </p:tab>
                         <p:tab title="Cursos/Carreras">
 

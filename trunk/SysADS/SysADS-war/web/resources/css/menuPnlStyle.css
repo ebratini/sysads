@@ -7,7 +7,7 @@
 */
 
 #mnu_container {
-    width: 886px;  /* this will create a container 80% of the browser width */
+    width: 100%;  /* this will create a container 80% of the browser width */
     background: #464646;
     margin: 0 auto; /* the auto margins (in conjunction with a width) center the page */
     /*    border: 1px solid #000000;*/
