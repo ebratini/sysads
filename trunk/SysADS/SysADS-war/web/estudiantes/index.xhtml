@@ -84,7 +84,9 @@
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_vece" class="mnuItemDiv">
-                                                <a href="./editar_contactosemergencia.jsf" id="vece_lnk" class="mnuItmLink" onmouseover="turnLink('vece_lnk', true)" onmouseout="turnLink('vece_lnk', false)">Ver/Editar Contacto(s) Emergencia</a>
+                                                <h:outputLink id="vece_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('vece_lnk', true)" onmouseout="turnLink('vece_lnk', false)" value="./editar_contactosemergencia.jsf">
+                                                    <h:outputText value="Ver/Editar Contacto(s) Emergencia" />
+                                                </h:outputLink>
                                             </div>
                                         </li>
                                     </ul>
@@ -96,37 +98,51 @@
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_ci" class="mnuItemDiv">
-                                                <a href="#" id="ci_lnk" class="mnuItmLink" onmouseover="turnLink('ci_lnk', true)" onmouseout="turnLink('ci_lnk', false)">Calendario Inscripcion</a>
+                                                <h:outputLink id="ci_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('ci_lnk', true)" onmouseout="turnLink('ci_lnk', false)" value="#">
+                                                    <h:outputText value="Calendario Inscripcion" />
+                                                </h:outputLink>
                                             </div>
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_hi" class="mnuItemDiv">
-                                                <a href="#"  onclick="est_reg_dlg.show();" id="hi_lnk" class="mnuItmLink" onmouseover="turnLink('hi_lnk', true)" onmouseout="turnLink('hi_lnk', false)">Hacer Inscripcion</a>
+                                                <h:outputLink id="hi_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('hi_lnk', true)" onmouseout="turnLink('hi_lnk', false)" onclick="est_reg_dlg.show();" value="#">
+                                                    <h:outputText value="Hacer Inscripcion" />
+                                                </h:outputLink>
                                             </div>
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_hisi" class="mnuItemDiv">
-                                                <a href="#" id="hisi_lnk" class="mnuItmLink" onmouseover="turnLink('hisi_lnk', true)" onmouseout="turnLink('hisi_lnk', false)">Historico Inscripciones</a>
+                                                <h:outputLink id="hisi_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('hisi_lnk', true)" onmouseout="turnLink('hisi_lnk', false)" value="#">
+                                                    <h:outputText value="Historico Inscripciones" />
+                                                </h:outputLink>
                                             </div>
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_si" class="mnuItemDiv">
-                                                <a href="#" id="si_lnk" class="mnuItmLink" onmouseover="turnLink('si_lnk', true)" onmouseout="turnLink('si_lnk', false)">Status Inscripcion</a>
+                                                <h:outputLink id="si_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('si_lnk', true)" onmouseout="turnLink('si_lnk', false)" value="#">
+                                                    <h:outputText value="Status Inscripcion" />
+                                                </h:outputLink>
                                             </div>
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_hcla" class="mnuItemDiv">
-                                                <a href="" id="hcla_lnk" class="mnuItmLink" onmouseover="turnLink('hcla_lnk', true)" onmouseout="turnLink('hcla_lnk', false)">Horario de Clases</a>
+                                                <h:outputLink id="hcla_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('hcla_lnk', true)" onmouseout="turnLink('hcla_lnk', false)" value="#">
+                                                    <h:outputText value="Horario de Clases" />
+                                                </h:outputLink>
                                             </div>
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_ccal" class="mnuItemDiv">
-                                                <a href="" id="ccal_lnk" class="mnuItmLink" onmouseover="turnLink('ccal_lnk', true)" onmouseout="turnLink('ccal_lnk', false)">Consulta Calificaciones</a>
+                                                <h:outputLink id="ccal_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('ccal_lnk', true)" onmouseout="turnLink('ccal_lnk', false)" value="#">
+                                                    <h:outputText value="Consulta Calificaciones" />
+                                                </h:outputLink>
                                             </div>
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_rc" class="mnuItemDiv">
-                                                <a href="#" id="rc_lnk" class="mnuItmLink" onmouseover="turnLink('rc_lnk', true)" onmouseout="turnLink('rc_lnk', false)">Retiro Curso/Carrera</a>
+                                                <h:outputLink id="rc_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('rc_lnk', true)" onmouseout="turnLink('rc_lnk', false)" value="#">
+                                                    <h:outputText value="Retiro Curso/Carrera" />
+                                                </h:outputLink>
                                             </div>
                                         </li>
                                     </ul>
@@ -141,17 +157,23 @@
                                         </li>
                                         <li class="li_cls">
                                             <div id="lr_mnuItm_hp" class="mnuItemDiv">
-                                                <a href="#" id="hp_lnk" class="mnuItmLink" onmouseover="turnLink('hp_lnk', true)" onmouseout="turnLink('hp_lnk', false)">Hacer Pago</a>
+                                                <h:outputLink id="hp_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('hp_lnk', true)" onmouseout="turnLink('hp_lnk', false)" value="#">
+                                                    <h:outputText value="Hacer Pago" />
+                                                </h:outputLink>
                                             </div>
                                         </li>
                                         <li class="li_cls">
                                             <div id="rm_mnuItm_hisp"  class="mnuItemDiv">
-                                                <a href="#" id="hisp_lnk" class="mnuItmLink" onmouseover="turnLink('hisp_lnk', true)" onmouseout="turnLink('hisp_lnk', false)">Historico Pago</a>
+                                                <h:outputLink id="hisp_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('hisp_lnk', true)" onmouseout="turnLink('hisp_lnk', false)" value="#">
+                                                    <h:outputText value="Historico Pago" />
+                                                </h:outputLink>
                                             </div>
                                         </li>
                                         <li class="li_cls">
                                             <div id="rm_mnuItm_ref"  class="mnuItemDiv">
-                                                <a href="#" id="ref_lnk" class="mnuItmLink" onmouseover="turnLink('ref_lnk', true)" onmouseout="turnLink('ref_lnk', false)">Reporte Estado Financiero</a>
+                                                <h:outputLink id="ref_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('ref_lnk', true)" onmouseout="turnLink('ref_lnk', false)" value="#">
+                                                    <h:outputText value="Reporte Estado Financiero" />
+                                                </h:outputLink>
                                             </div>
                                         </li>
                                     </ul>
@@ -163,17 +185,23 @@
                                         </li>
                                         <li class="li_cls">
                                             <div id="rm_mnuItm_ijr" class="mnuItemDiv">
-                                                <a href="http://www.institutojosereyes.com/" id="ijr_lnk" class="mnuItmLink" onmouseover="turnLink('ijr_lnk', true)" onmouseout="turnLink('ijr_lnk', false)">Instituto Jose Reyes</a>
+                                                <h:outputLink id="ijr_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('ijr_lnk', true)" onmouseout="turnLink('ijr_lnk', false)" value="http://www.institutojosereyes.com">
+                                                    <h:outputText value="Instituto Jose Reyes" />
+                                                </h:outputLink>
                                             </div>
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_cso" class="mnuItemDiv">
-                                                <a href="#" id="cso_lnk" class="mnuItmLink" onmouseover="turnLink('cso_lnk', true)" onmouseout="turnLink('cso_lnk', false)">Carreras/Cursos</a>
+                                                <h:outputLink id="cso_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('cso_lnk', true)" onmouseout="turnLink('cso_lnk', false)" value="http://www.institutojosereyes.com">
+                                                    <h:outputText value="Carreras/Cursos" />
+                                                </h:outputLink>
                                             </div>
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_ms" class="mnuItemDiv">
-                                                <a href="#" id="ms_lnk" class="mnuItmLink" onmouseover="turnLink('ms_lnk', true)" onmouseout="turnLink('ms_lnk', false)">Mapa del Sitio</a>
+                                                <h:outputLink id="ms_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('ms_lnk', true)" onmouseout="turnLink('ms_lnk', false)" value="http://www.institutojosereyes.com">
+                                                    <h:outputText value="Mapa del Sitio" />
+                                                </h:outputLink>
                                             </div>
                                         </li>
                                     </ul>
