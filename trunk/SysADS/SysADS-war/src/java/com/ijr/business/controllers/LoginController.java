@@ -86,17 +86,17 @@ public class LoginController {
     public void setUsrRol(String usrRol) {
         this.usrRol = usrRol;
     }
-
-    public String doLogin() {
+    
+    public String login() {
         Usuario usr = usuarioFacade.getUsuarioByLogin(usrLogin);
         FacesContext context = FacesContext.getCurrentInstance();
         if (usr != null) {
             if (usr.getUsrPassword().equals(securityServiceEJB.encrypt(usrPass))) {
                 this.usuario = usr;
                 context.addMessage(null, new FacesMessage("Login", "Bienvenid@ " + usrLogin));
-                if (usrRol.equalsIgnoreCase("estudiante")) {
+                if (usrRol.equalsIgnoreCase("estudiante") && usr.getRol().getRolNombre().equalsIgnoreCase("estudiante")) {
                     return "estudiantes/index.jsf";
-                } else {
+                } else if (usrRol.equalsIgnoreCase("docente") && usr.getRol().getRolNombre().equalsIgnoreCase("docente")) {
                     return "profesores/index.jsf";
                 }
             }
@@ -104,16 +104,16 @@ public class LoginController {
         context.addMessage(null, new FacesMessage("Login", "Usuario/Contraseña Invalidos"));
         return "/index.jsf";
     }
-    
+
     public String doLogout() {
-    
+
         return null;
     }
-    
+
     public String validateSecQuestion() {
         return null;
     }
-    
+
     public String sendNewPass() {
         return null;
     }
