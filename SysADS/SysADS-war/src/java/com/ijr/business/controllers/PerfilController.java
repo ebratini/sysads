@@ -50,6 +50,9 @@ public class PerfilController {
         this.usuario = usuario;
     }
     
+    public String doGuardarPerfil() {
+        return "/index.jsf";
+    }
 }
 
 
