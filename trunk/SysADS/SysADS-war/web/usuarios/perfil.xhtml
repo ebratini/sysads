@@ -39,11 +39,11 @@
 
                                     <h:outputLabel for="email" value="Email:* " />  
                                     <p:inplace id="ip_email" editor="true">
-                                        <p:inputText id="email" value="#{usuarioController.usuario.usrEmail}" label="Email" required="true" />
+                                        <p:inputText id="email" value="#{perfilController.usuario.usrEmail}" label="Email" required="true" />
                                     </p:inplace> 
 
                                     <h:outputText value="Vigencia Password: " />  
-                                    <p:inplace id="selectableInplace" label="Meses" effectSpeed="fast" event="dblclick">  
+                                    <p:inplace id="ip_selectVigenciaPass" label="Meses" effectSpeed="fast" event="dblclick">  
                                         <p:selectOneMenu value="#{perfilController.usuario.usrVigenciaPassword}" label="Vigencia Password">  
                                             <f:selectItem itemLabel="1 Mes" itemValue="1" />  
                                             <f:selectItem itemLabel="2 Meses" itemValue="2" />  
@@ -63,7 +63,7 @@
                                      
                                     <h:outputText value="Pregunta Seguridad: " /> 
                                     <p:inplace id="ip_selectPreguntaSeg" label="Pregunta" effectSpeed="fast" event="dblclick">
-                                        <p:selectOneMenu value="#{usuarioController.usuario.usrPreguntaSeguridad}" label="Pregunta Seguridad">  
+                                        <p:selectOneMenu value="#{perfilController.usuario.usrPreguntaSeguridad}" label="Pregunta Seguridad">  
                                             <f:selectItem itemLabel="Cual es tu color favorito?" itemValue="Cual es tu color favorito?" />  
                                             <f:selectItem itemLabel="Donde nacio tu madre?" itemValue="Donde nacio tu madre?" />  
                                             <f:selectItem itemLabel="Donde nacio tu padre?" itemValue="Donde nacio tu padre?" />  
@@ -78,11 +78,6 @@
                                     <h:outputText value="Checkbox: "/>  
                                     <p:inplace id="checkboxInplace" label="Edit me" effect="none">  
                                         <h:selectBooleanCheckbox />  
-                                    </p:inplace>  
-
-                                    <h:outputText value="Sliding Image: " />  
-                                    <p:inplace id="slidingInplace" label="Show" effect="slide">  
-                                        <p:graphicImage value="/images/nature1.jpg" />  
                                     </p:inplace>
                                 </h:panelGrid>  
                             </p:panel> 
