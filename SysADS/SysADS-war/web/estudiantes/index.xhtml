@@ -36,7 +36,7 @@
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_vp" class="mnuItemDiv">
-                                                <h:outputLink id="vp_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('vp_lnk', true)" onmouseout="turnLink('vp_lnk', false)" value="/perfil.jsf">
+                                                <h:outputLink id="vp_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('vp_lnk', true)" onmouseout="turnLink('vp_lnk', false)" value="/SysADS-war/usuarios/perfil.jsf">
                                                     <h:outputText value="Ver/Editar Info Perfil" />
                                                 </h:outputLink>
                                             </div>
@@ -50,17 +50,23 @@
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_epr"  class="mnuItemDiv">
-                                                <a href="#" id="cprs_lnk" class="mnuItmLink" onmouseover="turnLink('cprs_lnk', true)" onmouseout="turnLink('cprs_lnk', false)">Editar Pregunta/Respuesta Seguridad</a>
+                                                <h:outputLink id="cprs_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('cprs_lnk', true)" onmouseout="turnLink('cprs_lnk', false)" onclick="eprs_dlg.show()" value="#">
+                                                    <h:outputText value="Editar Pregunta/Respuesta Seguridad" />
+                                                </h:outputLink>
                                             </div>
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_evc"  class="mnuItemDiv">
-                                                <a href="#" id="evc_lnk" class="mnuItmLink" onmouseover="turnLink('evc_lnk', true)" onmouseout="turnLink('evc_lnk', false)">Editar Vigencia Contraseña</a>
+                                                <h:outputLink id="evc_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('evc_lnk', true)" onmouseout="turnLink('evc_lnk', false)" onclick="evc_dlg.show()" value="#">
+                                                    <h:outputText value="Editar Vigencia Contraseña" />
+                                                </h:outputLink>
                                             </div>
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_ccue"  class="mnuItemDiv">
-                                                <a href="#" id="ccue_lnk" class="mnuItmLink" onmouseover="turnLink('ccue_lnk', true)" onmouseout="turnLink('ccue_lnk', false)">Cerrar Cuenta</a>
+                                                <h:outputLink id="ccue_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('ccue_lnk', true)" onmouseout="turnLink('ccue_lnk', false)" onclick="evc_dlg.show()" value="#">
+                                                    <h:outputText value="Cerrar Cuenta" />
+                                                </h:outputLink>
                                             </div>
                                         </li>
                                     </ul>
@@ -71,7 +77,9 @@
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_vedp" class="mnuItemDiv">
-                                                <a href="./editar_datospersonales.jsf" id="vedp_lnk" class="mnuItmLink" onmouseover="turnLink('vedp_lnk', true)" onmouseout="turnLink('vedp_lnk', false)">Ver/Editar Datos Personales</a>
+                                                <h:outputLink id="vedp_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('vedp_lnk', true)" onmouseout="turnLink('vedp_lnk', false)" value="./editar_datospersonales.jsf">
+                                                    <h:outputText value="Ver/Editar Datos Personales" />
+                                                </h:outputLink>
                                             </div>
                                         </li>
                                         <li class="li_cls">
