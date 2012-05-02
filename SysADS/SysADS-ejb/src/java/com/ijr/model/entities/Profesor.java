@@ -132,11 +132,11 @@ public class Profesor implements Serializable {
     @NotNull
     @Column(name = "prf_status")
     private char prfStatus;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "prfId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "profesor")
     private Collection<Seccion> seccionCollection;
     @JoinColumn(name = "usr_id", referencedColumnName = "usr_id")
     @ManyToOne(optional = false)
-    private Usuario usrId;
+    private Usuario usuario;
 
     public Profesor() {
     }
@@ -298,12 +298,12 @@ public class Profesor implements Serializable {
         this.seccionCollection = seccionCollection;
     }
 
-    public Usuario getUsrId() {
-        return usrId;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsrId(Usuario usrId) {
-        this.usrId = usrId;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override

@@ -24,11 +24,13 @@
 package com.ijr.model.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -129,6 +131,15 @@ public class Usuario implements Serializable {
     @NotNull
     @Column(name = "usr_status")
     private char usrStatus;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    private Collection<Log> logCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    private Collection<Estudiante> estudianteCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
+    private Collection<Profesor> profesorCollection;
+    @JoinColumn(name = "rol_id", referencedColumnName = "rol_id")
+    @ManyToOne(optional = false)
+    private Rol rol;
 
     public Usuario() {
     }
@@ -273,6 +284,41 @@ public class Usuario implements Serializable {
 
     public void setUsrStatus(char usrStatus) {
         this.usrStatus = usrStatus;
+    }
+
+    @XmlTransient
+    public Collection<Log> getLogCollection() {
+        return logCollection;
+    }
+
+    public void setLogCollection(Collection<Log> logCollection) {
+        this.logCollection = logCollection;
+    }
+
+    @XmlTransient
+    public Collection<Estudiante> getEstudianteCollection() {
+        return estudianteCollection;
+    }
+
+    public void setEstudianteCollection(Collection<Estudiante> estudianteCollection) {
+        this.estudianteCollection = estudianteCollection;
+    }
+
+    @XmlTransient
+    public Collection<Profesor> getProfesorCollection() {
+        return profesorCollection;
+    }
+
+    public void setProfesorCollection(Collection<Profesor> profesorCollection) {
+        this.profesorCollection = profesorCollection;
+    }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 
     @Override

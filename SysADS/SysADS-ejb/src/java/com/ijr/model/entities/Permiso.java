@@ -79,10 +79,7 @@ public class Permiso implements Serializable {
     @NotNull
     @Column(name = "per_status")
     private char perStatus;
-    @JoinTable(name = "roles_permisos", joinColumns = {
-        @JoinColumn(name = "per_id", referencedColumnName = "per_id")}, inverseJoinColumns = {
-        @JoinColumn(name = "rol_id", referencedColumnName = "rol_id")})
-    @ManyToMany
+    @ManyToMany(mappedBy = "permisoCollection")
     private Collection<Rol> rolCollection;
 
     public Permiso() {

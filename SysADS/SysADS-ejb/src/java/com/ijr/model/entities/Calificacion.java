@@ -82,10 +82,10 @@ public class Calificacion implements Serializable {
     private Date calUpdateDate;
     @JoinColumn(name = "mdl_id", referencedColumnName = "mdl_id")
     @ManyToOne(optional = false)
-    private Modulo mdlId;
+    private Modulo modulo;
     @JoinColumn(name = "est_id", referencedColumnName = "est_id")
     @ManyToOne(optional = false)
-    private Estudiante estId;
+    private Estudiante estudiante;
 
     public Calificacion() {
     }
@@ -159,20 +159,20 @@ public class Calificacion implements Serializable {
         this.calUpdateDate = calUpdateDate;
     }
 
-    public Modulo getMdlId() {
-        return mdlId;
+    public Modulo getModulo() {
+        return modulo;
     }
 
-    public void setMdlId(Modulo mdlId) {
-        this.mdlId = mdlId;
+    public void setModulo(Modulo modulo) {
+        this.modulo = modulo;
     }
 
-    public Estudiante getEstId() {
-        return estId;
+    public Estudiante getEstudiante() {
+        return estudiante;
     }
 
-    public void setEstId(Estudiante estId) {
-        this.estId = estId;
+    public void setEstudiante(Estudiante estudiante) {
+        this.estudiante = estudiante;
     }
 
     @Override

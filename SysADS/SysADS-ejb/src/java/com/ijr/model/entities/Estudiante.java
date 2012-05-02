@@ -140,12 +140,12 @@ public class Estudiante implements Serializable {
     private char estStatus;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "estudiante")
     private Collection<EstudianteSeccion> estudianteSeccionCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estudiante")
     private Collection<ContactoEmergencia> contactoEmergenciaCollection;
     @JoinColumn(name = "usr_id", referencedColumnName = "usr_id")
     @ManyToOne(optional = false)
-    private Usuario usrId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estId")
+    private Usuario usuario;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estudiante")
     private Collection<Calificacion> calificacionCollection;
 
     public Estudiante() {
@@ -332,12 +332,12 @@ public class Estudiante implements Serializable {
         this.contactoEmergenciaCollection = contactoEmergenciaCollection;
     }
 
-    public Usuario getUsrId() {
-        return usrId;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsrId(Usuario usrId) {
-        this.usrId = usrId;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @XmlTransient

@@ -72,7 +72,7 @@ public class Log implements Serializable {
     private String logDescripcion;
     @JoinColumn(name = "usr_id", referencedColumnName = "usr_id")
     @ManyToOne(optional = false)
-    private Usuario usrId;
+    private Usuario usuario;
 
     public Log() {
     }
@@ -128,12 +128,12 @@ public class Log implements Serializable {
         this.logDescripcion = logDescripcion;
     }
 
-    public Usuario getUsrId() {
-        return usrId;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setUsrId(Usuario usrId) {
-        this.usrId = usrId;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     @Override

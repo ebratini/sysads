@@ -82,10 +82,10 @@ public class Modulo implements Serializable {
     private char mdlStatus;
     @JoinColumn(name = "cso_id", referencedColumnName = "cso_id")
     @ManyToOne(optional = false)
-    private Curso csoId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "mdlId")
+    private Curso curso;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "modulo")
     private Collection<Seccion> seccionCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "mdlId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "modulo")
     private Collection<Calificacion> calificacionCollection;
 
     public Modulo() {
@@ -160,12 +160,12 @@ public class Modulo implements Serializable {
         this.mdlStatus = mdlStatus;
     }
 
-    public Curso getCsoId() {
-        return csoId;
+    public Curso getCurso() {
+        return curso;
     }
 
-    public void setCsoId(Curso csoId) {
-        this.csoId = csoId;
+    public void setCurso(Curso curso) {
+        this.curso = curso;
     }
 
     @XmlTransient
