@@ -27,6 +27,7 @@ import com.ijr.model.entities.Rol;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -34,6 +35,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class RolFacade extends AbstractFacade<Rol> {
+
     @PersistenceContext(unitName = "SysADS-ejbPU")
     private EntityManager em;
 
@@ -45,5 +47,10 @@ public class RolFacade extends AbstractFacade<Rol> {
     public RolFacade() {
         super(Rol.class);
     }
-    
+
+    public Rol getRolByNombre(String nombreRol) {
+        Query query = em.createNamedQuery("Rol.findByRolNombre");
+        query.setParameter("rolNombre", nombreRol);
+        return (Rol) query.getSingleResult();
+    }
 }
