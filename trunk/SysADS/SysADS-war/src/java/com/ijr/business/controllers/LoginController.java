@@ -36,7 +36,7 @@ import javax.faces.context.FacesContext;
  *
  * @author Edwin Bratini
  */
-@ManagedBean
+@ManagedBean(name = "loginMBean")
 @SessionScoped
 public class LoginController {
 
@@ -71,12 +71,12 @@ public class LoginController {
         this.usuario = usuario;
     }
 
-    public String getPass() {
+    public String getUsrPass() {
         return usrPass;
     }
 
-    public void setPass(String pass) {
-        this.usrPass = pass;
+    public void setUsrPass(String usrPass) {
+        this.usrPass = usrPass;
     }
 
     public String getUsrRol() {
@@ -86,7 +86,7 @@ public class LoginController {
     public void setUsrRol(String usrRol) {
         this.usrRol = usrRol;
     }
-    
+
     public String login() {
         Usuario usr = usuarioFacade.getUsuarioByLogin(usrLogin);
         FacesContext context = FacesContext.getCurrentInstance();
@@ -106,7 +106,6 @@ public class LoginController {
     }
 
     public String doLogout() {
-
         return null;
     }
 
