@@ -21,9 +21,6 @@
                     <div id="ig" style="width:60%; float:left;">
                         <p:galleria effect="slide" effectDuration="1000" panelHeight="247" panelWidth="545" showOverlays="true">
                             <p:graphicImage value="/resources/images/g1.jpg" panelWidth="80" title="image1" alt="image1 desc" />
-                            <p:galleriaOverlay title="image1">
-                                Description for #{image} goes here
-                            </p:galleriaOverlay>
                             <p:graphicImage value="/resources/images/g2.jpg" panelWidth="80" title="image1" alt=" image2 desc" />
                             <p:graphicImage value="/resources/images/g3.jpg" panelWidth="80" title="image1" alt=" image3 desc" />
                             <p:graphicImage value="/resources/images/g4.jpg" panelWidth="80" title="image1" alt=" image4 desc" />
@@ -47,7 +44,7 @@
                                         <f:selectItem itemLabel="Docente" itemValue="2" />
                                     </p:selectOneRadio> 
                                     <br />
-                                    <p:commandButton value="Aceptar" action="#{loginController.doLogin}" update="la_growl" />
+                                    <p:commandButton value="Aceptar" action="#{loginController.login}"  update="la_growl" />
                                     <br />
                                 </h:panelGrid>
                             </p:panel>

@@ -23,7 +23,9 @@
  */
 package com.ijr.business.controllers;
 
+import com.ijr.model.ejb.RolFacade;
 import com.ijr.model.ejb.UsuarioFacade;
+import com.ijr.model.entities.Rol;
 import com.ijr.model.entities.Usuario;
 import java.util.Date;
 import javax.ejb.EJB;
@@ -40,6 +42,8 @@ import javax.faces.context.FacesContext;
 @RequestScoped
 public class UsuarioController {
 
+    @EJB
+    private RolFacade rolFacade;
     @EJB
     private UsuarioFacade usuarioFacade;
     private Usuario usuario = new Usuario();
@@ -60,6 +64,7 @@ public class UsuarioController {
 
     public String doCreateUser() {
         Date dte = new Date();
+        usuario.setRol(rolFacade.getRolByNombre("estudiante"));
         usuario.setUsrUltimoAcceso(dte);
         usuario.setUsrFechaCreacion(dte);
         usuario.setUsrVerificado('n');
