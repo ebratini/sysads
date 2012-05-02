@@ -6,13 +6,9 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <body class="body_cls">
-        <ui:composition template="/resources/templates/master_template.xhtml">
+        <ui:composition template="/resources/templates/estudiantes_master_template.xhtml">
             <ui:define name="title">
                 SysADS - Perfil de Usuario
-            </ui:define>
-
-            <ui:define name="menu">
-                <h:outputText value="menu" style="color: #464646;" />
             </ui:define>
 
             <ui:define name="content">
@@ -24,27 +20,27 @@
                                 <h:panelGrid columns="2" columnClasses="column" cellpadding="5">  
                                     <h:outputLabel for="nombre_usuario" value="Nombre Usuario:* " />  
                                     <p:inplace id="ip_nombre_usuario">  
-                                        <p:inputText id="nombre_usuario" value="#{perfilController.usuario.usrLogin}" label="Nombre Usuario" required="true" />  
+                                        <p:inputText id="nombre_usuario" label="Nombre Usuario" required="true" />  
                                     </p:inplace>
 
                                     <h:outputLabel for="nombre_personal" value="Nombre:* " />  
                                     <p:inplace id="ip_nombre_personal" editor="true">
-                                        <p:inputText id="nombre_personal" value="#{perfilController.usuario.usrNombre}" label="Nombre" required="true" />
+                                        <p:inputText id="nombre_personal" label="Nombre" required="true" />
                                     </p:inplace>
 
                                     <h:outputLabel for="apellido" value="Apellido:* " />  
                                     <p:inplace id="ip_apellido" editor="true">
-                                        <p:inputText id="apellido" value="#{perfilController.usuario.usrApellido}" label="Apellido" required="true" />
+                                        <p:inputText id="apellido" label="Apellido" required="true" />
                                     </p:inplace>
 
                                     <h:outputLabel for="email" value="Email:* " />  
                                     <p:inplace id="ip_email" editor="true">
-                                        <p:inputText id="email" value="#{perfilController.usuario.usrEmail}" label="Email" required="true" />
+                                        <p:inputText id="email" label="Email" required="true" />
                                     </p:inplace> 
 
                                     <h:outputText value="Vigencia Password: " />  
                                     <p:inplace id="ip_selectVigenciaPass" label="Meses" effectSpeed="fast" event="dblclick">  
-                                        <p:selectOneMenu value="#{perfilController.usuario.usrVigenciaPassword}" label="Vigencia Password">  
+                                        <p:selectOneMenu label="Vigencia Password">  
                                             <f:selectItem itemLabel="1 Mes" itemValue="1" />  
                                             <f:selectItem itemLabel="2 Meses" itemValue="2" />  
                                             <f:selectItem itemLabel="3 Meses" itemValue="3" />  
@@ -60,10 +56,10 @@
                                             <f:selectItem itemLabel="Indefinida" itemValue="13" />
                                         </p:selectOneMenu> 
                                     </p:inplace>
-                                     
+
                                     <h:outputText value="Pregunta Seguridad: " /> 
                                     <p:inplace id="ip_selectPreguntaSeg" label="Pregunta" effectSpeed="fast" event="dblclick">
-                                        <p:selectOneMenu value="#{perfilController.usuario.usrPreguntaSeguridad}" label="Pregunta Seguridad">  
+                                        <p:selectOneMenu label="Pregunta Seguridad">  
                                             <f:selectItem itemLabel="Cual es tu color favorito?" itemValue="Cual es tu color favorito?" />  
                                             <f:selectItem itemLabel="Donde nacio tu madre?" itemValue="Donde nacio tu madre?" />  
                                             <f:selectItem itemLabel="Donde nacio tu padre?" itemValue="Donde nacio tu padre?" />  
@@ -71,12 +67,12 @@
                                             <f:selectItem itemLabel="Como se llamo tu primera mascota?" itemValue="Como se llamo tu primera mascota?" />
                                         </p:selectOneMenu>
                                     </p:inplace>
-                                    
+
                                     <h:outputText value="Respuesta:* " />
-                                    <p:inputText id="respuesta_psec" value="#{perfilController.usuario.usrRespuestaPreguntaSeguridad}" label="Respuesta" required="true" />
-                                    
+                                    <p:inputText id="respuesta_psec" label="Respuesta" required="true" />
+
                                     <f:facet name="footer">
-                                        <p:commandButton value="Guardar" action="#{perfilController.doGuardarPerfil}" icon="ui-icon-check" update="msgs" />
+                                        <p:commandButton value="Guardar" icon="ui-icon-check" update="msgs" />
                                     </f:facet>
                                 </h:panelGrid>  
                             </p:panel> 
