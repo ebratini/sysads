@@ -6,10 +6,10 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
 
-<!--    <h:head>
-        <h:outputStylesheet library="css" name="menuStyle.css" />
-        <h:outputScript library="js" name="resources/js/menuDynamic.js" />
-    </h:head>-->
+    <!--    <h:head>
+            <h:outputStylesheet library="css" name="menuStyle.css" />
+            <h:outputScript library="js" name="resources/js/menuDynamic.js" />
+        </h:head>-->
     <body class="body_cls">
         <ui:composition template="/resources/templates/master_template.xhtml">
 
@@ -36,12 +36,16 @@
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_vp" class="mnuItemDiv">
-                                                <a href="./pruebagrowl.jsf" id="vp_lnk" class="mnuItmLink" onmouseover="turnLink('vp_lnk', true)" onmouseout="turnLink('vp_lnk', false)">Ver/Editar Info Perfil</a>
+                                                <h:outputLink id="vp_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('vp_lnk', true)" onmouseout="turnLink('vp_lnk', false)" value="/usuarios/ver_perfil.jsf">
+                                                    <h:outputText value="Ver/Editar Info Perfil" />
+                                                </h:outputLink>
                                             </div>
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_ccon"  class="mnuItemDiv">
-                                                <a href="#" id="cc_lnk" class="mnuItmLink" onmouseover="turnLink('cc_lnk', true)" onmouseout="turnLink('cc_lnk', false)">Cambiar Contraseña</a>
+                                                <h:outputLink id="cc_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('cc_lnk', true)" onmouseout="turnLink('cc_lnk', false)" onclick="cc_dlg.show()" value="#">
+                                                    <h:outputText value="Cambiar Contraseña" />
+                                                </h:outputLink>
                                             </div>
                                         </li>
                                         <li class="li_cls">
@@ -123,7 +127,7 @@
                                 </div>
                                 <div id="right_menu_div" style="width:30%; float:left;">
                                     <!-- Administracion Financiera -->
-                                    <ul style="margin:0; padding:0; list-style-type:none; padding-bottom:50px;">
+                                    <ul style="margin:0; padding:0; list-style-type:none; padding-bottom:52px;">
                                         <li>
                                             <div id="rm_title_top" style="width:100%; margin:0 auto; color:#DDD; font-size:120%; padding-bottom: 2px;">Financiera</div>
                                         </li>
@@ -182,96 +186,127 @@
                 <div id="news" class="newsbar">News</div>
                 <hr />
                 <div id="ig-la" style="height: 270px;" >
-                    <div id="ig" style="width:60%; float:left;">
+                    <div id="ig" style="width:100%; float:left;">
                         <p:galleria effect="slide" effectDuration="1000" panelHeight="247" panelWidth="545">
                             <p:graphicImage value="/resources/images/g1.jpg" panelWidth="80" title="image1" alt="image1 desc" />
                             <p:graphicImage value="/resources/images/g2.jpg" panelWidth="80" title="image1" alt=" image2 desc" />
                             <p:graphicImage value="/resources/images/g3.jpg" panelWidth="80" title="image1" alt=" image3 desc" />
                             <p:graphicImage value="/resources/images/g4.jpg" panelWidth="80" title="image1" alt=" image4 desc" />
                         </p:galleria>
-
                     </div>
-                    <div id="la" class="login_area">
-                        <h:form id="la_frm">
-                            <p:panel  id="lgn-panel" header="Login" >
-                                <p:growl id="la_growl" sticky="true" showDetail="true" autoUpdate="true"/>
-                                <h:panelGrid columns="1" bgcolor="transparent" width="100%">
-                                    <h:outputLabel for="usuario" value="Usuario:    *"  />
-                                    <p:inputText id="usuario"  required="true" label="Usuario" size="25" value="#{loginController.usrLogin}" >
-                                        <f:validateLength minimum="2"  />
-                                    </p:inputText>
+                    <p:stack icon="/resources/images/stack.png">
+                        <p:menuitem value="Cuenta" icon="/resources/images/account_settings_icon.png" url="#"/>
+                        <p:menuitem value="Personal" icon="/resources/images/personal-information-icon.png" url="#"/>
+                        <p:menuitem value="Academica" icon="/resources/images/AcademicIcon.png" url="#"/>
+                        <p:menuitem value="Financiera" icon="/resources/images/coins.png" url="#" />
+                        <p:menuitem value="Otros" icon="/resources/images/ofinterest.png" url="#" />
+                    </p:stack>
+                    <br />
 
-                                    <h:outputLabel for="contraseña" value="Contraseña: *" />
-                                    <p:password id="contraseña" required="true" label="Contraseña" size="25" value="#{loginController.pass}"/>
+                    <!-- Dialogs -->
+                    <!-- Cambiar Contraseña Dlg -->
+                    <p:dialog header="Cambiar Contraseña" widgetVar="cc_dlg" showEffect="clip" hideEffect="clip" modal="true" >
+                        <h:form> 
+                            <p:messages id="messages" showDetail="true"/>
+                            <h:panelGrid columns="2">
+                                <h:outputLabel for="pass_actual" value="Contraseña Actual:* " />  
+                                <p:password id="pass_actual" required="true" label="Contraseña Actual" />
 
-                                    <p:selectOneRadio id="rol" label="Rol" required="true" value="#{loginController.usrRol}">  
-                                        <f:selectItem itemLabel="Estudiante" itemValue="1" />  
-                                        <f:selectItem itemLabel="Docente" itemValue="2" />
-                                    </p:selectOneRadio> 
-                                    <br />
-                                    <p:commandButton value="Aceptar" action="#{loginController.doLogin}"/>
-                                    <br />
-                                </h:panelGrid>
-                            </p:panel>
+                                <h:outputLabel for="new_pass" value="Contraseña Nueva:* " />  
+                                <p:password id="new_pass" required="true" label="Contraseña Nueva" feedback="true" match="confirm_pass"/>
+
+                                <h:outputLabel for="confirm_pass" value="Confirmar Contraseña: " />  
+                                <p:password id="confirm_pass" label="Confirmar Contraseña" required="true"/>
+
+                                <f:facet name="footer">
+                                    <p:commandButton id="aceptarBtn" value="Aceptar" action="cc_dlg.hide();" update="messages"/>
+                                    <p:spacer width="10" />
+                                    <p:commandButton id="cancelBtn" value="Cancelar" action="cc_dlg.hide();"/>
+                                </f:facet>
+                            </h:panelGrid>
                         </h:form>
-                        <br />
-                        <h:form>
-                            <h:outputLink id="olv_contraseña" value="javascript:void(0)" onclick="oc_dlg.show();" >
-                                <h:outputText value="Olvide Contraseña" />
-                            </h:outputLink>
-                            &nbsp;&nbsp;
-                            <h:outputLink id="do-reg" value="./usuarios/registrarse.jsf">
-                                <h:outputText value="Registrarse" />
-                            </h:outputLink>
-                            &nbsp;&nbsp;
-                            <h:outputLink id="intr" value="javascript:void(0)" onclick="oc_dlg.show();">
-                                <h:outputText value="Intranet" />
-                            </h:outputLink>
+                    </p:dialog>
 
-                            <p:dialog id="dlg" header="Login - Recuperar Acceso" widgetVar="oc_dlg" showEffect="clip" hideEffect="clip" modal="true" >
-                                <h:form>  
-                                    <h:panelGrid columns="2" style="margin-bottom:10px">  
-                                        <h:outputLabel for="nombreusuario" value="Nombre Usuario:" />  
-                                        <p:inputText id="nombreusuario" />  
-                                    </h:panelGrid>  
+                    <!-- Editar Pregunta/Resp Seguridad Dlg -->
+                    <p:dialog header="Editar Pregunta/Respuesta Seguridad" widgetVar="eprs_dlg" showEffect="clip" hideEffect="clip" modal="true" >
+                        <h:form>  
+                            <h:panelGrid columns="2">  
+                                <h:outputText value="Pregunta Seguridad: " />  
+                                <p:selectOneMenu label="Pregunta Seguridad">  
+                                    <f:selectItem itemLabel="Cual es tu color favorito?" itemValue="Cual es tu color favorito?" />  
+                                    <f:selectItem itemLabel="Donde nacio tu madre?" itemValue="Donde nacio tu madre?" />  
+                                    <f:selectItem itemLabel="Donde nacio tu padre?" itemValue="Donde nacio tu padre?" />  
+                                    <f:selectItem itemLabel="Numero de id carnet universidad?" itemValue="Numero de id carnet universidad?" />
+                                    <f:selectItem itemLabel="Como se llamo tu primera mascota?" itemValue="Como se llamo tu primera mascota?" />
+                                </p:selectOneMenu>
 
-                                    <p:commandButton id="submitButton" value="Submit" oncomplete="dlg.hide();"/>  
-
-                                </h:form>
-                            </p:dialog>
-                                           
-                            <p:dialog id="ins_dlg" header="Inscripcion - Reinscripcion" widgetVar="est_reg_dlg" showEffect="clip" hideEffect="clip" modal="true" >
-                                <h:form>  
-                                    <h:panelGrid columns="3" style="margin-bottom:10px">                                         
-                                        <h:outputLink id="newuser" value="./estudiantes_reg.jsf" onclick="dlg.hide();">
-                                            <p:button value="Primera Inscripcion"/>
-                                        </h:outputLink> 
-                                        <h:outputText value="&nbsp;&nbsp;&nbsp;&nbsp;" />
-                                        <h:outputLink id="user" value="./estudiantes_inscr.jsf" onclick="dlg.hide();">
-                                            <p:button value="Reinscripcion"/>
-                                        </h:outputLink>                                         
-                                    </h:panelGrid>  
-                                </h:form>
-                            </p:dialog>
-                            <p:dialog id="status_ins" header="Inscripcion - Reinscripcion" widgetVar="est_reg_dlg" showEffect="clip" hideEffect="clip" modal="true" >
-                                <h:form>  
-                                    <h:panelGrid columns="3" style="margin-bottom:10px">                                         
-                                        <h:outputLink id="newuser" value="./estudiantes_reg.jsf" onclick="dlg.hide();">
-                                            <p:button value="Primera Inscripcion"/>
-                                        </h:outputLink> 
-                                        <h:outputText value="&nbsp;&nbsp;&nbsp;&nbsp;" />
-                                        <h:outputLink id="user" value="./estudiantes_inscr.jsf" onclick="dlg.hide();">
-                                            <p:button value="Reinscripcion"/>
-                                        </h:outputLink>                                         
-                                    </h:panelGrid>  
-                                </h:form>
-                            </p:dialog>
-                            <br />
-                            <br />
-                            <br />
+                                <h:outputText value="Respuesta:* " />
+                                <p:inputText id="respuesta_psec" label="Respuesta" required="true" />
+                            </h:panelGrid>
+                            <p:commandButton id="aceptarBtn" value="Aceptar" oncomplete="eprs_dlg.hide();"/>
+                            <p:spacer width="20" />
+                            <p:commandButton id="cancelBtn" value="Cancelar" action="eprs_dlg.hide();"/>
                         </h:form>
-                    </div>
+                    </p:dialog>
+
+                    <!-- Editar Vigencia Contraseña -->
+                    <p:dialog header="Editar Vigencia Contraseña" widgetVar="evc_dlg" showEffect="clip" hideEffect="clip" modal="true" >
+                        <h:form>  
+                            <h:panelGrid columns="2">  
+                                <h:outputText value="Vigencia Password: " />  
+                                <p:selectOneMenu label="Vigencia Password">  
+                                    <f:selectItem itemLabel="1 Mes" itemValue="1" />  
+                                    <f:selectItem itemLabel="2 Meses" itemValue="2" />  
+                                    <f:selectItem itemLabel="3 Meses" itemValue="3" />  
+                                    <f:selectItem itemLabel="4 Meses" itemValue="4" />
+                                    <f:selectItem itemLabel="5 Meses" itemValue="5" />  
+                                    <f:selectItem itemLabel="6 Meses" itemValue="6" />  
+                                    <f:selectItem itemLabel="7 Meses" itemValue="7" />  
+                                    <f:selectItem itemLabel="8 Meses" itemValue="8" />  
+                                    <f:selectItem itemLabel="9 Meses" itemValue="9" />  
+                                    <f:selectItem itemLabel="10 Meses" itemValue="10" />  
+                                    <f:selectItem itemLabel="11 Meses" itemValue="11" />  
+                                    <f:selectItem itemLabel="12 Meses" itemValue="12" />
+                                    <f:selectItem itemLabel="Indefinida" itemValue="13" />
+                                </p:selectOneMenu>
+                            </h:panelGrid>
+                            <p:commandButton id="aceptarBtn" value="Aceptar" oncomplete="evc_dlg.hide();"/>
+                            <p:spacer width="20" />
+                            <p:commandButton id="cancelBtn" value="Cancelar" action="evc_dlg.hide();"/>
+                        </h:form>
+                    </p:dialog>                        
+
+                    <p:dialog id="ins_dlg" header="Inscripcion - Reinscripcion" widgetVar="est_reg_dlg" showEffect="clip" hideEffect="clip" modal="true" >
+                        <h:form>  
+                            <h:panelGrid columns="3" style="margin-bottom:10px">                                         
+                                <h:outputLink id="newuser" value="./estudiantes_reg.jsf" onclick="dlg.hide();">
+                                    <p:button value="Primera Inscripcion"/>
+                                </h:outputLink> 
+                                <h:outputText value="&nbsp;&nbsp;&nbsp;&nbsp;" />
+                                <h:outputLink id="user" value="./estudiantes_inscr.jsf" onclick="dlg.hide();">
+                                    <p:button value="Reinscripcion"/>
+                                </h:outputLink>                                         
+                            </h:panelGrid>  
+                        </h:form>
+                    </p:dialog>
+                    <p:dialog id="status_ins" header="Inscripcion - Reinscripcion" widgetVar="est_reg_dlg" showEffect="clip" hideEffect="clip" modal="true" >
+                        <h:form>  
+                            <h:panelGrid columns="3" style="margin-bottom:10px">                                         
+                                <h:outputLink id="newuser" value="./estudiantes_reg.jsf" onclick="dlg.hide();">
+                                    <p:button value="Primera Inscripcion"/>
+                                </h:outputLink> 
+                                <h:outputText value="&nbsp;&nbsp;&nbsp;&nbsp;" />
+                                <h:outputLink id="user" value="./estudiantes_inscr.jsf" onclick="dlg.hide();">
+                                    <p:button value="Reinscripcion"/>
+                                </h:outputLink>                                         
+                            </h:panelGrid>  
+                        </h:form>
+                    </p:dialog>
+                    <br />
+                    <br />
+                    <br />
                 </div>
+                <!--                </div>-->
                 <div id="vc_section">
                     <br /><br />
                     <p:tabView effect="fade" orientation="bottom">
