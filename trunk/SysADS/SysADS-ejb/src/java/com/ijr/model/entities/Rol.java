@@ -79,12 +79,12 @@ public class Rol implements Serializable {
     @NotNull
     @Column(name = "rol_status")
     private char rolStatus;
-    @ManyToMany(mappedBy = "rolCollection")
-    private Collection<Permiso> permisoCollection;
-    @JoinTable(name = "usuarios_roles", joinColumns = {
+    @JoinTable(name = "roles_permisos", joinColumns = {
         @JoinColumn(name = "rol_id", referencedColumnName = "rol_id")}, inverseJoinColumns = {
-        @JoinColumn(name = "usr_id", referencedColumnName = "usr_id")})
+        @JoinColumn(name = "per_id", referencedColumnName = "per_id")})
     @ManyToMany
+    private Collection<Permiso> permisoCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rol")
     private Collection<Usuario> usuarioCollection;
 
     public Rol() {

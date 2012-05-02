@@ -97,7 +97,7 @@ public class Horario implements Serializable {
     private String hroCampus;
     @JoinColumn(name = "sec_id", referencedColumnName = "sec_id")
     @ManyToOne(optional = false)
-    private Seccion secId;
+    private Seccion seccion;
 
     public Horario() {
     }
@@ -190,12 +190,12 @@ public class Horario implements Serializable {
         this.hroCampus = hroCampus;
     }
 
-    public Seccion getSecId() {
-        return secId;
+    public Seccion getSeccion() {
+        return seccion;
     }
 
-    public void setSecId(Seccion secId) {
-        this.secId = secId;
+    public void setSeccion(Seccion seccion) {
+        this.seccion = seccion;
     }
 
     @Override

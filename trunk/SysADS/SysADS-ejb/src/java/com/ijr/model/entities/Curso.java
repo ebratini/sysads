@@ -84,7 +84,7 @@ public class Curso implements Serializable {
     @NotNull
     @Column(name = "cso_status")
     private char csoStatus;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "csoId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "curso")
     private Collection<Modulo> moduloCollection;
 
     public Curso() {

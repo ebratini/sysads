@@ -94,7 +94,7 @@ public class ContactoEmergencia implements Serializable {
     private char cemStatus;
     @JoinColumn(name = "est_id", referencedColumnName = "est_id")
     @ManyToOne(optional = false)
-    private Estudiante estId;
+    private Estudiante estudiante;
 
     public ContactoEmergencia() {
     }
@@ -186,12 +186,12 @@ public class ContactoEmergencia implements Serializable {
         this.cemStatus = cemStatus;
     }
 
-    public Estudiante getEstId() {
-        return estId;
+    public Estudiante getEstudiante() {
+        return estudiante;
     }
 
-    public void setEstId(Estudiante estId) {
-        this.estId = estId;
+    public void setEstudiante(Estudiante estudiante) {
+        this.estudiante = estudiante;
     }
 
     @Override

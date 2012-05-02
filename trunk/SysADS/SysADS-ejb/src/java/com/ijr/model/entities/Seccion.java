@@ -65,16 +65,16 @@ public class Seccion implements Serializable {
     @NotNull
     @Column(name = "sec_status")
     private char secStatus;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "secId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "seccion")
     private Collection<Horario> horarioCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "seccion")
     private Collection<EstudianteSeccion> estudianteSeccionCollection;
-    @JoinColumn(name = "prf_id", referencedColumnName = "prf_id")
-    @ManyToOne(optional = false)
-    private Profesor prfId;
     @JoinColumn(name = "mdl_id", referencedColumnName = "mdl_id")
     @ManyToOne(optional = false)
-    private Modulo mdlId;
+    private Modulo modulo;
+    @JoinColumn(name = "prf_id", referencedColumnName = "prf_id")
+    @ManyToOne(optional = false)
+    private Profesor profesor;
 
     public Seccion() {
     }
@@ -140,20 +140,20 @@ public class Seccion implements Serializable {
         this.estudianteSeccionCollection = estudianteSeccionCollection;
     }
 
-    public Profesor getPrfId() {
-        return prfId;
+    public Modulo getModulo() {
+        return modulo;
     }
 
-    public void setPrfId(Profesor prfId) {
-        this.prfId = prfId;
+    public void setModulo(Modulo modulo) {
+        this.modulo = modulo;
     }
 
-    public Modulo getMdlId() {
-        return mdlId;
+    public Profesor getProfesor() {
+        return profesor;
     }
 
-    public void setMdlId(Modulo mdlId) {
-        this.mdlId = mdlId;
+    public void setProfesor(Profesor profesor) {
+        this.profesor = profesor;
     }
 
     @Override
