@@ -75,10 +75,9 @@
                                     <h:outputText value="Respuesta:* " />
                                     <p:inputText id="respuesta_psec" value="#{perfilController.usuario.usrRespuestaPreguntaSeguridad}" label="Respuesta" required="true" />
                                     
-                                    <h:outputText value="Checkbox: "/>  
-                                    <p:inplace id="checkboxInplace" label="Edit me" effect="none">  
-                                        <h:selectBooleanCheckbox />  
-                                    </p:inplace>
+                                    <f:facet name="footer">
+                                        <p:commandButton value="Guardar" action="#{perfilController.doGuardarPerfil}" icon="ui-icon-check" update="msgs" />
+                                    </f:facet>
                                 </h:panelGrid>  
                             </p:panel> 
                         </h:form>
