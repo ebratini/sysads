@@ -318,12 +318,37 @@
                 
                 <!-- Stack Menu -->
                 <p:stack icon="/resources/images/stack.png">
-                    <p:menuitem value="Cuenta" icon="/resources/images/account_settings_icon.png" url="#"/>
-                    <p:menuitem value="Personal" icon="/resources/images/personal-information-icon.png" url="#"/>
-                    <p:menuitem value="Academica" icon="/resources/images/AcademicIcon.png" url="#"/>
-                    <p:menuitem value="Financiera" icon="/resources/images/coins.png" url="#" />
-                    <p:menuitem value="Otros" icon="/resources/images/ofinterest.png" url="#" />
+                    <p:menuitem id="as" value="Cuenta" icon="/resources/images/account_settings_icon.png" url="#"/>
+                    <p:menuitem id="pi" value="Personal" icon="/resources/images/personal-information-icon.png" url="#"/>
+                    <p:menuitem id="ai" value="Academica" icon="/resources/images/AcademicIcon.png" url="#"/>
+                    <p:menuitem id="fi" value="Financiera" icon="/resources/images/coins.png" url="#" />
+                    <p:menuitem id="oi" value="Otros" icon="/resources/images/ofinterest.png" url="#" />
                 </p:stack>
+                
+                <!-- Overlay Panel for Stack Menu -->
+                <!-- account setting menu -->
+                <p:overlayPanel id="sm_ov_pnl" for="as" hideEffect="fade">
+                    <h:outputLink id="sm_vp_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('sm_vp_lnk', true)" onmouseout="turnLink('sm_vp_lnk', false)" value="/SysADS-war/usuarios/perfil.jsf">
+                        <h:outputText value="Ver/Editar Info Perfil" />
+                    </h:outputLink>
+                    <h:outputLink id="sm_cc_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('sm_cc_lnk', true)" onmouseout="turnLink('sm_cc_lnk', false)" onclick="cc_dlg.show()" value="#">
+                        <h:outputText value="Cambiar Contraseña" />
+                    </h:outputLink>
+                    <h:outputLink id="sm_cprs_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('sm_cprs_lnk', true)" onmouseout="turnLink('sm_cprs_lnk', false)" onclick="eprs_dlg.show()" value="#">
+                        <h:outputText value="Editar Pregunta/Respuesta Seguridad" />
+                    </h:outputLink>
+                    <h:outputLink id="sm_evc_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('sm_evc_lnk', true)" onmouseout="turnLink('sm_evc_lnk', false)" onclick="evc_dlg.show()" value="#">
+                        <h:outputText value="Editar Vigencia Contraseña" />
+                    </h:outputLink>              
+                    <h:outputLink id="sm_ccue_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('sm_ccue_lnk', true)" onmouseout="turnLink('sm_ccue_lnk', false)" onclick="evc_dlg.show()" value="#">
+                        <h:outputText value="Cerrar Cuenta" />
+                    </h:outputLink>
+                </p:overlayPanel>
+                
+                <!-- datos personales -->
+                <p:overlayPanel id="sm_ov_pnl" for="as" hideEffect="fade">
+                    <h:outputText value="Ver/Editar Datos Personales" />
+                </p:overlayPanel>
             </ui:define>
         </ui:composition>
     </body>
