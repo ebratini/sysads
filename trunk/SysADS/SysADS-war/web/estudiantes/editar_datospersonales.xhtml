@@ -6,13 +6,9 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
     <body class="body_cls">
-        <ui:composition template="/resources/templates/master_template.xhtml">
+        <ui:composition template="/resources/templates/estudiantes_master_template.xhtml">
             <ui:define name="title">
                 SysADS - Registro Datos Estudiantes
-            </ui:define>
-
-            <ui:define name="menu">
-                <h:outputText value="menu" style="color: #464646;" />
             </ui:define>
 
             <ui:define name="content">
@@ -36,12 +32,12 @@
 
                                     <h:outputLabel for="primer_apellido" value="Primer Apellido:*" />
                                     <p:inplace emptyLabel="Clic Para Modificar" effect="slide">
-                                        <p:inputText id="primer_nombre" value="" required="true" />
+                                        <p:inputText id="primer_apellido" value="" required="true" />
                                     </p:inplace>
 
                                     <h:outputLabel for="segundo_apellido" value="Segundo Apellido: " />
                                     <p:inplace emptyLabel="Clic Para Modificar" effect="slide">
-                                        <p:inputText id="segundo_nombre" value="" required="false" />
+                                        <p:inputText id="segundo_apellido" value="" required="false" />
                                     </p:inplace>
 
                                     <h:outputLabel for="apodo" value="Apodo: " />  
@@ -51,7 +47,7 @@
 
                                     <h:outputLabel for="sexo" value="Sexo:* " />  
                                     <p:inplace emptyLabel="Clic Para Modificar" effect="slide">
-                                        <p:selectOneMenu value="">  
+                                        <p:selectOneMenu id="sexo" value="">  
                                             <f:selectItem itemLabel="Masculino" itemValue="1" />  
                                             <f:selectItem itemLabel="Femenino" itemValue="2" />  
                                         </p:selectOneMenu>
@@ -64,7 +60,7 @@
                                         </p:inplace>
                                         <h:outputLabel for="tipoDoc" value="&nbsp;&nbsp;&nbsp;Tipo:* " />  
                                         <p:inplace emptyLabel="Clic Para Modificar" effect="slide">
-                                            <p:selectOneMenu value=" ">  
+                                            <p:selectOneMenu id="tipoDoc" value=" ">  
                                                 <f:selectItem itemLabel="Cedula" itemValue="1" />  
                                                 <f:selectItem itemLabel="Pasaporte" itemValue="2" />  
                                                 <f:selectItem itemLabel="Acta de Nacimiento" itemValue="3" />  
@@ -76,35 +72,34 @@
                                     <p:inplace emptyLabel="Clic Para Modificar" effect="slide">
                                         <p:inputText id="nacionalidad" value="" required="false" />
                                     </p:inplace>
+                                    
                                     <h:outputLabel for="direccion" value="Direccion:*" />
                                     <p:inplace emptyLabel="Clic Para Modificar" effect="slide">
                                         <p:inputText id="direccion" value="" required="true"  size="60"/>
                                     </p:inplace>
-                                    
+
                                     <h:outputLabel for="email" value="Email:* " />  
                                     <h:panelGrid columns="3">
                                         <p:inplace emptyLabel="Clic Para Modificar" effect="slide">
                                             <p:inputText id="email" value="" required="true" size="20" />
                                         </p:inplace>
-                                        
+
                                         <h:outputLabel for="telefono" value="&nbsp;&nbsp;&nbsp;Telefono:* " /> 
                                         <p:inplace emptyLabel="Clic Para Modificar" effect="slide">
-                                            <p:inputText id="telefono" value="" required="true"  />
+                                            <p:inputMask id="telefono" value="" mask="(999) 999-9999" required="true" />
                                         </p:inplace>
-                                    </h:panelGrid>                                    
+                                    </h:panelGrid> 
 
                                     <h:outputLabel for="fecha_nac" value="Fecha Nacimiento: * " />
                                     <h:panelGrid columns="3">
                                         <p:inplace emptyLabel="Clic Para Modificar" effect="slide">
-                                        <p:inputText id="fech_nac_dia" value="" required="true" size="2"/>
-                                        <p:inputText id="fech_nac_mes" value="" required="true" size="2"/>
-                                        <p:inputText id="fech_nac_anio" value="" required="true" size="4"/>
+                                            <p:calendar id="fecha_nac" disabled="true" required="true" />
                                         </p:inplace>
                                     </h:panelGrid> 
 
                                     <h:outputLabel for="lugar_nac" value="Lugar de Nacimiento: " />
                                     <p:inplace emptyLabel="Clic Para Modificar" effect="slide">
-                                    <p:inputText id="lugar_nac" value="" required="false" />
+                                        <p:inputText id="lugar_nac" value="" required="false" />
                                     </p:inplace>
 
                                 </h:panelGrid>
