@@ -18,10 +18,10 @@
             </ui:define>
 
             <ui:define name="menu">
-                <h:outputLink id="mnu_ttl_lnk" value="javascript:void(0)" style="text-decoration: none; color: #BBB; font-size: 120%" onmouseover="turnLink('mnu_ttl_lnk', true)" onmouseout="turnLink('mnu_ttl_lnk', false)">
+                <h:outputLink id="mnu_ttl_lnk" value="javascript:void(0)" style="text-decoration: none; color: #BBB; font-size: 120%; " onmouseover="turnLink('mnu_ttl_lnk', true)" onmouseout="turnLink('mnu_ttl_lnk', false)">
                     <h:outputText value="Menu" />
                 </h:outputLink>
-                <p:overlayPanel style="background-color: #464646; width: 886px; border: none;" id="menuPanel" for="mnu_ttl_lnk" showEvent="mouseover" hideEvent="mousedown" showEffect="blind" hideEffect="blind">
+                <p:overlayPanel style="background-color: #464646; width: 886px; border: none;" id="menuPanel" for="mnu_ttl_lnk" showEvent="mousedown" hideEvent="mousedown" showEffect="blind" hideEffect="blind">
                     <div id="mnu_container" style="border: none;">
                         <div id="mnu_mainContent">
                             <div id="menuContainer"  style="width:100%; margin:0 auto;">

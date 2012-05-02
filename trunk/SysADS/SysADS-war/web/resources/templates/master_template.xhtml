@@ -20,8 +20,10 @@
             <div id="mainContent"  style="background-color: white">
                 <div id = "header">
                     <div id="msl" class="mslbar">
-                        <div id="menu" style="width: 60%; float:left;">
-                            <ui:insert name="menu">Menu</ui:insert>
+                        <div id="menu" style="width: 60%; float:left; padding:5px;">
+                            <ui:insert name="menu">
+                                <h:outputText value="menu" style="color: #464646;" />
+                            </ui:insert>
                         </div>
                         <div id="searchbar" class="slbar" align="right">
                             <p:inputText id="search_input" value="Buscar.." styleClass="searchbox"/>
