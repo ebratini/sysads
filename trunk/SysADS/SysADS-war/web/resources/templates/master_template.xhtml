@@ -20,7 +20,7 @@
             <div id="mainContent"  style="background-color: white">
                 <div id = "header">
                     <div id="msl" class="mslbar">
-                        <div id="menu" style="width: 60%; float:left; padding:5px;">
+                        <div id="menu" style="width: 40%; float:left; padding:5px;">
                             <ui:insert name="menu">
                                 <h:outputText value="menu" style="color: #464646;" />
                             </ui:insert>
@@ -28,8 +28,18 @@
                         <div id="searchbar" class="slbar" align="right">
                             <p:inputText id="search_input" value="Buscar.." styleClass="searchbox"/>
                         </div>
-                        <div id="usr-login" class="slbar" align="right">
-                            <h:link id="lgd_usr" value="#{loginController.usuario.usrLogin}" style="color: lightsalmon"/>
+                        <div id="usr_login" style="width: 35%; float:right; padding:5px;" align="right">
+<!--                            <h:link id="lgd_usr" value="#{loginController.usuario.usrLogin}" style="color: lightsalmon"/>-->
+                            <h:outputLink id="lgd_usr" value="javascript:void(0)" style="text-decoration: none; color: #BBB; font-size: 120%; " onmouseover="turnLink('lgd_usr', true)" onmouseout="turnLink('lgd_usr', false)">
+                                <h:outputText value="#{loginController.usuario.usrLogin}" />
+                            </h:outputLink>
+                            <p:overlayPanel id="logout_ov_pnl" for="lgd_usr" showEffect="blind" hideEffect="explode">
+                                <h:form>
+                                    <h:commandLink action="#{loginController.doLogout}" style="text-decoration: none">
+                                        <h:outputText value="Log Out" />
+                                    </h:commandLink>
+                                </h:form>
+                            </p:overlayPanel>
                         </div>
                     </div>
                     <div id="logo_section" style="background-color: #333333; height: 80px;">

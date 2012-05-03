@@ -31,12 +31,13 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Edwin Bratini
  */
-@ManagedBean(name = "loginMBean")
+@ManagedBean
 @SessionScoped
 public class LoginController {
 
@@ -44,23 +45,39 @@ public class LoginController {
     private SecurityServiceEJB securityServiceEJB;
     @EJB
     private UsuarioFacade usuarioFacade;
-    private String usrLogin;
-    private String usrRol;
-    private String usrPass;
+    private String login = "";
+    private String pass = "";
+    private String rol = "";
     private Usuario usuario = new Usuario();
 
     /**
-     * Creates a new instance of loginController
+     * Creates a new instance of LoginController
      */
     public LoginController() {
     }
 
-    public String getUsrLogin() {
-        return usrLogin;
+    public String getPass() {
+        return pass;
     }
 
-    public void setUsrLogin(String usrLogin) {
-        this.usrLogin = usrLogin;
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public Usuario getUsuario() {
@@ -71,49 +88,39 @@ public class LoginController {
         this.usuario = usuario;
     }
 
-    public String getUsrPass() {
-        return usrPass;
-    }
+    public String doLogin() {
+        boolean validUser = false;
+        String viewToRender = "./SysADS-war/index.jsf";
 
-    public void setUsrPass(String usrPass) {
-        this.usrPass = usrPass;
-    }
-
-    public String getUsrRol() {
-        return usrRol;
-    }
-
-    public void setUsrRol(String usrRol) {
-        this.usrRol = usrRol;
-    }
-
-    public String login() {
-        Usuario usr = usuarioFacade.getUsuarioByLogin(usrLogin);
-        FacesContext context = FacesContext.getCurrentInstance();
+        Usuario usr = usuarioFacade.getUsuarioByLogin(login);
         if (usr != null) {
-            if (usr.getUsrPassword().equals(securityServiceEJB.encrypt(usrPass))) {
-                this.usuario = usr;
-                context.addMessage(null, new FacesMessage("Login", "Bienvenid@ " + usrLogin));
-                if (usrRol.equalsIgnoreCase("estudiante") && usr.getRol().getRolNombre().equalsIgnoreCase("estudiante")) {
-                    return "estudiantes/index.jsf";
-                } else if (usrRol.equalsIgnoreCase("docente") && usr.getRol().getRolNombre().equalsIgnoreCase("docente")) {
-                    return "profesores/index.jsf";
+            if (usr.getUsrPassword().equals(securityServiceEJB.encrypt(pass))) {
+                if (rol.equalsIgnoreCase("estudiante") && usr.getRol().getRolNombre().equalsIgnoreCase("estudiante")) {
+                    validUser = true;
+                    viewToRender = "/estudiantes/index.jsf";
+                } else if (rol.equalsIgnoreCase("docente") && usr.getRol().getRolNombre().equalsIgnoreCase("docente")) {
+                    validUser = true;
+                    viewToRender = "/profesores/index.jsf";
                 }
             }
         }
-        context.addMessage(null, new FacesMessage("Login", "Usuario/Contraseña Invalidos"));
-        return "/index.jsf";
+
+        FacesContext context = FacesContext.getCurrentInstance();
+        if (validUser) {
+            context.addMessage(null, new FacesMessage("Login", "Bienvenid@ " + login));
+            this.usuario = usr;
+        } else {
+            context.addMessage(null, new FacesMessage("Login", "Usuario/Contraseña Invalidos"));
+        }
+
+        return viewToRender;
     }
 
     public String doLogout() {
-        return null;
-    }
-
-    public String validateSecQuestion() {
-        return null;
-    }
-
-    public String sendNewPass() {
-        return null;
+        // do logout invalidating session and returning user to login page
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        HttpSession httpSession = (HttpSession) facesContext.getExternalContext().getSession(false);
+        httpSession.invalidate();
+        return "./SysADS-war/index.jsf?faces-redirect=true";
     }
 }

@@ -32,19 +32,19 @@
                                 <p:growl id="la_growl" life="3500" showDetail="true" />
                                 <h:panelGrid columns="1" bgcolor="transparent" width="100%">
                                     <h:outputLabel for="usuario" value="Usuario:    *"  />
-                                    <p:inputText id="usuario"  required="true" label="Usuario" size="25" value="#{loginMBean.usrLogin}" >
+                                    <p:inputText id="usuario"  required="true" label="Usuario" size="25" value="#{loginController.login}" >
                                         <f:validateLength minimum="2"  />
                                     </p:inputText>
 
                                     <h:outputLabel for="contraseña" value="Contraseña: *" />
-                                    <p:password id="contraseña" required="true" label="Contraseña" size="25" value="#{loginMBean.usrPass}"/>
+                                    <p:password id="contraseña" required="true" label="Contraseña" size="25" value="#{loginController.pass}"/>
 
-                                    <p:selectOneRadio id="rol" label="Rol" required="true" value="">  
-                                        <f:selectItem itemLabel="Estudiante" itemValue="1" />  
-                                        <f:selectItem itemLabel="Docente" itemValue="2" />
+                                    <p:selectOneRadio id="rol" label="Rol" required="true" value="#{loginController.rol}">  
+                                        <f:selectItem itemLabel="Estudiante" itemValue="estudiante" />  
+                                        <f:selectItem itemLabel="Docente" itemValue="docente" />
                                     </p:selectOneRadio>
                                     <f:facet name="footer">
-                                        <p:commandButton value="Aceptar" action="#{loginMBean.login}"  update="la_growl" />
+                                        <p:commandButton value="Aceptar" action="#{loginController.doLogin}" update="la_growl" />
                                     </f:facet>
                                     <br />
                                 </h:panelGrid>
@@ -56,7 +56,7 @@
                                 <h:outputText value="Olvide Contraseña" />
                             </h:outputLink>
                             &nbsp;&nbsp;
-                            <h:outputLink id="do-reg" value="usuarios/registrarse.jsf">
+                            <h:outputLink id="do_reg" value="usuarios/registrarse.jsf">
                                 <h:outputText value="Registrarse" />
                             </h:outputLink>
                             &nbsp;&nbsp;
