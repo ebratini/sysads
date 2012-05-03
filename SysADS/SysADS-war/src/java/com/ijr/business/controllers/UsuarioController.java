@@ -25,7 +25,6 @@ package com.ijr.business.controllers;
 
 import com.ijr.model.ejb.RolFacade;
 import com.ijr.model.ejb.UsuarioFacade;
-import com.ijr.model.entities.Rol;
 import com.ijr.model.entities.Usuario;
 import java.util.Date;
 import javax.ejb.EJB;
