@@ -26,6 +26,7 @@ package com.ijr.business.controllers;
 import com.ijr.model.ejb.SecurityServiceEJB;
 import com.ijr.model.ejb.UsuarioFacade;
 import com.ijr.model.entities.Usuario;
+import java.util.Date;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -92,8 +93,9 @@ public class LoginController {
         boolean validUser = false;
         String viewToRender = "./SysADS-war/index.jsf";
 
-        Usuario usr = usuarioFacade.getUsuarioByLogin(login);
-        if (usr != null) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        try {
+            Usuario usr = usuarioFacade.getUsuarioByLogin(login);
             if (usr.getUsrPassword().equals(securityServiceEJB.encrypt(pass))) {
                 if (rol.equalsIgnoreCase("estudiante") && usr.getRol().getRolNombre().equalsIgnoreCase("estudiante")) {
                     validUser = true;
@@ -103,13 +105,15 @@ public class LoginController {
                     viewToRender = "/profesores/index.jsf";
                 }
             }
-        }
 
-        FacesContext context = FacesContext.getCurrentInstance();
-        if (validUser) {
-            context.addMessage(null, new FacesMessage("Login", "Bienvenid@ " + login));
-            this.usuario = usr;
-        } else {
+            if (validUser) {
+                context.addMessage(null, new FacesMessage("Login", "Bienvenid@ " + login));
+                usr.setUsrUltimoAcceso(new Date());
+                this.usuario = usr;
+            } else {
+                context.addMessage(null, new FacesMessage("Login", "Usuario/Contraseña Invalidos"));
+            }
+        } catch (Exception exc) {
             context.addMessage(null, new FacesMessage("Login", "Usuario/Contraseña Invalidos"));
         }
 
@@ -121,6 +125,6 @@ public class LoginController {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         HttpSession httpSession = (HttpSession) facesContext.getExternalContext().getSession(false);
         httpSession.invalidate();
-        return "./SysADS-war/index.jsf?faces-redirect=true";
+        return "./index.jsf?faces-redirect=true";
     }
 }
