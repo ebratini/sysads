@@ -125,6 +125,6 @@ public class LoginController {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         HttpSession httpSession = (HttpSession) facesContext.getExternalContext().getSession(false);
         httpSession.invalidate();
-        return "./index.jsf?faces-redirect=true";
+        return "index.jsf?faces-redirect=true";
     }
 }

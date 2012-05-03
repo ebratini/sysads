@@ -290,11 +290,11 @@
                 <p:dialog id="ins_dlg" header="Inscripcion - Reinscripcion" widgetVar="est_reg_dlg" showEffect="clip" hideEffect="clip" modal="true" >
                     <h:form>  
                         <h:panelGrid columns="3" style="margin-bottom:10px">                                         
-                            <h:outputLink id="newuser" value="estudiantes_reg.jsf" onclick="est_reg_dlg.hide();">
+                            <h:outputLink id="newuser" value="/SysADS-war/estudiantes/registro_estudiantes.jsf" onclick="est_reg_dlg.hide();">
                                 <p:button value="Primera Inscripcion"/>
                             </h:outputLink> 
                             <h:outputText value="&nbsp;&nbsp;&nbsp;&nbsp;" />
-                            <h:outputLink id="user" value="/SysADS-war/estudiantes_inscr.jsf" onclick="est_reg_dlg.hide();">
+                            <h:outputLink id="user" value="/SysADS-war/estudiantes/estudiantes_inscr.jsf" onclick="est_reg_dlg.hide();">
                                 <p:button value="Reinscripcion"/>
                             </h:outputLink>                                         
                         </h:panelGrid>  
@@ -302,14 +302,14 @@
                 </p:dialog>
                 
                 <!-- Status Inscripcion -->
-                <p:dialog id="status_ins" header="Inscripcion - Reinscripcion" widgetVar="est_reg_dlg" showEffect="clip" hideEffect="clip" modal="true" >
+                <p:dialog id="status_ins" header="Inscripcion - Reinscripcion" widgetVar="status_insc_dlg" showEffect="clip" hideEffect="clip" modal="true" >
                     <h:form>  
                         <h:panelGrid columns="3" style="margin-bottom:10px">                                         
-                            <h:outputLink id="newuser" value="./estudiantes_reg.jsf" onclick="dlg.hide();">
+                            <h:outputLink id="newuser" value="/SysADS-war/estudiantes/estudiantes_reg.jsf" onclick="status_insc_dlg.hide();">
                                 <p:button value="Primera Inscripcion"/>
                             </h:outputLink> 
                             <h:outputText value="&nbsp;&nbsp;&nbsp;&nbsp;" />
-                            <h:outputLink id="user" value="./estudiantes_inscr.jsf" onclick="dlg.hide();">
+                            <h:outputLink id="user" value="/SysADS-war/estudiantes/estudiantes_inscr.jsf" onclick="status_insc_dlg.hide();">
                                 <p:button value="Reinscripcion"/>
                             </h:outputLink>                                         
                         </h:panelGrid>  

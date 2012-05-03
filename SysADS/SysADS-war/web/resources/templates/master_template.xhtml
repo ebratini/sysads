@@ -26,7 +26,8 @@
                             </ui:insert>
                         </div>
                         <div id="searchbar" class="slbar" align="right">
-                            <p:inputText id="search_input" size="45" value="Buscar.." styleClass="searchbox"/>
+                            <p:inputText id="search_input" size="45" />
+                            <p:watermark for="search_input" value="Buscar.." />
                         </div>
                         <div id="usr_login" style="width: 35%; float:right; padding:5px;" align="right">
                             <h:outputLink id="lgd_usr" value="javascript:void(0)" style="text-decoration: none; color: #BBB; font-size: 120%; " onmouseover="turnLink('lgd_usr', true)" onmouseout="turnLink('lgd_usr', false)">
