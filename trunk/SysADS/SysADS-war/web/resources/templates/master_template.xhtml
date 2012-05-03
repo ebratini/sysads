@@ -26,10 +26,9 @@
                             </ui:insert>
                         </div>
                         <div id="searchbar" class="slbar" align="right">
-                            <p:inputText id="search_input" value="Buscar.." styleClass="searchbox"/>
+                            <p:inputText id="search_input" size="45" value="Buscar.." styleClass="searchbox"/>
                         </div>
                         <div id="usr_login" style="width: 35%; float:right; padding:5px;" align="right">
-<!--                            <h:link id="lgd_usr" value="#{loginController.usuario.usrLogin}" style="color: lightsalmon"/>-->
                             <h:outputLink id="lgd_usr" value="javascript:void(0)" style="text-decoration: none; color: #BBB; font-size: 120%; " onmouseover="turnLink('lgd_usr', true)" onmouseout="turnLink('lgd_usr', false)">
                                 <h:outputText value="#{loginController.usuario.usrLogin}" />
                             </h:outputLink>
@@ -44,6 +43,10 @@
                     </div>
                     <div id="logo_section" style="background-color: #333333; height: 80px;">
                         <h:graphicImage value="/resources/images/logo.png" />
+                    </div>
+                    <div id="admin_menu">
+                        <ui:insert name="admin_menu">
+                        </ui:insert>
                     </div>
                 </div>
 

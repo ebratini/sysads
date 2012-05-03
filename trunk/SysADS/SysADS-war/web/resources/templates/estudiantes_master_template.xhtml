@@ -189,14 +189,14 @@
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_cso" class="mnuItemDiv">
-                                                <h:outputLink id="cso_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('cso_lnk', true)" onmouseout="turnLink('cso_lnk', false)" value="http://www.institutojosereyes.com">
+                                                <h:outputLink id="cso_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('cso_lnk', true)" onmouseout="turnLink('cso_lnk', false)" value="#">
                                                     <h:outputText value="Carreras/Cursos" />
                                                 </h:outputLink>
                                             </div>
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_ms" class="mnuItemDiv">
-                                                <h:outputLink id="ms_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('ms_lnk', true)" onmouseout="turnLink('ms_lnk', false)" value="http://www.institutojosereyes.com">
+                                                <h:outputLink id="ms_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('ms_lnk', true)" onmouseout="turnLink('ms_lnk', false)" value="#">
                                                     <h:outputText value="Mapa del Sitio" />
                                                 </h:outputLink>
                                             </div>
@@ -229,9 +229,9 @@
                             <p:password id="confirm_pass" label="Confirmar Contraseña" required="true"/>
 
                             <f:facet name="footer">
-                                <p:commandButton id="aceptarBtn" value="Aceptar" action="cc_dlg.hide();" update="messages"/>
+                                <p:commandButton id="aceptarBtn" value="Aceptar" oncomplete="cc_dlg.hide();" update="messages"/>
                                 <p:spacer width="10" />
-                                <p:commandButton id="cancelBtn" value="Cancelar" action="cc_dlg.hide();"/>
+                                <p:commandButton id="cancelBtn" value="Cancelar" onclick="cc_dlg.hide();"/>
                             </f:facet>
                         </h:panelGrid>
                     </h:form>
@@ -255,7 +255,7 @@
                         </h:panelGrid>
                         <p:commandButton id="aceptarBtn" value="Aceptar" oncomplete="eprs_dlg.hide();"/>
                         <p:spacer width="20" />
-                        <p:commandButton id="cancelBtn" value="Cancelar" action="eprs_dlg.hide();"/>
+                        <p:commandButton id="cancelBtn" value="Cancelar" onclick="eprs_dlg.hide();"/>
                     </h:form>
                 </p:dialog>
 
@@ -282,7 +282,7 @@
                         </h:panelGrid>
                         <p:commandButton id="aceptarBtn" value="Aceptar" oncomplete="evc_dlg.hide();"/>
                         <p:spacer width="20" />
-                        <p:commandButton id="cancelBtn" value="Cancelar" action="evc_dlg.hide();"/>
+                        <p:commandButton id="cancelBtn" value="Cancelar" onclick="evc_dlg.hide();"/>
                     </h:form>
                 </p:dialog>                        
 
@@ -290,11 +290,11 @@
                 <p:dialog id="ins_dlg" header="Inscripcion - Reinscripcion" widgetVar="est_reg_dlg" showEffect="clip" hideEffect="clip" modal="true" >
                     <h:form>  
                         <h:panelGrid columns="3" style="margin-bottom:10px">                                         
-                            <h:outputLink id="newuser" value="./estudiantes_reg.jsf" onclick="dlg.hide();">
+                            <h:outputLink id="newuser" value="estudiantes_reg.jsf" onclick="est_reg_dlg.hide();">
                                 <p:button value="Primera Inscripcion"/>
                             </h:outputLink> 
                             <h:outputText value="&nbsp;&nbsp;&nbsp;&nbsp;" />
-                            <h:outputLink id="user" value="./estudiantes_inscr.jsf" onclick="dlg.hide();">
+                            <h:outputLink id="user" value="/SysADS-war/estudiantes_inscr.jsf" onclick="est_reg_dlg.hide();">
                                 <p:button value="Reinscripcion"/>
                             </h:outputLink>                                         
                         </h:panelGrid>  
