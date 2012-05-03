@@ -110,7 +110,7 @@ public class SecurityServiceEJB {
             return null;
         }
     }
-    
+
     public synchronized String encrypt(String plaintext) {
         return encrypt(plaintext, SecurityServiceEJB.EncryptionMethod.SHA);
     }
