@@ -26,11 +26,16 @@ package com.ijr.business.controllers;
 import com.ijr.model.ejb.SecurityServiceEJB;
 import com.ijr.model.ejb.UsuarioFacade;
 import com.ijr.model.entities.Usuario;
+import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
@@ -120,11 +125,15 @@ public class LoginController {
         return viewToRender;
     }
 
-    public String doLogout() {
+    public void doLogout() {
         // do logout invalidating session and returning user to login page
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        HttpSession httpSession = (HttpSession) facesContext.getExternalContext().getSession(false);
+        ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+        HttpSession httpSession = (HttpSession) ec.getSession(false);
         httpSession.invalidate();
-        return "index.jsf?faces-redirect=true";
+        try {
+            ec.redirect("/SysADS-war/index.jsf?faces-redirect=true");
+        } catch (IOException ex) {
+            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
