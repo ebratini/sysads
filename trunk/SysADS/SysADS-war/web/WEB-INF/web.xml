@@ -15,4 +15,44 @@
     <welcome-file-list>
         <welcome-file>index.jsf</welcome-file>
     </welcome-file-list>
+    <security-constraint>
+        <display-name>coordinador_docente</display-name>
+        <web-resource-collection>
+            <web-resource-name>SysADS Coordinacion Academica</web-resource-name>
+            <description/>
+            <url-pattern>/coordinacion_academica/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>coordinador_docente</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>app_user</display-name>
+        <web-resource-collection>
+            <web-resource-name>SysADS App User</web-resource-name>
+            <description/>
+            <url-pattern>/usuarios/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>app_user</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>file</realm-name>
+        <form-login-config>
+            <form-login-page>/index.xhtml</form-login-page>
+            <form-error-page>/index.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
+    <security-role>
+        <description/>
+        <role-name>coordinador_docente</role-name>
+    </security-role>
+    <security-role>
+        <description/>
+        <role-name>app_user</role-name>
+    </security-role>
 </web-app>
