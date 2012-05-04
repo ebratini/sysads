@@ -27,15 +27,17 @@ import com.ijr.model.ejb.ContactoEmergenciaFacade;
 import com.ijr.model.ejb.EstudianteFacade;
 import com.ijr.model.entities.ContactoEmergencia;
 import com.ijr.model.entities.Estudiante;
-import com.ijr.model.entities.Usuario;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import org.primefaces.event.FlowEvent;
 
 /**
  *
@@ -43,7 +45,7 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @SessionScoped
-public class EstudianteController {
+public class EstudianteWizardController {
 
     @EJB
     private ContactoEmergenciaFacade contactoEmergenciaFacade;
@@ -52,13 +54,12 @@ public class EstudianteController {
     private Estudiante estudiante = new Estudiante();
     private ContactoEmergencia currentCE = new ContactoEmergencia();
     private List<ContactoEmergencia> contactosEmergencia = new ArrayList<ContactoEmergencia>();
-    @ManagedProperty(value = "#{loginController.usuario}")
-    private Usuario usuario;
+    private static final Logger logger = Logger.getLogger(UserWizard.class.getName());
 
     /**
      * Creates a new instance of EstudianteController
      */
-    public EstudianteController() {
+    public EstudianteWizardController() {
     }
 
     public List<ContactoEmergencia> getContactosEmergencia() {
@@ -84,43 +85,34 @@ public class EstudianteController {
     public void setEstudiante(Estudiante estudiante) {
         this.estudiante = estudiante;
     }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
+    
     public void addContactoEmergencia(ContactoEmergencia contactoEmergencia) {
         contactosEmergencia.add(contactoEmergencia);
     }
-
+    
     public void removeCEFromList(ContactoEmergencia contactoEmergencia) {
         contactosEmergencia.remove(contactoEmergencia);
     }
 
     public String save() {
         //Persist estudiante then contacto(s) emergencia if any
-        try {
-            // binding estudiante with user
-            estudiante.setUsuario(usuario);
-            estudianteFacade.create(estudiante, contactosEmergencia);
 
-            FacesMessage msg = new FacesMessage("Registro Estudiantes", "Estudiante registrado exitosamente");
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-
-            return "estudiantes_inscr.jsf";
-        } catch (Exception e) {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_FATAL, "Registro Estudiantes", "El proceso de creacion de estudiante fallo. Intentelo luego o contacte al administrador.");
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-
-            return "#";
-        }
+        FacesMessage msg = new FacesMessage("Successful", "Welcome :" + estudiante.getEstPrimerNombre());
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        
+        return "estudiantes_inscr.jsf";
     }
-
+    
     public String cancelEstudiantePersistation() {
         return "index.jsf";
+    }
+
+    public String onFlowProcess(FlowEvent event) {
+//        logger.info("Current wizard step:" + event.getOldStep());
+//        logger.info("Next step:" + event.getNewStep());
+        logger.log(Level.INFO, "Current wizard step:{0}", event.getOldStep());
+        logger.log(Level.INFO, "Next step:{0}", event.getNewStep());
+
+        return event.getNewStep();
     }
 }

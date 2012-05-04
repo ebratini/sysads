@@ -13,46 +13,42 @@
             </ui:define>
 
             <ui:define name="content">
-                <div id="container">
-                    <div id="mainContent">
-                        <h:form>
+                <h:form>
 
-                            <p:panel id="rg_pnl">
-                                <p:focus context="rg_pnl"/>
-                                <h:form id="form">
+                    <p:panel id="rg_pnl">
+                        <p:focus context="rg_pnl"/>
+                        <h:form id="form">
 
-                                    <p:growl id="msgs" showDetail="true" life="5000"  />
+                            <p:growl id="msgs" showDetail="true" life="5000"  />
 
-                                    <p:panel header="Inscripción" style="margin-bottom:10px;">
-                                        <h:panelGrid columns="2" cellpadding="5">
-                                            <h:outputLabel for="city" value="Seleccionar Curso/Carrera: " />
-                                            <p:selectOneMenu id="city" value="#{pPRBean.city}" required="true">
-                                                <f:selectItem itemLabel="Cursos" itemValue="" />
-                                                <f:selectItems value="#{pPRBean.cities}" />
-                                                <p:ajax update="suburbs" listener="#{pPRBean.handleCityChange}" />
-                                            </p:selectOneMenu>
+                            <p:panel header="Inscripción" style="margin-bottom:10px;">
+                                <h:panelGrid columns="2" cellpadding="5">
+                                    <h:outputLabel for="city" value="Seleccionar Curso/Carrera: " />
+                                    <p:selectOneMenu id="city" value="#{pPRBean.city}" required="true">
+                                        <f:selectItem itemLabel="Cursos" itemValue="" />
+                                        <f:selectItems value="#{pPRBean.cities}" />
+                                        <p:ajax update="suburbs" listener="#{pPRBean.handleCityChange}" />
+                                    </p:selectOneMenu>
 
-                                            <h:outputLabel for="city" value="Seleccionar Modulo: " />
-                                            <p:selectOneMenu id="suburbs" value="#{pPRBean.suburb}" required="true">
-                                                <f:selectItem itemLabel="Modulos" itemValue="" />
-                                                <f:selectItems value="#{pPRBean.suburbs}" />
-                                            </p:selectOneMenu>
-                                        </h:panelGrid>
-                                        <p:panel header="Secciones Disponibles" >
-                                            <h:panelGrid columns="2">
-                                                <p:selectBooleanCheckbox value="" />
-                                                <h:outputLabel for="secciones" value="Secciones seleccionadas de la base de datos" />  
-                                            </h:panelGrid>                                   
-                                        </p:panel>
-                                    </p:panel>
-                                    <p:separator />
-                                    <p:commandButton value="Submit" update="msgs" actionListener="#{pPRBean.displayLocation}" id="btnSubmit"/>
-                                </h:form>
-                                <p:spacer height="10" />
+                                    <h:outputLabel for="city" value="Seleccionar Modulo: " />
+                                    <p:selectOneMenu id="suburbs" value="#{pPRBean.suburb}" required="true">
+                                        <f:selectItem itemLabel="Modulos" itemValue="" />
+                                        <f:selectItems value="#{pPRBean.suburbs}" />
+                                    </p:selectOneMenu>
+                                </h:panelGrid>
+                                <p:panel header="Secciones Disponibles" >
+                                    <h:panelGrid columns="2">
+                                        <p:selectBooleanCheckbox value="" />
+                                        <h:outputLabel for="secciones" value="Secciones seleccionadas de la base de datos" />  
+                                    </h:panelGrid>                                   
+                                </p:panel>
                             </p:panel>
+                            <p:separator />
+                            <p:commandButton value="Submit" update="msgs" actionListener="#{pPRBean.displayLocation}" id="btnSubmit"/>
                         </h:form>
-                    </div>
-                </div>
+                        <p:spacer height="10" />
+                    </p:panel>
+                </h:form>
             </ui:define>
         </ui:composition>
     </body>

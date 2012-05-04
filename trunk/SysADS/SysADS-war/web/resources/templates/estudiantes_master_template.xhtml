@@ -178,7 +178,14 @@
                                     <!-- Otros/General -->
                                     <ul style="margin:0; padding:0; list-style-type:none; padding-bottom:20px;">
                                         <li>
-                                            <div id="rm_title_cnt" style="width:100%; margin:0 auto; color:#DDD; font-size:120%; padding-bottom: 2px;">De Interes</div>
+                                            <div id="rm_title_cnt" style="width:100%; margin:0 auto; color:#DDD; font-size:120%; padding-bottom: 2px;">Otros</div>
+                                        </li>
+                                        <li class="li_cls">
+                                            <div id="rm_mnuItm_hu" class="mnuItemDiv">
+                                                <h:outputLink id="hu_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('hu_lnk', true)" onmouseout="turnLink('hu_lnk', false)" value="/SysADS-war/#{loginController.rol}s/index.jsf">
+                                                    <h:outputText value="Home Usuario" />
+                                                </h:outputLink>
+                                            </div>
                                         </li>
                                         <li class="li_cls">
                                             <div id="rm_mnuItm_ijr" class="mnuItemDiv">
@@ -290,7 +297,7 @@
                 <p:dialog id="ins_dlg" header="Inscripcion - Reinscripcion" widgetVar="est_reg_dlg" showEffect="clip" hideEffect="clip" modal="true" >
                     <h:form>  
                         <h:panelGrid columns="3" style="margin-bottom:10px">                                         
-                            <h:outputLink id="newuser" value="/SysADS-war/estudiantes/registro_estudiantes.jsf" onclick="est_reg_dlg.hide();">
+                            <h:outputLink id="newuser" value="/SysADS-war/estudiantes/estudiantes_reg.jsf" onclick="est_reg_dlg.hide();">
                                 <p:button value="Primera Inscripcion"/>
                             </h:outputLink> 
                             <h:outputText value="&nbsp;&nbsp;&nbsp;&nbsp;" />
@@ -327,31 +334,102 @@
                 
                 <!-- Overlay Panel for Stack Menu -->
                 <!-- account setting menu -->
-                <p:overlayPanel id="sm_as_ov_pnl" for="as" hideEffect="fade">
-                    <h:outputLink id="sm_vp_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('sm_vp_lnk', true)" onmouseout="turnLink('sm_vp_lnk', false)" value="/SysADS-war/usuarios/perfil.jsf">
+                <p:overlayPanel id="sm_as_ov_pnl" for="as" hideEffect="fade" style="background-color: black">
+                    <h:outputLink id="sm_vp_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_vp_lnk', true)" onmouseout="turnLink('sm_vp_lnk', false)" value="/SysADS-war/usuarios/perfil.jsf">
                         <h:outputText value="Ver/Editar Info Perfil" />
                     </h:outputLink>
                     <br />
-                    <h:outputLink id="sm_cc_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('sm_cc_lnk', true)" onmouseout="turnLink('sm_cc_lnk', false)" onclick="cc_dlg.show()" value="#">
+                    <h:outputLink id="sm_cc_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_cc_lnk', true)" onmouseout="turnLink('sm_cc_lnk', false)" onclick="cc_dlg.show()" value="#">
                         <h:outputText value="Cambiar Contraseña" />
                     </h:outputLink>
                     <br />
-                    <h:outputLink id="sm_cprs_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('sm_cprs_lnk', true)" onmouseout="turnLink('sm_cprs_lnk', false)" onclick="eprs_dlg.show()" value="#">
+                    <h:outputLink id="sm_cprs_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_cprs_lnk', true)" onmouseout="turnLink('sm_cprs_lnk', false)" onclick="eprs_dlg.show()" value="#">
                         <h:outputText value="Editar Pregunta/Respuesta Seguridad" />
                     </h:outputLink>
                     <br />
-                    <h:outputLink id="sm_evc_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('sm_evc_lnk', true)" onmouseout="turnLink('sm_evc_lnk', false)" onclick="evc_dlg.show()" value="#">
+                    <h:outputLink id="sm_evc_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_evc_lnk', true)" onmouseout="turnLink('sm_evc_lnk', false)" onclick="evc_dlg.show()" value="#">
                         <h:outputText value="Editar Vigencia Contraseña" />
                     </h:outputLink> 
                     <br />
-                    <h:outputLink id="sm_ccue_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('sm_ccue_lnk', true)" onmouseout="turnLink('sm_ccue_lnk', false)" onclick="evc_dlg.show()" value="#">
+                    <h:outputLink id="sm_ccue_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_ccue_lnk', true)" onmouseout="turnLink('sm_ccue_lnk', false)" onclick="evc_dlg.show()" value="#">
                         <h:outputText value="Cerrar Cuenta" />
                     </h:outputLink>
                 </p:overlayPanel>
                 
                 <!-- datos personales -->
-                <p:overlayPanel id="sm_dp_ov_pnl" for="pi" hideEffect="fade">
-                    <h:outputText value="Ver/Editar Datos Personales" />
+                <p:overlayPanel id="sm_dp_ov_pnl" for="pi" hideEffect="fade" style="background-color: black">
+                    <h:outputLink id="sm_vedp_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_vedp_lnk', true)" onmouseout="turnLink('sm_vedp_lnk', false)" value="/SysADS-war/estudiantes/editar_datospersonales.jsf">
+                        <h:outputText value="Ver/Editar Datos Personales" />
+                    </h:outputLink>
+                    <br />
+                    <h:outputLink id="sm_vece_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_vece_lnk', true)" onmouseout="turnLink('sm_vece_lnk', false)" value="/SysADS-war/estudiantes/editar_contactosemergencia.jsf">
+                        <h:outputText value="Ver/Editar Contacto(s) Emergencia" />
+                    </h:outputLink>
+                </p:overlayPanel>
+                
+                <!-- Academica -->
+                <p:overlayPanel id="sm_ac_ov_pnl" for="ai" hideEffect="fade" style="background-color: black">
+                    <h:outputLink id="sm_ci_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_ci_lnk', true)" onmouseout="turnLink('sm_ci_lnk', false)" value="#">
+                        <h:outputText value="Calendario Inscripcion" />
+                    </h:outputLink>
+                    <br />
+                    <h:outputLink id="sm_hi_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_hi_lnk', true)" onmouseout="turnLink('sm_hi_lnk', false)" onclick="est_reg_dlg.show();" value="#">
+                        <h:outputText value="Hacer Inscripcion" />
+                    </h:outputLink>
+                    <br />
+                    <h:outputLink id="sm_hisi_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_hisi_lnk', true)" onmouseout="turnLink('sm_hisi_lnk', false)" value="#">
+                        <h:outputText value="Historico Inscripciones" />
+                    </h:outputLink>
+                    <br />
+                    <h:outputLink id="sm_si_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_si_lnk', true)" onmouseout="turnLink('sm_si_lnk', false)" value="#">
+                        <h:outputText value="Status Inscripcion" />
+                    </h:outputLink>
+                    <br />
+                    <h:outputLink id="sm_hcla_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_hcla_lnk', true)" onmouseout="turnLink('sm_hcla_lnk', false)" value="#">
+                        <h:outputText value="Horario de Clases" />
+                    </h:outputLink>
+                    <br />
+                    <h:outputLink id="sm_ccal_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_ccal_lnk', true)" onmouseout="turnLink('sm_ccal_lnk', false)" value="#">
+                        <h:outputText value="Consulta Calificaciones" />
+                    </h:outputLink>
+                    <br />
+                    <h:outputLink id="sm_rc_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_rc_lnk', true)" onmouseout="turnLink('sm_rc_lnk', false)" value="#">
+                        <h:outputText value="Retiro Curso/Carrera" />
+                    </h:outputLink>
+                </p:overlayPanel>
+                
+                <!-- Financiera -->
+                <p:overlayPanel id="sm_fi_ov_pnl" for="fi" hideEffect="fade" style="background-color: black">
+                    <h:outputLink id="sm_hp_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_hp_lnk', true)" onmouseout="turnLink('sm_hp_lnk', false)" value="#">
+                        <h:outputText value="Hacer Pago" />
+                    </h:outputLink>
+                    <br />
+                    <h:outputLink id="sm_hisp_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_hisp_lnk', true)" onmouseout="turnLink('sm_hisp_lnk', false)" value="#">
+                        <h:outputText value="Historico Pago" />
+                    </h:outputLink>
+                    <br />
+                    <h:outputLink id="sm_ref_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_ref_lnk', true)" onmouseout="turnLink('sm_ref_lnk', false)" value="#">
+                        <h:outputText value="Reporte Estado Financiero" />
+                    </h:outputLink>
+                </p:overlayPanel>
+                
+                <!-- Otros -->
+                <p:overlayPanel id="sm_oi_ov_pnl" for="oi" hideEffect="fade" style="background-color: black">
+                    <h:outputLink id="sm_hu_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_hu_lnk', true)" onmouseout="turnLink('sm_hu_lnk', false)" value="/SysADS-war/#{loginController.rol}s/index.jsf">
+                        <h:outputText value="Home Usuario" />
+                    </h:outputLink>
+                    <br />
+                    <h:outputLink id="sm_ijr_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_ijr_lnk', true)" onmouseout="turnLink('sm_ijr_lnk', false)" value="http://www.institutojosereyes.com">
+                        <h:outputText value="Instituto Jose Reyes" />
+                    </h:outputLink>
+                    <br />
+                    <h:outputLink id="sm_cso_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_cso_lnk', true)" onmouseout="turnLink('sm_cso_lnk', false)" value="#">
+                        <h:outputText value="Carreras/Cursos" />
+                    </h:outputLink>
+                    <br />
+                    <h:outputLink id="sm_ms_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_ms_lnk', true)" onmouseout="turnLink('sm_ms_lnk', false)" value="#">
+                        <h:outputText value="Mapa del Sitio" />
+                    </h:outputLink>
                 </p:overlayPanel>
             </ui:define>
         </ui:composition>

@@ -12,61 +12,57 @@
             </ui:define>
 
             <ui:define name="content">
-                <div id="container">
-                    <div id="mainContent">
-                        <h:form>
-                            <p:panel id="emer_pnl" header="Ver / Editar Datos Personales">
-                                <p:growl id="emer_growl" showDetail="true" life="5000" />
-                                <p:spacer height="10" />
-                                <h:panelGrid columns="2">  
-                                    <h:outputLabel for="ce_primer_nombre" value="Primer Nombre:*" />
-                                    <p:inplace emptyLabel="Clic Para Modificar Datos" effect="slide">
-                                        <p:inputText id="ce_primer_nombre" value="" required="true" />
-                                    </p:inplace>
+                <h:form>
+                    <p:panel id="emer_pnl" header="Ver / Editar Datos Personales">
+                        <p:growl id="emer_growl" showDetail="true" life="5000" />
+                        <p:spacer height="10" />
+                        <h:panelGrid columns="2">  
+                            <h:outputLabel for="ce_primer_nombre" value="Primer Nombre:*" />
+                            <p:inplace emptyLabel="Clic Para Modificar Datos" effect="slide">
+                                <p:inputText id="ce_primer_nombre" value="" required="true" />
+                            </p:inplace>
 
-                                    <h:outputLabel for="ce_segundo_nombre" value="Segundo Nombre: " />
-                                    <p:inplace emptyLabel="Clic Para Modificar Datos" effect="slide">
-                                        <p:inputText id="ce_segundo_nombre" value="" required="false"/>
-                                    </p:inplace>
+                            <h:outputLabel for="ce_segundo_nombre" value="Segundo Nombre: " />
+                            <p:inplace emptyLabel="Clic Para Modificar Datos" effect="slide">
+                                <p:inputText id="ce_segundo_nombre" value="" required="false"/>
+                            </p:inplace>
 
-                                    <h:outputLabel for="ce_primer_apellido" value="Primer Apellido:*" />
-                                    <p:inplace emptyLabel="Clic Para Modificar Datos" effect="slide"  >
-                                        <p:inputText id="ce_primer_apellido" value="" required="true" />
-                                    </p:inplace>
+                            <h:outputLabel for="ce_primer_apellido" value="Primer Apellido:*" />
+                            <p:inplace emptyLabel="Clic Para Modificar Datos" effect="slide"  >
+                                <p:inputText id="ce_primer_apellido" value="" required="true" />
+                            </p:inplace>
 
-                                    <h:outputLabel for="ce_segundo_apellido" value="Segundo Apellido: " />
-                                    <p:inplace emptyLabel="Clic Para Modificar Datos" effect="slide">
-                                        <p:inputText id="ce_segundo_apellido" value="" required="false" />
-                                    </p:inplace>
+                            <h:outputLabel for="ce_segundo_apellido" value="Segundo Apellido: " />
+                            <p:inplace emptyLabel="Clic Para Modificar Datos" effect="slide">
+                                <p:inputText id="ce_segundo_apellido" value="" required="false" />
+                            </p:inplace>
 
-                                    <h:outputLabel for="ce_direccion" value="Direccion:*" />
-                                    <p:inplace emptyLabel="Clic Para Modificar Datos" effect="slide">
-                                        <p:inputText id="ce_direccion" value="" required="true"  size="60"/>
-                                    </p:inplace>
+                            <h:outputLabel for="ce_direccion" value="Direccion:*" />
+                            <p:inplace emptyLabel="Clic Para Modificar Datos" effect="slide">
+                                <p:inputText id="ce_direccion" value="" required="true"  size="60"/>
+                            </p:inplace>
 
-                                    <h:outputLabel for="ce_telefono" value="Telefono:* " /> 
-                                    <p:inplace emptyLabel="Clic Para Modificar Datos" effect="slide">
-                                        <p:inputMask id="ce_telefono" value="" mask="(999) 999-9999" required="true" />
-                                    </p:inplace>
+                            <h:outputLabel for="ce_telefono" value="Telefono:* " /> 
+                            <p:inplace emptyLabel="Clic Para Modificar Datos" effect="slide">
+                                <p:inputMask id="ce_telefono" value="" mask="(999) 999-9999" required="true" />
+                            </p:inplace>
 
-                                    <h:outputLabel for="ce_parentesco" value="Parentesco:*" />
-                                    <p:inplace emptyLabel="Clic Para Modificar Datos" effect="slide">
-                                        <p:inputText id="ce_parentesco" value="" required="true" />
-                                    </p:inplace>
+                            <h:outputLabel for="ce_parentesco" value="Parentesco:*" />
+                            <p:inplace emptyLabel="Clic Para Modificar Datos" effect="slide">
+                                <p:inputText id="ce_parentesco" value="" required="true" />
+                            </p:inplace>
 
-                                </h:panelGrid>
+                        </h:panelGrid>
 
-                                <p:spacer height="10" />
+                        <p:spacer height="10" />
 
-                                <f:facet name="footer">
-                                    <p:commandButton  value="Guardar"  icon="ui-icon-check" update="emer_growl" />
-                                    <p:spacer width="10" />
-                                    <p:commandButton value="Cancelar"  icon="ui-icon-cancel" />  
-                                </f:facet>
-                            </p:panel>
-                        </h:form>
-                    </div>
-                </div>
+                        <f:facet name="footer">
+                            <p:commandButton  value="Guardar"  icon="ui-icon-check" update="emer_growl" />
+                            <p:spacer width="10" />
+                            <p:commandButton value="Cancelar"  icon="ui-icon-cancel" />  
+                        </f:facet>
+                    </p:panel>
+                </h:form>
             </ui:define>
         </ui:composition>
     </body>
