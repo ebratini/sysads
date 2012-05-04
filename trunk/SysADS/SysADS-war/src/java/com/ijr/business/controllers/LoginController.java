@@ -26,7 +26,6 @@ package com.ijr.business.controllers;
 import com.ijr.model.ejb.SecurityServiceEJB;
 import com.ijr.model.ejb.UsuarioFacade;
 import com.ijr.model.entities.Usuario;
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.Date;
 import java.util.logging.Level;
@@ -104,10 +103,10 @@ public class LoginController {
             if (usr.getUsrPassword().equals(securityServiceEJB.encrypt(pass))) {
                 if (rol.equalsIgnoreCase("estudiante") && usr.getRol().getRolNombre().equalsIgnoreCase("estudiante")) {
                     validUser = true;
-                    viewToRender = "/estudiantes/index.jsf";
+                    viewToRender = "/estudiante/index.jsf";
                 } else if (rol.equalsIgnoreCase("docente") && usr.getRol().getRolNombre().equalsIgnoreCase("docente")) {
                     validUser = true;
-                    viewToRender = "/profesores/index.jsf";
+                    viewToRender = "/docente/index.jsf";
                 }
             }
 
@@ -131,7 +130,7 @@ public class LoginController {
         HttpSession httpSession = (HttpSession) ec.getSession(false);
         httpSession.invalidate();
         try {
-            ec.redirect("/SysADS-war/index.jsf?faces-redirect=true");
+            ec.redirect("/SysADS-war/index.jsf");
         } catch (IOException ex) {
             Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
         }
