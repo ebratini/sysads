@@ -23,7 +23,11 @@
  */
 package com.ijr.model.ejb;
 
+import com.ijr.model.entities.ContactoEmergencia;
 import com.ijr.model.entities.Estudiante;
+import java.util.Date;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,6 +38,9 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class EstudianteFacade extends AbstractFacade<Estudiante> {
+
+    @EJB
+    private ContactoEmergenciaFacade contactoEmergenciaFacade;
     @PersistenceContext(unitName = "SysADS-ejbPU")
     private EntityManager em;
 
@@ -45,5 +52,33 @@ public class EstudianteFacade extends AbstractFacade<Estudiante> {
     public EstudianteFacade() {
         super(Estudiante.class);
     }
-    
+
+    @Override
+    public void create(Estudiante entity) {
+        entity.setEstStatus('a');
+        super.create(entity);
+        generateMatricula(entity);
+    }
+
+    public void create(Estudiante estudiante, List<ContactoEmergencia> contactosEmergencia) {
+        create(estudiante);
+        
+        // creating contactos emergencia
+        for (ContactoEmergencia ce : contactosEmergencia) {
+            ce.setEstudiante(estudiante);
+            ce.setCemStatus('a');
+            contactoEmergenciaFacade.create(ce);
+        }
+    }
+
+    private void generateMatricula(Estudiante entity) {
+        Date now = new Date();
+        String tmpMatricula = String.valueOf(now.getTime());
+        entity.setEstMatricula(tmpMatricula);
+        edit(entity);
+        getEntityManager().flush();
+        String matricula = String.format("%1$tY-%2$d", now, entity.getEstId());
+        entity.setEstMatricula(matricula);
+        edit(entity);
+    }
 }
