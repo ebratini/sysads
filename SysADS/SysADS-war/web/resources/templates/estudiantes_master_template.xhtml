@@ -74,14 +74,14 @@
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_vedp" class="mnuItemDiv">
-                                                <h:outputLink id="vedp_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('vedp_lnk', true)" onmouseout="turnLink('vedp_lnk', false)" value="/SysADS-war/estudiantes/editar_datospersonales.jsf">
+                                                <h:outputLink id="vedp_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('vedp_lnk', true)" onmouseout="turnLink('vedp_lnk', false)" value="/SysADS-war/estudiante/editar_datospersonales.jsf">
                                                     <h:outputText value="Ver/Editar Datos Personales" />
                                                 </h:outputLink>
                                             </div>
                                         </li>
                                         <li class="li_cls">
                                             <div id="lm_mnuItm_vece" class="mnuItemDiv">
-                                                <h:outputLink id="vece_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('vece_lnk', true)" onmouseout="turnLink('vece_lnk', false)" value="/SysADS-war/estudiantes/editar_contactosemergencia.jsf">
+                                                <h:outputLink id="vece_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('vece_lnk', true)" onmouseout="turnLink('vece_lnk', false)" value="/SysADS-war/estudiante/editar_contactosemergencia.jsf">
                                                     <h:outputText value="Ver/Editar Contacto(s) Emergencia" />
                                                 </h:outputLink>
                                             </div>
@@ -182,7 +182,7 @@
                                         </li>
                                         <li class="li_cls">
                                             <div id="rm_mnuItm_hu" class="mnuItemDiv">
-                                                <h:outputLink id="hu_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('hu_lnk', true)" onmouseout="turnLink('hu_lnk', false)" value="/SysADS-war/#{loginController.rol}s/index.jsf">
+                                                <h:outputLink id="hu_lnk" style="text-decoration: none; color: #BBB;" onmouseover="turnLink('hu_lnk', true)" onmouseout="turnLink('hu_lnk', false)" value="/SysADS-war/#{loginController.rol}/index.jsf">
                                                     <h:outputText value="Home Usuario" />
                                                 </h:outputLink>
                                             </div>
@@ -297,11 +297,11 @@
                 <p:dialog id="ins_dlg" header="Inscripcion - Reinscripcion" widgetVar="est_reg_dlg" showEffect="clip" hideEffect="clip" modal="true" >
                     <h:form>  
                         <h:panelGrid columns="3" style="margin-bottom:10px">                                         
-                            <h:outputLink id="newuser" value="/SysADS-war/estudiantes/estudiantes_reg.jsf" onclick="est_reg_dlg.hide();">
+                            <h:outputLink id="newuser" value="/SysADS-war/estudiante/estudiantes_reg.jsf" onclick="est_reg_dlg.hide();">
                                 <p:button value="Primera Inscripcion"/>
                             </h:outputLink> 
                             <h:outputText value="&nbsp;&nbsp;&nbsp;&nbsp;" />
-                            <h:outputLink id="user" value="/SysADS-war/estudiantes/estudiantes_inscr.jsf" onclick="est_reg_dlg.hide();">
+                            <h:outputLink id="user" value="/SysADS-war/estudiante/estudiantes_inscr.jsf" onclick="est_reg_dlg.hide();">
                                 <p:button value="Reinscripcion"/>
                             </h:outputLink>                                         
                         </h:panelGrid>  
@@ -312,11 +312,11 @@
                 <p:dialog id="status_ins" header="Inscripcion - Reinscripcion" widgetVar="status_insc_dlg" showEffect="clip" hideEffect="clip" modal="true" >
                     <h:form>  
                         <h:panelGrid columns="3" style="margin-bottom:10px">                                         
-                            <h:outputLink id="newuser" value="/SysADS-war/estudiantes/estudiantes_reg.jsf" onclick="status_insc_dlg.hide();">
+                            <h:outputLink id="newuser" value="/SysADS-war/estudiante/estudiantes_reg.jsf" onclick="status_insc_dlg.hide();">
                                 <p:button value="Primera Inscripcion"/>
                             </h:outputLink> 
                             <h:outputText value="&nbsp;&nbsp;&nbsp;&nbsp;" />
-                            <h:outputLink id="user" value="/SysADS-war/estudiantes/estudiantes_inscr.jsf" onclick="status_insc_dlg.hide();">
+                            <h:outputLink id="user" value="/SysADS-war/estudiante/estudiantes_inscr.jsf" onclick="status_insc_dlg.hide();">
                                 <p:button value="Reinscripcion"/>
                             </h:outputLink>                                         
                         </h:panelGrid>  
@@ -358,11 +358,11 @@
                 
                 <!-- datos personales -->
                 <p:overlayPanel id="sm_dp_ov_pnl" for="pi" hideEffect="fade" style="background-color: black">
-                    <h:outputLink id="sm_vedp_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_vedp_lnk', true)" onmouseout="turnLink('sm_vedp_lnk', false)" value="/SysADS-war/estudiantes/editar_datospersonales.jsf">
+                    <h:outputLink id="sm_vedp_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_vedp_lnk', true)" onmouseout="turnLink('sm_vedp_lnk', false)" value="/SysADS-war/estudiante/editar_datospersonales.jsf">
                         <h:outputText value="Ver/Editar Datos Personales" />
                     </h:outputLink>
                     <br />
-                    <h:outputLink id="sm_vece_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_vece_lnk', true)" onmouseout="turnLink('sm_vece_lnk', false)" value="/SysADS-war/estudiantes/editar_contactosemergencia.jsf">
+                    <h:outputLink id="sm_vece_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_vece_lnk', true)" onmouseout="turnLink('sm_vece_lnk', false)" value="/SysADS-war/estudiante/editar_contactosemergencia.jsf">
                         <h:outputText value="Ver/Editar Contacto(s) Emergencia" />
                     </h:outputLink>
                 </p:overlayPanel>
@@ -415,7 +415,7 @@
                 
                 <!-- Otros -->
                 <p:overlayPanel id="sm_oi_ov_pnl" for="oi" hideEffect="fade" style="background-color: black">
-                    <h:outputLink id="sm_hu_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_hu_lnk', true)" onmouseout="turnLink('sm_hu_lnk', false)" value="/SysADS-war/#{loginController.rol}s/index.jsf">
+                    <h:outputLink id="sm_hu_lnk" style="text-decoration: none; color: #FCFCFC;" onmouseover="turnLink('sm_hu_lnk', true)" onmouseout="turnLink('sm_hu_lnk', false)" value="/SysADS-war/#{loginController.rol}/index.jsf">
                         <h:outputText value="Home Usuario" />
                     </h:outputLink>
                     <br />
