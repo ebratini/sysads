@@ -35,7 +35,7 @@
                             </h:outputLink>
                             <p:overlayPanel id="logout_ov_pnl" for="lgd_usr" showEffect="blind" hideEffect="explode">
                                 <h:form>
-                                    <h:commandLink action="#{loginController.doLogout}" style="text-decoration: none">
+                                    <h:commandLink actionListener="#{loginController.doLogout}" style="text-decoration: none">
                                         <h:outputText value="Log Out" />
                                     </h:commandLink>
                                 </h:form>
