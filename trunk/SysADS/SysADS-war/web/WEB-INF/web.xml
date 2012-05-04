@@ -15,7 +15,7 @@
     <welcome-file-list>
         <welcome-file>index.jsf</welcome-file>
     </welcome-file-list>
-    <security-constraint>
+<!--    <security-constraint>
         <display-name>coordinador_docente</display-name>
         <web-resource-collection>
             <web-resource-name>SysADS Coordinacion Academica</web-resource-name>
@@ -54,5 +54,5 @@
     <security-role>
         <description/>
         <role-name>app_user</role-name>
-    </security-role>
+    </security-role>-->
 </web-app>
