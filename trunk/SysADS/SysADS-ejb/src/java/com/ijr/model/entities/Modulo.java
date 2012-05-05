@@ -24,6 +24,7 @@
 package com.ijr.model.entities;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Collection;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -65,10 +66,11 @@ public class Modulo implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "mdl_descripcion")
     private String mdlDescripcion;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Basic(optional = false)
     @NotNull
     @Column(name = "mdl_costo_total")
-    private short mdlCostoTotal;
+    private BigDecimal mdlCostoTotal;
     @Basic(optional = false)
     @NotNull
     @Column(name = "mdl_duracion")
@@ -95,7 +97,7 @@ public class Modulo implements Serializable {
         this.mdlId = mdlId;
     }
 
-    public Modulo(Integer mdlId, String mdlNombre, String mdlDescripcion, short mdlCostoTotal, int mdlDuracion, char mdlStatus) {
+    public Modulo(Integer mdlId, String mdlNombre, String mdlDescripcion, BigDecimal mdlCostoTotal, int mdlDuracion, char mdlStatus) {
         this.mdlId = mdlId;
         this.mdlNombre = mdlNombre;
         this.mdlDescripcion = mdlDescripcion;
@@ -128,11 +130,11 @@ public class Modulo implements Serializable {
         this.mdlDescripcion = mdlDescripcion;
     }
 
-    public short getMdlCostoTotal() {
+    public BigDecimal getMdlCostoTotal() {
         return mdlCostoTotal;
     }
 
-    public void setMdlCostoTotal(short mdlCostoTotal) {
+    public void setMdlCostoTotal(BigDecimal mdlCostoTotal) {
         this.mdlCostoTotal = mdlCostoTotal;
     }
 
