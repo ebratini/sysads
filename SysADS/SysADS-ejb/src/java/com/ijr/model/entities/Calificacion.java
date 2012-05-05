@@ -83,7 +83,10 @@ public class Calificacion implements Serializable {
     @JoinColumn(name = "mdl_id", referencedColumnName = "mdl_id")
     @ManyToOne(optional = false)
     private Modulo modulo;
-    @JoinColumn(name = "est_id", referencedColumnName = "est_id")
+    @JoinColumns ({
+        @JoinColumn(name = "usr_id", referencedColumnName = "usr_id"),
+        @JoinColumn(name = "est_id", referencedColumnName = "est_id")
+    })
     @ManyToOne(optional = false)
     private Estudiante estudiante;
 
