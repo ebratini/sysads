@@ -77,7 +77,7 @@
                         <f:facet name="footer">
                             <p:commandButton value="Guardar" action="#{usuarioController.doCreateUser}" icon="ui-icon-check" update="rg_growl" />
                             <p:spacer width="10" />
-                            <p:commandButton value="Cancelar" action="/index.jsf" icon="ui-icon-cancel" />
+                            <p:commandButton value="Cancelar" action="#{usuarioController.cancelUserCreation}" icon="ui-icon-cancel" />
                         </f:facet>
                     </p:panel>
                 </h:form>

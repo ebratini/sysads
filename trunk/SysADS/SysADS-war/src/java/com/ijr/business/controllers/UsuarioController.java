@@ -63,20 +63,27 @@ public class UsuarioController {
 
     public String doCreateUser() {
         Date dte = new Date();
-        usuario.setRol(rolFacade.getRolByNombre("estudiante"));
         usuario.setUsrUltimoAcceso(dte);
         usuario.setUsrFechaCreacion(dte);
         usuario.setUsrVerificado('n');
         usuario.setUsrUpdateBy("registro usuarios");
         usuario.setUsrUpdateDate(dte);
         usuario.setUsrStatus('p');
-        usuarioFacade.create(usuario);
+        
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage("Registro Usuarios", "Usuario creado exitosamente"));
-        return "/index.jsf";
+        try {
+            usuario.setRol(rolFacade.getRolByNombre("estudiante"));
+            usuarioFacade.create(usuario);
+            context.addMessage(null, new FacesMessage("Registro Usuarios", "Usuario creado exitosamente"));
+            return "/index.jsf";
+        } catch (Exception e) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_FATAL, "Registro Usuarios", "El proceso de registro de usuarios fallo. Intentelo luego o contacte al administrador.");
+            context.addMessage(null, msg);
+            return "#";
+        }
     }
 
     public String cancelUserCreation() {
-        return "/index.jsf";
+        return "/SysADS-war/index.jsf";
     }
 }
