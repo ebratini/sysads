@@ -23,7 +23,6 @@
  */
 package com.ijr.business.controllers;
 
-import com.ijr.model.ejb.ContactoEmergenciaFacade;
 import com.ijr.model.ejb.EstudianteFacade;
 import com.ijr.model.entities.ContactoEmergencia;
 import com.ijr.model.entities.Estudiante;
@@ -45,8 +44,6 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class EstudianteController {
 
-    @EJB
-    private ContactoEmergenciaFacade contactoEmergenciaFacade;
     @EJB
     private EstudianteFacade estudianteFacade;
     private Estudiante estudiante = new Estudiante();
@@ -103,19 +100,23 @@ public class EstudianteController {
 
     public String save() {
         //Persist estudiante then contacto(s) emergencia if any
+        FacesContext context = FacesContext.getCurrentInstance();
         try {
             // binding estudiante with user
             estudiante.setUsuario(usuario);
-            estudianteFacade.create(estudiante, contactosEmergencia);
+            for (ContactoEmergencia ce : contactosEmergencia) {
+                ce.setCemStatus('a');
+            }
 
+            estudiante.setContactoEmergenciaCollection(contactosEmergencia);
+            estudianteFacade.create(estudiante);
+            
             FacesMessage msg = new FacesMessage("Registro Estudiantes", "Estudiante registrado exitosamente");
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-
+            context.addMessage(null, msg);
             return "estudiantes_inscr.jsf";
         } catch (Exception e) {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_FATAL, "Registro Estudiantes", "El proceso de creacion de estudiante fallo. Intentelo luego o contacte al administrador.");
-            FacesContext.getCurrentInstance().addMessage(null, msg);
-
+            context.addMessage(null, msg);
             return "#";
         }
     }
