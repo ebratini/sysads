@@ -37,8 +37,49 @@
                                     </p:selectOneMenu>
                                 </h:panelGrid>
                                 <p:panel header="Secciones Disponibles" >
-                                    <h:panelGrid columns="2">
-                                        <p:selectBooleanCheckbox value="" itemLabel="Secciones seleccionadas de la base de datos" />
+                                    <h:panelGrid columns="1">
+                                        <!--                                        <p:selectBooleanCheckbox value="" itemLabel="Secciones seleccionadas de la base de datos" />-->
+                                        <p:dataTable id="basic" var="sec" value="#{pPRBean.secs}">
+                                            <p:column id="modelHeader">
+                                                <f:facet name="header">
+                                                    Codigo Seccion
+                                                </f:facet>
+                                                <h:outputText value="#{sec.codigo}" />
+                                            </p:column>
+
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    Horario
+                                                </f:facet>
+                                                <h:outputText value="#{sec.horario}" />
+                                            </p:column>
+
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    Aula
+                                                </f:facet>
+                                                <h:outputText value="#{sec.aula}" />
+                                            </p:column>
+
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    Profesor
+                                                </f:facet>
+                                                <h:outputText value="#{sec.profesor}" />
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    Campus
+                                                </f:facet>
+                                                <h:outputText value="#{sec.campus}" />
+                                            </p:column>
+                                            <p:column>
+                                                <f:facet name="header">
+                                                    Seleccionar
+                                                </f:facet>
+                                                <p:selectBooleanButton onLabel="Yes" offLabel="No" onIcon="ui-icon-check" offIcon="ui-icon-close" />
+                                            </p:column>
+                                        </p:dataTable>
                                     </h:panelGrid>                                   
                                 </p:panel>
                             </p:panel>
