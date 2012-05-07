@@ -26,11 +26,13 @@ package com.ijr.business.converters;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.ConverterException;
+import javax.faces.convert.FacesConverter;
 
 /**
  *
  * @author Edwin Bratini
  */
+@FacesConverter(value="PhoneConverter")
 public class PhoneConverter implements javax.faces.convert.Converter {
 
     @Override
@@ -63,7 +65,7 @@ public class PhoneConverter implements javax.faces.convert.Converter {
                 StringBuilder sbConvVal = new StringBuilder(sVal);
                 sbConvVal.insert(0, "(");
                 sbConvVal.insert(4, ")");
-                sbConvVal.insert(6, " ");
+                sbConvVal.insert(5, " ");
                 sbConvVal.insert(10, "-");
                 convVal = sbConvVal.toString();
             }
