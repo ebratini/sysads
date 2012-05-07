@@ -65,8 +65,9 @@
                                 <h:outputLabel for="direccion" value="Direccion: *" />
                                 <p:inputText id="direccion" label="Direccion" value="#{estudianteController.estudiante.estDireccion}" required="true"  size="60"/>
 
-                                <h:outputLabel for="telefono" value="Telefono: " /> 
-                                <p:inputText id="telefono" label="Telefono" value="#{estudianteController.estudiante.estTelefono}" required="false" />
+                                <h:outputLabel for="telefono" value="Telefono: " />
+                                <p:inputMask id="telefono" converter="PhoneConverter" value="#{estudianteController.estudiante.estTelefono}" mask="(999) 999-9999" required="false" />
+<!--                                <p:inputText label="Telefono" value="#{estudianteController.estudiante.estTelefono}" required="false" />-->
 
                                 <h:outputLabel for="email" value="Email: *" /> 
                                 <p:inputText id="email" label="Email" value="#{estudianteController.estudiante.estEmail}" required="true" size="20" />
