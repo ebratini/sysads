@@ -112,7 +112,11 @@ public class LoginController {
 
             if (validUser) {
                 context.addMessage(null, new FacesMessage("Login", "Bienvenid@ " + login));
-                usr.setUsrUltimoAcceso(new Date());
+                Date now = new Date();
+                usr.setUsrUltimoAcceso(now);
+                usr.setUsrUpdateDate(now);
+                usr.setUsrUpdateBy(getClass().getName());
+                usuarioFacade.edit(usr);
                 this.usuario = usr;
             } else {
                 context.addMessage(null, new FacesMessage("Login", "Usuario/Contraseña Invalidos"));
