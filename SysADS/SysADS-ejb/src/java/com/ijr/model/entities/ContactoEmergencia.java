@@ -92,10 +92,7 @@ public class ContactoEmergencia implements Serializable {
     @NotNull
     @Column(name = "cem_status")
     private char cemStatus;
-    @JoinColumns ({
-        @JoinColumn(name = "usr_id", referencedColumnName = "usr_id"),
-        @JoinColumn(name = "est_id", referencedColumnName = "est_id")
-    })
+    @JoinColumn(name = "est_id", referencedColumnName = "est_id")
     @ManyToOne(optional = false)
     private Estudiante estudiante;
 

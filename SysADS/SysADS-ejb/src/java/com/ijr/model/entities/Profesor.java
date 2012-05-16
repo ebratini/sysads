@@ -41,8 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Profesor.findAll", query = "SELECT p FROM Profesor p"),
-    @NamedQuery(name = "Profesor.findByPrfId", query = "SELECT p FROM Profesor p WHERE p.profesorPK.prfId = :prfId"),
-    @NamedQuery(name = "Profesor.findByUsrId", query = "SELECT p FROM Profesor p WHERE p.profesorPK.usrId = :usrId"),
+    @NamedQuery(name = "Profesor.findByPrfId", query = "SELECT p FROM Profesor p WHERE p.prfId = :prfId"),
     @NamedQuery(name = "Profesor.findByPrfDni", query = "SELECT p FROM Profesor p WHERE p.prfDni = :prfDni"),
     @NamedQuery(name = "Profesor.findByPrfTipoDni", query = "SELECT p FROM Profesor p WHERE p.prfTipoDni = :prfTipoDni"),
     @NamedQuery(name = "Profesor.findByPrfPrimerNombre", query = "SELECT p FROM Profesor p WHERE p.prfPrimerNombre = :prfPrimerNombre"),
@@ -60,8 +59,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Profesor.findByPrfStatus", query = "SELECT p FROM Profesor p WHERE p.prfStatus = :prfStatus")})
 public class Profesor implements Serializable {
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected ProfesorPK profesorPK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "prf_id")
+    private Integer prfId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -131,19 +134,19 @@ public class Profesor implements Serializable {
     private char prfStatus;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "profesor")
     private Collection<Seccion> seccionCollection;
-    @JoinColumn(name = "usr_id", referencedColumnName = "usr_id", insertable = false, updatable = false)
+    @JoinColumn(name = "usr_id", referencedColumnName = "usr_id")
     @ManyToOne(optional = false)
     private Usuario usuario;
 
     public Profesor() {
     }
 
-    public Profesor(ProfesorPK profesorPK) {
-        this.profesorPK = profesorPK;
+    public Profesor(Integer prfId) {
+        this.prfId = prfId;
     }
 
-    public Profesor(ProfesorPK profesorPK, String prfDni, String prfTipoDni, String prfPrimerNombre, String prfPrimerApellido, String prfSegundoApellido, String prfDireccion, String prfNacionalidad, char prfGenero, String prfEstadoCivil, Date prfFechaNacimiento, String prfLugarNacmiento, char prfStatus) {
-        this.profesorPK = profesorPK;
+    public Profesor(Integer prfId, String prfDni, String prfTipoDni, String prfPrimerNombre, String prfPrimerApellido, String prfSegundoApellido, String prfDireccion, String prfNacionalidad, char prfGenero, String prfEstadoCivil, Date prfFechaNacimiento, String prfLugarNacmiento, char prfStatus) {
+        this.prfId = prfId;
         this.prfDni = prfDni;
         this.prfTipoDni = prfTipoDni;
         this.prfPrimerNombre = prfPrimerNombre;
@@ -158,16 +161,12 @@ public class Profesor implements Serializable {
         this.prfStatus = prfStatus;
     }
 
-    public Profesor(int prfId, int usrId) {
-        this.profesorPK = new ProfesorPK(prfId, usrId);
+    public Integer getPrfId() {
+        return prfId;
     }
 
-    public ProfesorPK getProfesorPK() {
-        return profesorPK;
-    }
-
-    public void setProfesorPK(ProfesorPK profesorPK) {
-        this.profesorPK = profesorPK;
+    public void setPrfId(Integer prfId) {
+        this.prfId = prfId;
     }
 
     public String getPrfDni() {
@@ -310,7 +309,7 @@ public class Profesor implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (profesorPK != null ? profesorPK.hashCode() : 0);
+        hash += (prfId != null ? prfId.hashCode() : 0);
         return hash;
     }
 
@@ -321,7 +320,7 @@ public class Profesor implements Serializable {
             return false;
         }
         Profesor other = (Profesor) object;
-        if ((this.profesorPK == null && other.profesorPK != null) || (this.profesorPK != null && !this.profesorPK.equals(other.profesorPK))) {
+        if ((this.prfId == null && other.prfId != null) || (this.prfId != null && !this.prfId.equals(other.prfId))) {
             return false;
         }
         return true;
@@ -329,7 +328,7 @@ public class Profesor implements Serializable {
 
     @Override
     public String toString() {
-        return "com.ijr.model.entities.Profesor[ profesorPK=" + profesorPK + " ]";
+        return "com.ijr.model.entities.Profesor[ prfId=" + prfId + " ]";
     }
     
 }

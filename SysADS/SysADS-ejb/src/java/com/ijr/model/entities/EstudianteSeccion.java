@@ -70,10 +70,7 @@ public class EstudianteSeccion implements Serializable {
     @JoinColumn(name = "sec_id", referencedColumnName = "sec_id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Seccion seccion;
-    @JoinColumns ({
-        @JoinColumn(name = "usr_id", referencedColumnName = "usr_id", insertable = false, updatable = false),
-        @JoinColumn(name = "est_id", referencedColumnName = "est_id", insertable = false, updatable = false)
-    })
+    @JoinColumn(name = "est_id", referencedColumnName = "est_id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Estudiante estudiante;
 
