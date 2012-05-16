@@ -23,10 +23,8 @@
  */
 package com.ijr.model.ejb;
 
-import com.ijr.model.entities.ContactoEmergencia;
 import com.ijr.model.entities.Estudiante;
 import java.util.Date;
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -38,8 +36,6 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class EstudianteFacade extends AbstractFacade<Estudiante> {
 
-    @EJB
-    private ContactoEmergenciaFacade contactoEmergenciaFacade;
     @PersistenceContext(unitName = "SysADS-ejbPU")
     private EntityManager em;
 
@@ -54,17 +50,9 @@ public class EstudianteFacade extends AbstractFacade<Estudiante> {
 
     @Override
     public void create(Estudiante entity) {
-        entity.setEstStatus('a');
         Date now = new Date();
         String tmpMatricula = String.valueOf(now.getTime());
         entity.setEstMatricula(tmpMatricula);
-        
-        // binding estudiante with contacto(s) emergencia
-        for (ContactoEmergencia ce : entity.getContactoEmergenciaCollection()) {
-            ce.setEstudiante(entity);
-            ce.setCemStatus('a');
-        }
-        
         super.create(entity);
         getEntityManager().flush();
         generateMatricula(entity);
