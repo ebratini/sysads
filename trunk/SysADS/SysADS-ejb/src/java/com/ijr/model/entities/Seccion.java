@@ -72,10 +72,7 @@ public class Seccion implements Serializable {
     @JoinColumn(name = "mdl_id", referencedColumnName = "mdl_id")
     @ManyToOne(optional = false)
     private Modulo modulo;
-    @JoinColumns ({
-        @JoinColumn(name = "usr_id", referencedColumnName = "usr_id"),
-        @JoinColumn(name = "prf_id", referencedColumnName = "prf_id")
-    })
+    @JoinColumn(name = "prf_id", referencedColumnName = "prf_id")
     @ManyToOne(optional = false)
     private Profesor profesor;
 

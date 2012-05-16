@@ -60,7 +60,7 @@ public class EstudianteFacade extends AbstractFacade<Estudiante> {
 
     private void generateMatricula(Estudiante entity) {
         Date now = new Date();
-        String matricula = String.format("%1$tY-%2$d", now, entity.getEstudiantePK().getEstId());
+        String matricula = String.format("%1$tY-%2$d", now, entity.getEstId());
         entity.setEstMatricula(matricula);
         edit(entity);
     }

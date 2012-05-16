@@ -41,8 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Estudiante.findAll", query = "SELECT e FROM Estudiante e"),
-    @NamedQuery(name = "Estudiante.findByEstId", query = "SELECT e FROM Estudiante e WHERE e.estudiantePK.estId = :estId"),
-    @NamedQuery(name = "Estudiante.findByUsrId", query = "SELECT e FROM Estudiante e WHERE e.estudiantePK.usrId = :usrId"),
+    @NamedQuery(name = "Estudiante.findByEstId", query = "SELECT e FROM Estudiante e WHERE e.estId = :estId"),
     @NamedQuery(name = "Estudiante.findByEstMatricula", query = "SELECT e FROM Estudiante e WHERE e.estMatricula = :estMatricula"),
     @NamedQuery(name = "Estudiante.findByEstDni", query = "SELECT e FROM Estudiante e WHERE e.estDni = :estDni"),
     @NamedQuery(name = "Estudiante.findByEstTipoDni", query = "SELECT e FROM Estudiante e WHERE e.estTipoDni = :estTipoDni"),
@@ -62,8 +61,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Estudiante.findByEstStatus", query = "SELECT e FROM Estudiante e WHERE e.estStatus = :estStatus")})
 public class Estudiante implements Serializable {
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected EstudiantePK estudiantePK;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "est_id")
+    private Integer estId;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -139,7 +142,7 @@ public class Estudiante implements Serializable {
     private Collection<EstudianteSeccion> estudianteSeccionCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "estudiante")
     private Collection<ContactoEmergencia> contactoEmergenciaCollection;
-    @JoinColumn(name = "usr_id", referencedColumnName = "usr_id", insertable = false, updatable = false)
+    @JoinColumn(name = "usr_id", referencedColumnName = "usr_id")
     @ManyToOne(optional = false)
     private Usuario usuario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "estudiante")
@@ -148,12 +151,12 @@ public class Estudiante implements Serializable {
     public Estudiante() {
     }
 
-    public Estudiante(EstudiantePK estudiantePK) {
-        this.estudiantePK = estudiantePK;
+    public Estudiante(Integer estId) {
+        this.estId = estId;
     }
 
-    public Estudiante(EstudiantePK estudiantePK, String estMatricula, String estPrimerNombre, String estPrimerApellido, String estSegundoApellido, String estDireccion, String estEmail, String estNacionalidad, char estGenero, Date estFechaNacimiento, String estLugarNacimiento, char estStatus) {
-        this.estudiantePK = estudiantePK;
+    public Estudiante(Integer estId, String estMatricula, String estPrimerNombre, String estPrimerApellido, String estSegundoApellido, String estDireccion, String estEmail, String estNacionalidad, char estGenero, Date estFechaNacimiento, String estLugarNacimiento, char estStatus) {
+        this.estId = estId;
         this.estMatricula = estMatricula;
         this.estPrimerNombre = estPrimerNombre;
         this.estPrimerApellido = estPrimerApellido;
@@ -167,16 +170,12 @@ public class Estudiante implements Serializable {
         this.estStatus = estStatus;
     }
 
-    public Estudiante(int estId, int usrId) {
-        this.estudiantePK = new EstudiantePK(estId, usrId);
+    public Integer getEstId() {
+        return estId;
     }
 
-    public EstudiantePK getEstudiantePK() {
-        return estudiantePK;
-    }
-
-    public void setEstudiantePK(EstudiantePK estudiantePK) {
-        this.estudiantePK = estudiantePK;
+    public void setEstId(Integer estId) {
+        this.estId = estId;
     }
 
     public String getEstMatricula() {
@@ -353,7 +352,7 @@ public class Estudiante implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (estudiantePK != null ? estudiantePK.hashCode() : 0);
+        hash += (estId != null ? estId.hashCode() : 0);
         return hash;
     }
 
@@ -364,7 +363,7 @@ public class Estudiante implements Serializable {
             return false;
         }
         Estudiante other = (Estudiante) object;
-        if ((this.estudiantePK == null && other.estudiantePK != null) || (this.estudiantePK != null && !this.estudiantePK.equals(other.estudiantePK))) {
+        if ((this.estId == null && other.estId != null) || (this.estId != null && !this.estId.equals(other.estId))) {
             return false;
         }
         return true;
@@ -372,7 +371,7 @@ public class Estudiante implements Serializable {
 
     @Override
     public String toString() {
-        return "com.ijr.model.entities.Estudiante[ estudiantePK=" + estudiantePK + " ]";
+        return "com.ijr.model.entities.Estudiante[ estId=" + estId + " ]";
     }
     
 }
