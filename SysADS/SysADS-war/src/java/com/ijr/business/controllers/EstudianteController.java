@@ -105,11 +105,15 @@ public class EstudianteController {
         try {
             // binding estudiante with user
             estudiante.setUsuario(usuario);
+            
+            // binding estudiante with contacto(s) emergencia
             for (ContactoEmergencia ce : contactosEmergencia) {
+                ce.setEstudiante(estudiante);
                 ce.setCemStatus('a');
             }
 
             estudiante.setContactoEmergenciaCollection(contactosEmergencia);
+            estudiante.setEstStatus('a');
             estudianteFacade.create(estudiante);
             
             FacesMessage msg = new FacesMessage("Registro Estudiantes", "Estudiante registrado exitosamente");
