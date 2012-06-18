@@ -27,7 +27,7 @@ import com.ijr.model.ejb.ContactoEmergenciaFacade;
 import com.ijr.model.ejb.EstudianteFacade;
 import com.ijr.model.entities.ContactoEmergencia;
 import com.ijr.model.entities.Estudiante;
-import java.awt.event.ActionEvent;
+import com.ijr.model.entities.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -48,10 +48,9 @@ import org.primefaces.event.FlowEvent;
 public class EstudianteWizardController {
 
     @EJB
-    private ContactoEmergenciaFacade contactoEmergenciaFacade;
-    @EJB
     private EstudianteFacade estudianteFacade;
     private Estudiante estudiante = new Estudiante();
+    private Usuario usuario = new Usuario();
     private ContactoEmergencia currentCE = new ContactoEmergencia();
     private List<ContactoEmergencia> contactosEmergencia = new ArrayList<ContactoEmergencia>();
     private static final Logger logger = Logger.getLogger(UserWizard.class.getName());
@@ -84,6 +83,14 @@ public class EstudianteWizardController {
 
     public void setEstudiante(Estudiante estudiante) {
         this.estudiante = estudiante;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
     
     public void addContactoEmergencia(ContactoEmergencia contactoEmergencia) {
