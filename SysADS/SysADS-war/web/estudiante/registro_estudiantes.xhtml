@@ -19,6 +19,59 @@
                     <p:growl id="growl" sticky="true" showDetail="true"/>
 
                     <p:wizard widgetVar="reg_est_wiz" flowListener="#{estudianteWizardController.onFlowProcess}">
+                        <p:tab id="cu" title="Cuenta Usuario">
+                            <p:panel header="Cuenta de Usuario">
+                                <h:messages errorClass="error"/>
+                                <p:fieldset legend="Login">
+                                    <h:panelGrid columns="2">  
+                                        <h:outputLabel for="nombre_usuario" value="Nombre Usuario:* " />
+                                        <p:inputText id="nombre_usuario" value="#{estudianteWizardController.usuario.usrLogin}" label="Nombre Usuario" required="true" />
+
+                                        <h:outputLabel for="email" value="Email:* " />  
+                                        <p:inputText id="email" value="#{estudianteWizardController.usuario.usrEmail}" label="Email" required="true" />
+                                    </h:panelGrid>
+                                </p:fieldset>
+                                <p:spacer height="10" />
+                                <p:fieldset legend="Configuracion de Seguridad">
+                                    <h:panelGrid columns="2">  
+                                        <h:outputLabel for="password" value="Password:* " />  
+                                        <p:password id="password" value="#{estudianteWizardController.usuario.usrPassword}" required="true" label="Password 1" feedback="true" match="confirm_pass"/>
+
+                                        <h:outputLabel for="confirm_pass" value="Confirmar Password: " />  
+                                        <p:password id="confirm_pass" label="Password 2" required="true"/>
+
+                                        <h:outputText value="Vigencia Password: " />  
+                                        <p:selectOneMenu value="#{estudianteWizardController.usuario.usrVigenciaPassword}" label="Vigencia Password">  
+                                            <f:selectItem itemLabel="1 Mes" itemValue="1" />  
+                                            <f:selectItem itemLabel="2 Meses" itemValue="2" />  
+                                            <f:selectItem itemLabel="3 Meses" itemValue="3" />  
+                                            <f:selectItem itemLabel="4 Meses" itemValue="4" />
+                                            <f:selectItem itemLabel="5 Meses" itemValue="5" />  
+                                            <f:selectItem itemLabel="6 Meses" itemValue="6" />  
+                                            <f:selectItem itemLabel="7 Meses" itemValue="7" />  
+                                            <f:selectItem itemLabel="8 Meses" itemValue="8" />  
+                                            <f:selectItem itemLabel="9 Meses" itemValue="9" />  
+                                            <f:selectItem itemLabel="10 Meses" itemValue="10" />  
+                                            <f:selectItem itemLabel="11 Meses" itemValue="11" />  
+                                            <f:selectItem itemLabel="12 Meses" itemValue="12" />
+                                            <f:selectItem itemLabel="Indefinida" itemValue="13" />
+                                        </p:selectOneMenu>
+
+                                        <h:outputText value="Pregunta Seguridad: " />  
+                                        <p:selectOneMenu value="#{estudianteWizardController.usuario.usrPreguntaSeguridad}" label="Pregunta Seguridad">  
+                                            <f:selectItem itemLabel="Cual es tu color favorito?" itemValue="Cual es tu color favorito?" />  
+                                            <f:selectItem itemLabel="Donde nacio tu madre?" itemValue="Donde nacio tu madre?" />  
+                                            <f:selectItem itemLabel="Donde nacio tu padre?" itemValue="Donde nacio tu padre?" />  
+                                            <f:selectItem itemLabel="Numero de id carnet universidad?" itemValue="Numero de id carnet universidad?" />
+                                            <f:selectItem itemLabel="Como se llamo tu primera mascota?" itemValue="Como se llamo tu primera mascota?" />
+                                        </p:selectOneMenu>
+
+                                        <h:outputText value="Respuesta:* " />
+                                        <p:inputText id="respuesta_psec" value="#{estudianteWizardController.usuario.usrRespuestaPreguntaSeguridad}" label="Respuesta" required="true" />
+                                    </h:panelGrid>
+                                </p:fieldset>
+                            </p:panel>
+                        </p:tab>
                         <p:tab id="personal" title="Personal">
                             <p:panel header="Detalles Personales">
 
@@ -66,13 +119,6 @@
                                     <h:outputLabel for="lugar_nac" value="Lugar de Nacimiento: " />
                                     <p:inputText id="lugar_nac" label="Lugar de Nacimiento" value="#{estudianteWizardController.estudiante.estLugarNacimiento}" required="false" />
                                 </h:panelGrid>
-                            </p:panel>
-                        </p:tab>
-
-                        <p:tab id="contact" title="Contacto">
-                            <p:panel header="Informacion de Contacto">
-
-                                <h:messages errorClass="error"/>
 
                                 <h:panelGrid columns="2" columnClasses="label, value">
                                     <h:outputLabel for="direccion" value="Direccion: *" />
@@ -80,13 +126,9 @@
 
                                     <h:outputLabel for="telefono" value="Telefono: *" /> 
                                     <p:inputText id="telefono" label="Telefono" value="#{estudianteWizardController.estudiante.estTelefono}" required="true" />
-
-                                    <h:outputLabel for="email" value="Email: *" /> 
-                                    <p:inputText id="email" label="Email" value="#{estudianteWizardController.estudiante.estEmail}" required="true" size="20" />
                                 </h:panelGrid>
                             </p:panel>
                         </p:tab>
-
                         <p:tab id="ce" title="Contactos Emergencia">
                             <p:panel header="Manejar Contactos">
 
@@ -222,94 +264,99 @@
 
                         <p:tab id="confirm" title="Confirmacion">
                             <p:panel header="Confirmacion">
+                                <p:fieldset legend="Cuenta de Usuario">
+                                </p:fieldset>
 
-                                <h:panelGrid id="confirmation" columns="6">
-                                    <h:outputText value="Primer Nombre: " />
-                                    <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estPrimerNombre}" />
+                                <p:spacer height="10" />
 
-                                    <h:outputText value="Segundo Nombre: " />
-                                    <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estSegundoNombre}" />
+                                <p:fieldset legend="Informacion Personal">
+                                    <h:panelGrid id="confirmation" columns="6">
+                                        <h:outputText value="Primer Nombre: " />
+                                        <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estPrimerNombre}" />
 
-                                    <h:outputText value="Primer Apellido: " />
-                                    <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estPrimerApellido}" />
+                                        <h:outputText value="Segundo Nombre: " />
+                                        <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estSegundoNombre}" />
 
-                                    <h:outputText value="Segundo Apellido: " />
-                                    <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estSegundoApellido}" />
+                                        <h:outputText value="Primer Apellido: " />
+                                        <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estPrimerApellido}" />
 
-                                    <h:outputText value="Apodo: " />
-                                    <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estApodo}" />
+                                        <h:outputText value="Segundo Apellido: " />
+                                        <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estSegundoApellido}" />
 
-                                    <h:outputText value="Sexo: " />
-                                    <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estGenero}" />
+                                        <h:outputText value="Apodo: " />
+                                        <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estApodo}" />
 
-                                    <h:outputText value="Identificacion: " />
-                                    <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estDni}" />
+                                        <h:outputText value="Sexo: " />
+                                        <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estGenero}" />
 
-                                    <h:outputText value="Tipo Documento: " />
-                                    <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estTipoDni}" />
+                                        <h:outputText value="Identificacion: " />
+                                        <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estDni}" />
 
-                                    <h:outputText value="Nacionalidad: " />
-                                    <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estNacionalidad}" />
+                                        <h:outputText value="Tipo Documento: " />
+                                        <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estTipoDni}" />
 
-                                    <h:outputText value="Fecha Nacimiento: " />
-                                    <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estFechaNacimiento}" />
+                                        <h:outputText value="Nacionalidad: " />
+                                        <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estNacionalidad}" />
 
-                                    <h:outputText value="Lugar de Nacimiento: " />
-                                    <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estLugarNacimiento}" />
+                                        <h:outputText value="Fecha Nacimiento: " />
+                                        <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estFechaNacimiento}" />
 
-                                    <h:outputText value="Direccion: " />
-                                    <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estDireccion}" />
+                                        <h:outputText value="Lugar de Nacimiento: " />
+                                        <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estLugarNacimiento}" />
 
-                                    <h:outputText value="Telefono: " />
-                                    <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estTelefono}" />
+                                        <h:outputText value="Direccion: " />
+                                        <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estDireccion}" />
 
-                                    <h:outputText value="Email: " />
-                                    <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estEmail}" />
+                                        <h:outputText value="Telefono: " />
+                                        <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estTelefono}" />
 
-                                    <h:outputText />
+                                        <h:outputText value="Email: " />
+                                        <h:outputText styleClass="outputLabel" value="#{estudianteWizardController.estudiante.estEmail}" />
 
-                                    <p:fieldset legend="Contactos Emergencia #{estudianteWizardController.contactosEmergencia.size}">
-                                        <p:panelGrid columns="1">
-                                            <p:dataTable var="ce" value="#{estudianteWizardController.contactosEmergencia}" id="co_ceList">
-                                                <p:column>
-                                                    <f:facet name="header">
-                                                        <h:outputText value="Nombres" />
-                                                    </f:facet>
-                                                    <h:outputText value="#{ce.cemPrimerNombre} #{ce.cemSegundoNombre}" />
-                                                </p:column>
-                                                <p:column>
-                                                    <f:facet name="header">
-                                                        <h:outputText value="Apellidos" />
-                                                    </f:facet>
-                                                    <h:outputText value="#{ce.cemPrimerApellido} #{ce.cemSegundoApellido}" />
-                                                </p:column>
-                                                <p:column>
-                                                    <f:facet name="header">
-                                                        <h:outputText value="Parentesco" />
-                                                    </f:facet>
-                                                    <h:outputText value="#{ce.cemParentesco}" />
-                                                </p:column>
-                                                <p:column>
-                                                    <f:facet name="header">
-                                                        <h:outputText value="Direccion" />
-                                                    </f:facet>
-                                                    <h:outputText value="#{ce.cemDireccion}" />
-                                                </p:column>
-                                                <p:column>
-                                                    <f:facet name="header">
-                                                        <h:outputText value="Telefono" />
-                                                    </f:facet>
-                                                    <h:outputText value="#{ce.cemTelefono}" />
-                                                </p:column>
-                                            </p:dataTable>
-                                        </p:panelGrid>
-                                    </p:fieldset>
-                                </h:panelGrid>
+                                        <h:outputText />
 
+                                    </h:panelGrid>
+                                </p:fieldset>
+
+                                <p:spacer height="10" />
+
+                                <p:fieldset legend="Contactos Emergencia">
+                                    <p:dataTable var="ce" value="#{estudianteWizardController.contactosEmergencia}" id="co_ceList">
+                                        <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Nombres" />
+                                            </f:facet>
+                                            <h:outputText value="#{ce.cemPrimerNombre} #{ce.cemSegundoNombre}" />
+                                        </p:column>
+                                        <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Apellidos" />
+                                            </f:facet>
+                                            <h:outputText value="#{ce.cemPrimerApellido} #{ce.cemSegundoApellido}" />
+                                        </p:column>
+                                        <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Parentesco" />
+                                            </f:facet>
+                                            <h:outputText value="#{ce.cemParentesco}" />
+                                        </p:column>
+                                        <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Direccion" />
+                                            </f:facet>
+                                            <h:outputText value="#{ce.cemDireccion}" />
+                                        </p:column>
+                                        <p:column>
+                                            <f:facet name="header">
+                                                <h:outputText value="Telefono" />
+                                            </f:facet>
+                                            <h:outputText value="#{ce.cemTelefono}" />
+                                        </p:column>
+                                    </p:dataTable>
+                                </p:fieldset>
                                 <p:commandButton value="Aceptar" update="growl" action="#{estudianteWizardController.save}"/>
                                 <p:spacer width="10" />
                                 <p:commandButton value="Cancelar" update="growl" action="#{estudianteWizardController.cancelEstudiantePersistation}"/>
-
                             </p:panel>
                         </p:tab>
                     </p:wizard>
