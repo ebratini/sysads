@@ -18,10 +18,13 @@
                 <h:form>
                     <p:growl id="growl" sticky="true" showDetail="true"/>
 
+                    <h1 style="background-color: #ECECEC;">Ingreso de Nuevos Estudiantes</h1>
+                    <hr />
+                    <br />
                     <p:wizard widgetVar="reg_est_wiz" flowListener="#{estudianteWizardController.onFlowProcess}">
                         <p:tab id="cu" title="Cuenta Usuario">
                             <p:panel header="Cuenta de Usuario">
-                                <h:messages errorClass="error"/>
+                                <p:messages />
                                 <p:fieldset legend="Login">
                                     <h:panelGrid columns="2">  
                                         <h:outputLabel for="nombre_usuario" value="Nombre Usuario:* " />
@@ -75,7 +78,7 @@
                         <p:tab id="personal" title="Personal">
                             <p:panel header="Detalles Personales">
 
-                                <h:messages errorClass="error"/>
+                                <p:messages  />
 
                                 <h:panelGrid columns="4" columnClasses="label, value" styleClass="grid">
                                     <h:outputLabel for="primer_nombre" value="Primer Nombre: *" />
@@ -99,7 +102,7 @@
                                         <f:selectItem itemLabel="Femenino" itemValue="f" />  
                                     </p:selectOneMenu>
 
-                                    <h:outputLabel for="dni" value="Identificacion: *" />  
+                                    <h:outputLabel for="dni" value="Identificacion: *" />
                                     <h:panelGrid columns="3">
                                         <p:inputText id="dni" label="DNI" value="#{estudianteWizardController.estudiante.estDni}" required="true" />
                                         <h:outputLabel for="tipoDoc" value="&nbsp;&nbsp;&nbsp;Tipo: " />  
@@ -113,14 +116,12 @@
                                     <h:outputLabel for="nacionalidad" value="Nacionalidad: *" />
                                     <p:inputText id="nacionalidad" label="Nacionalidad" value="#{estudianteWizardController.estudiante.estNacionalidad}" required="false" />
 
-                                    <h:outputLabel for="fecha_nac" value="Fecha Nacimiento: " />
+                                    <h:outputLabel for="fecha_nac" value="Fecha Nacimiento: *" />
                                     <p:calendar id="fecha_nac" label="Fecha Nacimiento" value="#{estudianteWizardController.estudiante.estFechaNacimiento}" required="true" />
 
-                                    <h:outputLabel for="lugar_nac" value="Lugar de Nacimiento: " />
+                                    <h:outputLabel for="lugar_nac" value="Lugar de Nacimiento: *" />
                                     <p:inputText id="lugar_nac" label="Lugar de Nacimiento" value="#{estudianteWizardController.estudiante.estLugarNacimiento}" required="false" />
-                                </h:panelGrid>
-
-                                <h:panelGrid columns="2" columnClasses="label, value">
+                                    
                                     <h:outputLabel for="direccion" value="Direccion: *" />
                                     <p:inputText id="direccion" label="Direccion" value="#{estudianteWizardController.estudiante.estDireccion}" required="true"  size="60"/>
 
@@ -132,7 +133,7 @@
                         <p:tab id="ce" title="Contactos Emergencia">
                             <p:panel header="Manejar Contactos">
 
-                                <h:messages errorClass="error"/>
+                                <p:messages  />
 
                                 <h:panelGrid columns="1" columnClasses="label, value">
 
@@ -226,7 +227,7 @@
                                     <h:form>
                                         <p:growl id="new_ce_growl" sticky="true" showDetail="true"/>
                                         <p:panel header="Nuevo Contacto">
-                                            <h:messages errorClass="error"/>
+                                            <p:messages  />
 
                                             <p:panelGrid columns="2" columnClasses="label, value" styleClass="grid">
                                                 <h:outputLabel for="primer_nombre_emer" value="Primer Nombre: *" />
